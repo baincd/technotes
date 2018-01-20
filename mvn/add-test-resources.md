@@ -1,0 +1,29 @@
+# Add additional test resources (without overriding default)
+
+```
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-resources-plugin</artifactId>
+    <version>2.6</version>
+    <executions>
+        <execution>
+            <id>test-resources-additional</id>
+            <phase>process-test-resources</phase>
+            <goals>
+                <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+                <outputDirectory>${project.build.testOutputDirectory}</outputDirectory>
+                <resources>
+                    <resource>
+                        <directory>${basedir}/etc/</directory>
+                        <includes>
+                            <include>somefile.properties</include>
+                        </includes>
+                    </resource>
+                </resources>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+```
