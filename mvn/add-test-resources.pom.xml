@@ -1,6 +1,5 @@
-# Add additional test resources (without overriding default)
+<!-- Add additional test resources (without overriding default) -->
 
-```
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-resources-plugin</artifactId>
@@ -26,4 +25,3 @@
         </execution>
     </executions>
 </plugin>
-```

@@ -1,4 +1,3 @@
-```
 <project>
     <distributionManagement>
         <snapshotRepository>
@@ -13,4 +12,3 @@
         </repository>
     </distributionManagement>
 </project>
-```
