@@ -27,14 +27,17 @@
 # aliases for Git that are setup in ~/.bashrc
 # Cache SSH credentials
 alias ssh-cache='eval `ssh-agent` && ssh-add'
-# Git Push (origin branch-name) and Track: Push local branch to origin branch of same name, and track origin branch
+
+# Git Push (origin branch-name) and Track
 alias gitpusht="git push -u origin \`git branch | sed -n 's/^\* //p'\`"
 alias gitpt=gitpusht
-gitptpr() { # Git Push (origin branch-name), Track, and open PR
+# Git Push (origin branch-name), Track, and open Pull Request
+gitptpr() {
     gitOutput=`gitpusht "$@" | tee /dev/tty`
     __git_open_pr "$gitOutput"
 }
-gitpr() { # Git Push and open PR
+# Git Push <options> and open Pull Request
+gitpr() {
     gitOutput=`git push "$@" | tee /dev/tty`
     __git_open_pr "$gitOutput"
 }
