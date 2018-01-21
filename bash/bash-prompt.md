@@ -9,7 +9,7 @@ export PS1="\n\[\e[01;32m\]\u@\h\[\e[m\] \[\e[01;33m\]\w\[\e[m\]\n$ "
 
 # Set Bash Prompt for account
 Add to `~/.bashrc`
-```
+```bash
 DEFAULT_PS1=$PS1
 PS1=<new prompt>
 # Note - for the Git prompt, you will need to add \ before each `
