@@ -1,0 +1,4 @@
+# Have GitHub Linguist ignore non markdown files
+*.css   linguist-vendored
+*.bat   linguist-vendored
+*.sh   linguist-vendored
