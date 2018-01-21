@@ -1,18 +1,14 @@
 # Git for windows setup
 
 ### Set home to specific path
-- Create environment variable HOME to new home path
-- If exist, move `.gitconfig`, `.bash`, and `.ssh` from old home path to new home path
+1) Create environment variable HOME to new home path
+2) If exist, move `.gitconfig`, `.bash`, and `.ssh` from old home path to new home path
 
 ### Fix Git Bash command prompt and window title
-`<HOME>/.bash_profile`
-```
-if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
-```
-`<HOME>/.bashrc`
-```
-PS1='\[\033]0;${PWD}//[^[:ascii:]]/?}\007\]\n\[\033[01;33m\]\w\[\033[01;36m\]`__git_ps1`\[\033[0m\]\n$ '
-```
+1) If not setup, setup `<HOME>/.bash_profile` \
+`if [ -f ~/.bashrc ]; then . ~/.bashrc; fi` \
+2) See [bash/bash-prompt](https://github.com/baincd/technotes/blob/master/bash/bash-prompt.md) for ~/.bashrc setup
+
 <!--
 ## Old
 #### <git>/etc/profile:

@@ -1,10 +1,13 @@
 # Set Bash Prompt from Command Line
 ```bash
-# PWD (Git-branch)
+# PWD (git-branch)
 export PS1="\n\[\e[01;33m\]\w\[\e[m\]\[\033[01;36m\]`__git_ps1`\[\033[0m\]\n$ "
 
 # user@host PWD
 export PS1="\n\[\e[01;32m\]\u@\h\[\e[m\] \[\e[01;33m\]\w\[\e[m\]\n$ "
+
+# Git Bash for Windows - (Window Title = PWD) | PWD (git-branch)
+export PS1='\[\033]0;${PWD}//[^[:ascii:]]/?}\007\]\n\[\033[01;33m\]\w\[\033[01;36m\]`__git_ps1`\[\033[0m\]\n$ '
 ```
 
 # Set Bash Prompt for account
