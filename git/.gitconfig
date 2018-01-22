@@ -21,6 +21,10 @@
     # ssh - use ssh-cache bash alias
 [gc]
     auto = 256
+[color "status"]
+    added = green # default
+    changed = red bold # Changed from red
+    untracked = yellow # Changed from red
 
 
 ##############################################
