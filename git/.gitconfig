@@ -1,30 +1,30 @@
 [user]
-    name = Chris Bain
-    email = baincd@users.noreply.github.com
+	name = Chris Bain
+	email = baincd@users.noreply.github.com
 [core]
-    # Set Notepad++ as editor in git
-    editor = 'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
+	# Set Notepad++ as editor in git
+	editor = 'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
 [push]
-    default = upstream
+	default = upstream
 [alias]
-    ffup = merge --ff-only @{u}
-    ff = merge --ff-only
-    logd = log --decorate
-    logg = log --graph --oneline --date=relative --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%<(8,trunc)%an%C(reset) %s%C(bold yellow)%d%C(reset)'
-    logv = log --graph --oneline --date=local --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%an%C(reset) %s%C(bold yellow)%d%C(reset) %n%w(0,8,8)%+b'
+	ffup = merge --ff-only @{u}
+	ff = merge --ff-only
+	logd = log --decorate
+	logg = log --graph --oneline --date=relative --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%<(8,trunc)%an%C(reset) %s%C(bold yellow)%d%C(reset)'
+	logv = log --graph --oneline --date=local --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%an%C(reset) %s%C(bold yellow)%d%C(reset) %n%w(0,8,8)%+b'
 [credential]
-    # Windows http - Use windows to cache credentials
-    helper = wincred
-    # Linux http- use git cache to cache credentials
-    helper = cache
-    helper = cache --timeout=3600 # change the timeout from the default 15 mins to 60 mins
-    # ssh - use ssh-cache bash alias
+	# Windows http - Use windows to cache credentials
+	helper = wincred
+	# Linux http- use git cache to cache credentials
+	helper = cache
+	helper = cache --timeout=3600 # change the timeout from the default 15 mins to 60 mins
+	# ssh - use ssh-cache bash alias
 [gc]
-    auto = 256
+	auto = 256
 [color "status"]
-    added = green # default
-    changed = red bold # Changed from red
-    untracked = yellow # Changed from red
+	added = green # default
+	changed = red bold # Changed from red
+	untracked = yellow # Changed from red
 
 
 ##############################################
@@ -37,17 +37,17 @@ alias gitpusht="git push -u origin \`git branch | sed -n 's/^\* //p'\`"
 alias gitpt=gitpusht
 # Git Push (origin branch-name), Track, and open Pull Request
 gitptpr() {
-    gitOutput=`gitpusht "$@" | tee /dev/tty`
-    __git_open_pr "$gitOutput"
+	gitOutput=`gitpusht "$@" | tee /dev/tty`
+	__git_open_pr "$gitOutput"
 }
 # Git Push <options> and open Pull Request
 gitpr() {
-    gitOutput=`git push "$@" | tee /dev/tty`
-    __git_open_pr "$gitOutput"
+	gitOutput=`git push "$@" | tee /dev/tty`
+	__git_open_pr "$gitOutput"
 }
 __git_open_pr() {
-    PRurl=`echo "$1" | sed -rn '\|Create pull request|,\|https?://|s|^.*remote: (https?://)|\1|p'`
-    if ! [ "$PRurl" = "" ]; then
-        firefox $PRurl
-    fi
+	PRurl=`echo "$1" | sed -rn '\|Create pull request|,\|https?://|s|^.*remote: (https?://)|\1|p'`
+	if ! [ "$PRurl" = "" ]; then
+		firefox $PRurl
+	fi
 }
