@@ -8,6 +8,8 @@
 	editor = vi
 [push]
 	default = upstream
+[rebase]
+	autosquash = true
 [credential]
 	# Windows http - Use windows to cache credentials
 	helper = wincred
