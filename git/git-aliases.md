@@ -19,24 +19,33 @@
 ```bash
 # Cache SSH credentials
 alias ssh-cache='eval `ssh-agent` && ssh-add'
-
-# Git Push (origin branch-name) and Track
-alias gitpusht="git push -u origin \`git branch | sed -n 's/^\* //p'\`"
-alias gitpt=gitpusht
-# Git Push (origin branch-name), Track, and open Pull Request
-gitptpr() {
-	gitOutput=`gitpusht "$@" | tee /dev/tty`
+```
+---
+`git-pushtr:  ` **git** **push** origin same-branch-name & **tr**ack \
+`git-pushtrpr:` **git** **push** origin same-branch-name & **tr**ack & create **p**ull **r**equest \
+`git-pushpr:  ` **git** **push** & create **p**ull **r**equest
+```bash
+alias git-pushtr="git push -u origin \`git branch | sed -n 's/^\* //p'\`"
+git-pushptpr() {
+	gitOutput=`git-pushtr "$@" 2>&1 | tee /dev/tty`
 	__git_open_pr "$gitOutput"
 }
-# Git Push <options> and open Pull Request
-gitpr() {
-	gitOutput=`git push "$@" | tee /dev/tty`
+git-pushpr() {
+	gitOutput=`git push "$@" 2>&1 | tee /dev/tty`
 	__git_open_pr "$gitOutput"
 }
 __git_open_pr() {
-	PRurl=`echo "$1" | sed -rn '\|Create pull request|,\|https?://|s|^.*remote: (https?://)|\1|p'`
+    # Bitbucket example:
+    # remote: Create pull request for mybranch:
+    # remote   https://bitbucket.org/myapp/myrepo/compare/commits?sourceBranch=refs/heads/mybranch
+	PRurl=`echo "$1" | sed -rn '\|Create pull request|,\|https?://|s|^.*remote: *(https?://)|\1|p'`
 	if ! [ "$PRurl" = "" ]; then
+        echo Opening Pull Request ${PRurl}
+        # Linux
 		firefox $PRurl
+        # Windows: Create ~/bin/firefox.bat
+        #     @"c:\Program Files (x86)\Mozilla Firefox\firefox.exe" %*
+        firefox.bat $PRurl
 	fi
 }
 
