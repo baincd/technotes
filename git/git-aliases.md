@@ -1,0 +1,43 @@
+## `~/.gitconfig`
+```
+[alias]
+	ffup = merge --ff-only @{u}
+	ff = merge --ff-only
+	logd = log --decorate
+	logg = log --graph --oneline --date=relative --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%<(8,trunc)%an%C(reset) %s%C(bold yellow)%d%C(reset)'
+	logv = log --graph --oneline --date=local --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%an%C(reset) %s%C(bold yellow)%d%C(reset) %n%w(0,8,8)%+b'
+	pullr = pull --rebase
+	pullm = pull
+	pullf = pull --ff-only
+	br = checkout -b
+	track = branch -u
+	untrack = branch --unset-upstream
+	addall = add -A -v
+```
+
+## `~/.bashrc`
+```bash
+# Cache SSH credentials
+alias ssh-cache='eval `ssh-agent` && ssh-add'
+
+# Git Push (origin branch-name) and Track
+alias gitpusht="git push -u origin \`git branch | sed -n 's/^\* //p'\`"
+alias gitpt=gitpusht
+# Git Push (origin branch-name), Track, and open Pull Request
+gitptpr() {
+	gitOutput=`gitpusht "$@" | tee /dev/tty`
+	__git_open_pr "$gitOutput"
+}
+# Git Push <options> and open Pull Request
+gitpr() {
+	gitOutput=`git push "$@" | tee /dev/tty`
+	__git_open_pr "$gitOutput"
+}
+__git_open_pr() {
+	PRurl=`echo "$1" | sed -rn '\|Create pull request|,\|https?://|s|^.*remote: (https?://)|\1|p'`
+	if ! [ "$PRurl" = "" ]; then
+		firefox $PRurl
+	fi
+}
+
+```
