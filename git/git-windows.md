@@ -17,6 +17,14 @@ $ touch ~/.bashrc
 ### Setup Git Bash command prompt and window title
 1) See [bash/bash-prompt](https://github.com/baincd/technotes/blob/master/bash/bash-prompt.md) for setup
 
+### Setup initial directory for Git Bash
+1) Add to `~/.bashrc`
+```bash
+if [[ `pwd` = $HOME ]]; then
+    cd /c/wc
+fi
+```
+
 <!--
 ## Old
 #### <git>/etc/profile:
