@@ -13,6 +13,8 @@
 	track = branch -u
 	untrack = branch --unset-upstream
 	addall = add -A -v
+	# Courtesy https://haacked.com/archive/2014/07/28/github-flow-aliases/
+	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
 ```
 
 ## `~/.bashrc`
