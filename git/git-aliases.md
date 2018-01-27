@@ -24,3 +24,6 @@
 # Cache SSH credentials
 alias ssh-cache='eval `ssh-agent` && ssh-add'
 ```
+
+## Git flow aliases
+Also see [gitflow-aliases.md](./gitflow-aliases.md)
