@@ -6,6 +6,8 @@
 	editor = 'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
 	# Set vi as editor in git
 	editor = vi
+
+	pager = less -S
 [push]
 	default = upstream
 [rebase]
