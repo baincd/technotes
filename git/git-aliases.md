@@ -1,6 +1,8 @@
 ## `~/.gitconfig`
 ```
 [alias]
+	diffw = diff --ignore-space-change --ignore-space-at-eol
+	staged = diff --cached
 	ffup = merge --ff-only @{u}
 	ff = merge --ff-only
 	logd = log --decorate
