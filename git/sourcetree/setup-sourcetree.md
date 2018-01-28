@@ -1,12 +1,3 @@
-## Reenable Merge Conflicts (and other hidden settings)
-
-`C:\Users\<userid>\AppData\Local\Atlassian\SourceTree.exe*\X.x.x.x\user.config`
-```
-<setting name="SuppressConflictsWarning" serializeAs="String">
-    <value>False</value>
-</setting>
-```
-
 ## Stash/Bitbucket integration:
 Repository Settings->(select repo)->Edit->Option extended integration
 ```
