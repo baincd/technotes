@@ -26,4 +26,7 @@ alias ssh-cache='eval `ssh-agent` && ssh-add'
 ```
 
 ## Git flow aliases
-Also see [setup-gitflow-aliases.md](./setup-gitflow-aliases.md)
+[setup-gitflow-aliases.md](./setup-gitflow-aliases.md)
+
+## Qstash aliases
+[setup-git-qstash-aliases.md](./setup-git-qstash-aliases.md)
