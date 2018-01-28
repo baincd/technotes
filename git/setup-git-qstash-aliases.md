@@ -10,7 +10,7 @@
 ```
 [alias]
     qstash = "!f() { ~/bin/git-qstash.sh STASH $@ ;}; f"
-    checkpoint = "!f() { ~/bin/git-qstash.sh CHECKPOINT $1 ;}; f"
+    checkpoint = "!f() { ~/bin/git-qstash.sh CHECKPOINT $@ ;}; f"
     qunstash = "!f() { ~/bin/git-qstash.sh UNSTASH $1 ;}; f"
 ```
 
@@ -23,20 +23,16 @@ CHECKPOINT="CHECKPOINT!"
 
 git-stash() {
     local ARGS="$@"
-    MSG=`echo "${ARGS}" | sed -r 's/^STASH ?//'`
-    stash-files "${WIP} ${MSG}"
-}
+    MSG_PARAM=`echo "${ARGS}" | sed -r "s/^${1} ?//"`
+    if [ "${1}" = "CHECKPOINT" ]; then
+        MSG="${CHECKPOINT} ${MSG_PARAM}"
+    else
+        MSG="${WIP} ${MSG_PARAM}"
+    fi
 
-git-checkpoint() {
-    local ARGS="$@"
-    MSG=`echo "${ARGS}" | sed -r 's/^CHECKPOINT ?//'`
-    stash-files "${CHECKPOINT} ${MSG}"
-}
-
-stash-files() {
     git add -A
-    git commit -qm "${1}"
-    git log --color=always HEAD~1..HEAD --pretty="%C(dim)%h%C(reset) %s%n%nFiles stashed:"
+    git commit -qm "${MSG}"
+    git log --color=always HEAD~1..HEAD --pretty="%C(dim)%h%C(reset) %s%n%nChanges stashed:"
     git --no-pager log --color=always HEAD~1..HEAD --pretty="" --stat
 }
 
@@ -76,10 +72,8 @@ is-wip() {
     fi
 }
 
-if [ "${1}" = "STASH" ]; then
+if [ "${1}" = "STASH" ] || [ "${1}" = "CHECKPOINT" ]; then
     git-stash "$@"
-elif [ "${1}" = "CHECKPOINT" ]; then
-    git-checkpoint "$@"
 elif [ "${1}" = "UNSTASH" ]; then
     git-unstash "${2}"
 fi
