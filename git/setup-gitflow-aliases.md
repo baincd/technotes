@@ -1,6 +1,7 @@
 <!-- ### Page Linked from setup-git-aliases.md ### -->
 ## Usage
 * `git feature-start <feature>` - create branch `feature` off of upstream/develop
+* `git feature-restart <feature>` - same as feature-start, but set HEAD to origin/<feature>
 * `git feature-push [<push-to-branch>] [-u | --track]` - push to origin
     * `<push-to-branch>` will be used as the branch to push to
     * else use existing tracking branch if set AND is not origin/develop, origin/master, upstream/develop, or upstream/master
@@ -12,7 +13,7 @@
         * abc-123-v4 -> abc
         * abc99-123 -> abc99
     * if `-u` or `--track` is used, the local branch will track the remote branch
-* `git feature-pr [<push-to-branch>]` - execute git-featurepush, then open Pull Request
+* `git feature-pr [<push-to-branch>]` - execute feature-push, then open Pull Request
 * `git feature-end [--force]` - checkout develop (create if necessary), fast forward to upstream/develop, and delete the feature branch
     * Command will abort if there are unpushed commits.  --force will bypass this check
 * `git feature-mergeable [<branch>]` - Check if the current branch is mergeable with another branch
@@ -28,6 +29,7 @@
 ```
 [alias]
     feature-start = "!f() { ~/bin/git-feature.sh START $1 ;}; f"
+    feature-restart = "!f() { ~/bin/git-feature.sh RESTART $1 ;}; f"
     feature-push = "!f() { ~/bin/git-feature.sh PUSH $@ ;}; f"
     feature-pr = "!f() { ~/bin/git-feature.sh PR $@ ;}; f"
     feature-end = "!f() { ~/bin/git-feature.sh END $1 ;}; f"
@@ -57,8 +59,15 @@ UPSTREAM_REMOTE=upstream # Pull Request Destination Remote
 UPSTREAM_BRANCH=master # Pull Request Destination Branch
 
 git-feature-start() {
+    if [ "$(is-working-copy-clean)" = "false" ]; then
+        echo -e "\e[1;31mERROR!\e[0m: Working Copy is not clean"
+        return
+    fi
     fetch-all
-    git checkout ${UPSTREAM_REMOTE}/${UPSTREAM_BRANCH} -b $1
+    git checkout ${UPSTREAM_REMOTE}/${UPSTREAM_BRANCH} -b $2
+    if [ "${1}" = "RESTART" ]; then
+        git reset --hard ${PUSH_REMOTE}/$2
+    fi
 }
 
 git-feature-end() {
@@ -272,8 +281,8 @@ fetch-all() {
     fi
 }
 
-if [ "${1}" = "START" ]; then
-    git-feature-start $2
+if [ "${1}" = "START" ] || [ "${1}" = "RESTART" ]; then
+    git-feature-start $1 $2
 elif [ "${1}" = "END" ]; then
     git-feature-end $2
 elif [ "${1}" = "PUSH" ] || [ "${1}" = "PR" ]; then
