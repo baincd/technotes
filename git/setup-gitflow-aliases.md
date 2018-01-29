@@ -1,7 +1,7 @@
 <!-- ### Page Linked from setup-git-aliases.md ### -->
 ## Usage
 * `git feature-start <feature>` - create branch `feature` off of upstream/develop
-* `git feature-restart <feature>` - same as feature-start, but set HEAD to origin/<feature>
+* `git feature-restart <feature>` - same as feature-start, but set HEAD to origin/&lt;feature&gt;
 * `git feature-push [<push-to-branch>] [-u | --track]` - push to origin
     * `<push-to-branch>` will be used as the branch to push to
     * else use existing tracking branch if set AND is not origin/develop, origin/master, upstream/develop, or upstream/master
@@ -18,8 +18,8 @@
 * `git feature-mergeable [<branch>]` - Check if the current branch is mergeable with another branch
     * Default to upstream/develop if no `<branch>`
     * else use local branch `<branch>` if exists
-    * else use upstream/<branch> if exists
-    * else use origin/<branch> if exists
+    * else use upstream/&lt;branch&gt; if exists
+    * else use origin/&lt;branch&gt; if exists
     * else abort
     * Command will abort if there are unpushed commits.
 
