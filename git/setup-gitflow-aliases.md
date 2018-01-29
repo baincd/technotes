@@ -1,8 +1,9 @@
 <!-- ### Page Linked from setup-git-aliases.md ### -->
-* `git feature-start <feature>` - create branch `feature` off of origin/develop
-* `git feature-push [<upstream>]` - set upstream branch and push
+#### Usage
+* `git feature-start <feature>` - create branch `feature` off of PR/develop
+* `git feature-push [<upstream>]` - set upstream branch and push to origin
     * Use `<upstream>` as upstream branch if passed
-    * else use existing upstream branch if set and is not origin/develop or origin/master
+    * else use existing upstream branch if set and is not origin/develop, origin/master, PR/develop, or PR/master
     * else use branch name, chopping off ticket numbers ("-123", "-123-456") and version numbers ("-v2") off the end.
         * abc -> abc
         * abc123 -> abc123
@@ -11,14 +12,13 @@
         * abc-123-v4 -> abc
         * abc99-123 -> abc99
 * `git feature-pr [<upstream>]` - execute git-featurepush, then open Pull Request
-    * git-\*-pr functions may need to be updated to use correct URL for Pull Request
-* `git feature-end [--force]` - checkout develop (create if necessary), fast forward to origin/develop, and delete the feature branch
+* `git feature-end [--force]` - checkout develop (create if necessary), fast forward to PR/develop, and delete the feature branch
     * Command will abort if there are unpushed commits.  --force will bypass this check
 * `git feature-mergeable [<branch>]` - Check if the current branch is mergeable with another branch
-    * Default to origin/develop if `<branch>`
+    * Default to PR/develop if no `<branch>`
     * else use local branch `<branch>` if exists
-    * else use origin/<branch> if exists
     * else use PR/<branch> if exists
+    * else use origin/<branch> if exists
     * else abort
     * Command will abort if there are unpushed commits.
 
@@ -36,14 +36,35 @@
 ```bash
 #!/bin/bash
 
+## Setup:
+# Your local git repo will require 2 remotes to be setup:
+# * origin : this will be the remote you can push directly to
+# * PR : this will be the remote you start feature branches off of and open pull requests to
+# These remotes can point to the same repo.
+#
+# Update the git-*-pr functions to use correct URL for Pull Requests
+
+# Settings for using gitflow with central repo
+# ORIGIN=origin
+# PR=origin
+# MASTER_BRANCH=master
+# DEVELOP_BRANCH=develop
+
+# Settings for opening pull requests to different repos that only use master
+# ORIGIN=origin
+# PR=PR
+# MASTER_BRANCH=master
+# DEVELOP_BRANCH=master
+
+# Default settings
 ORIGIN=origin # Upstream Remote
 PR=PR # Pull Request Remote
 MASTER_BRANCH=master
 DEVELOP_BRANCH=develop
 
 git-feature-start() {
-    git fetch
-    git checkout ${ORIGIN}/${DEVELOP_BRANCH} -b $1
+    fetch-all
+    git checkout ${PR}/${DEVELOP_BRANCH} -b $1
 }
 
 git-feature-end() {
@@ -55,7 +76,7 @@ git-feature-end() {
 
     if ! [ "${1}" = "--force" ]; then
         local TR=`current-tracking-branch`
-        local COMMITS_NOT_PUSHED=`git log --oneline \`git rev-parse ${BR}\` ^\`git rev-parse ${ORIGIN}/${TR}\` | wc -l`
+        local COMMITS_NOT_PUSHED=`git log --oneline \`git rev-parse ${BR}\` ^\`git rev-parse ${TR}\` | wc -l`
         if ! [ "${COMMITS_NOT_PUSHED}" = "0" ]; then
             echo -e "\e[1;31mERROR!\e[0m: local feature branch has commits not pushed (use --force to delete anyway)"
             return
@@ -63,12 +84,12 @@ git-feature-end() {
     fi
 
     local LOCAL_DEVELOP_BR=`git branch | sed -rn "s/^ *(${DEVELOP_BRANCH})$/\1/p"`
-    git fetch
+    fetch-all
     if [ "${LOCAL_DEVELOP_BR}" = "${DEVELOP_BRANCH}" ]; then
         git checkout ${DEVELOP_BRANCH}
         git merge @{u} --ff-only
     else
-        git checkout --track ${ORIGIN}/${DEVELOP_BRANCH} -b ${DEVELOP_BRANCH}
+        git checkout --track ${PR}/${DEVELOP_BRANCH} -b ${DEVELOP_BRANCH}
     fi
 
     git branch -D $BR
@@ -129,7 +150,7 @@ git-feature-push() {
     if ! [ "${2}" = "" ]; then
         local TR="${2}"
     else
-        local TR=`current-tracking-branch`
+        local TR=`current-tracking-branch | sed 's,^[^/]*/,,'`
         if [ "$(is-feature-branch ${TR})" = "false" ]; then
             # Chop off -1234  or -1234-2  or -1234-v2 from branch name.
             # To disable chop off, change to TR="${BR}"
@@ -157,20 +178,20 @@ git-feature-mergeable() {
     fi
 
     if [ "${1}" = "" ]; then
-        local MERGE_BRANCH="${ORIGIN}/${DEVELOP_BRANCH}"
+        local MERGE_BRANCH="${PR}/${DEVELOP_BRANCH}"
     elif [ "$(does-branch-exist ${1})" = "true" ]; then
         local MERGE_BRANCH="${1}"
     elif [ "$(does-branch-exist ${ORIGIN}/${1})" = "true" ]; then
-        local MERGE_BRANCH=${ORIGIN}/${1}
-    elif [ "$(does-branch-exist ${PR}/${1})" = "true" ]; then
         local MERGE_BRANCH=${PR}/${1}
+    elif [ "$(does-branch-exist ${PR}/${1})" = "true" ]; then
+        local MERGE_BRANCH=${ORIGIN}/${1}
     else
         echo -e "\e[1;31mERROR!\e[0m: Unable to find branch ${1}"
         return
     fi
 
     local START_HEAD=`git rev-parse HEAD`
-    git fetch
+    fetch-all
     git merge $MERGE_BRANCH >> /dev/null
     if [ "$(is-working-copy-clean)" = "true" ]; then
         echo -e "\e[1;32mOK!\e[0m $(current-branch) is mergeable with ${MERGE_BRANCH}"
@@ -183,7 +204,7 @@ git-feature-mergeable() {
 }
 
 current-tracking-branch() {
-    git branch -vv | sed -n "s|^\*.*\[${ORIGIN}/||p" | sed 's/\].*$//' | sed -r 's/:( ahead [0-9]+)?,?( behind [0-9]+)?$//'
+    git branch -vv | sed -rn "s,^\*.*\[(${ORIGIN}|${PR})/,\1/,p" | sed 's/\].*$//' | sed -r 's/:( ahead [0-9]+)?,?( behind [0-9]+)?$//'
 }
 
 current-branch() {
@@ -211,6 +232,13 @@ does-branch-exist() {
         echo false
     else
         echo true
+    fi
+}
+
+fetch-all() {
+    git fetch $PR
+    if ! [ "${PR}" = "$ORIGIN" ]; then
+        git fetch $ORIGIN
     fi
 }
 
