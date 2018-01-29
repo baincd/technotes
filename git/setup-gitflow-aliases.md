@@ -137,8 +137,12 @@ git-feature-bitbucket-pr() {
 
 get-bitbucket-remote-part() {
     local REMOTE_NAME=$1
-    local PART_NUM=""\\${2}""
-    git remote -v | sed -rn "s|^${REMOTE_NAME}.*https://bitbucket.org/([^/]*)/([^/]*)\.git \(fetch\).*$|${PART_NUM}|p"
+    local PART_NUM="\\${2}"
+
+    git remote -v \
+        | sed -rn "s,^${REMOTE_NAME}.*(https|ssh)://([^@]*@)?bitbucket.org(:7999)?/,,p" \
+        | sed -rn "s|/?(\.git)? \(fetch\).*$||p" \
+        | sed -rn "s|([^/]*)/([^/]*)|${PART_NUM}|p"
 }
 
 git-feature-push() {
