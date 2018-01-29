@@ -1,9 +1,9 @@
 <!-- ### Page Linked from setup-git-aliases.md ### -->
 ## Usage
 * `git feature-start <feature>` - create branch `feature` off of upstream/develop
-* `git feature-push [<push-to-branch>]` - push to origin and set tracking branch
-    * Use `<push-to-branch>` as branch to push to and track
-    * else use existing tracking branch if set and is not origin/develop, origin/master, PR/develop, or PR/master
+* `git feature-push [<push-to-branch>] [-u | --track]` - push to origin
+    * `<push-to-branch>` will be used as the branch to push to
+    * else use existing tracking branch if set AND is not origin/develop, origin/master, upstream/develop, or upstream/master
     * else use local branch name, chopping off ticket numbers ("-123", "-123-456") and version numbers ("-v2") off the end.
         * abc -> abc
         * abc123 -> abc123
@@ -11,6 +11,7 @@
         * abc-123-456 -> abc
         * abc-123-v4 -> abc
         * abc99-123 -> abc99
+    * if `-u` or `--track` is used, the local branch will track the remote branch
 * `git feature-pr [<push-to-branch>]` - execute git-featurepush, then open Pull Request
 * `git feature-end [--force]` - checkout develop (create if necessary), fast forward to upstream/develop, and delete the feature branch
     * Command will abort if there are unpushed commits.  --force will bypass this check
@@ -27,8 +28,8 @@
 ```
 [alias]
     feature-start = "!f() { ~/bin/git-feature.sh START $1 ;}; f"
-    feature-push = "!f() { ~/bin/git-feature.sh PUSH $1 ;}; f"
-    feature-pr = "!f() { ~/bin/git-feature.sh PR $1 ;}; f"
+    feature-push = "!f() { ~/bin/git-feature.sh PUSH $@ ;}; f"
+    feature-pr = "!f() { ~/bin/git-feature.sh PR $@ ;}; f"
     feature-end = "!f() { ~/bin/git-feature.sh END $1 ;}; f"
     feature-mergeable = "!f() { ~/bin/git-feature.sh MERGEABLE $1 ;}; f"
 ```
@@ -146,14 +147,39 @@ get-bitbucket-remote-part() {
 }
 
 git-feature-push() {
+    if [ "${1}" = "PR" ]; then
+        local DO_PR="true"
+    else
+        local DO_PR="false"
+    fi
+    shift
+
+    local TR=""
+    local OPTS=""
+    for arg; do
+        if ! [ "$(echo ${arg} | sed -n '/^-/p')" = "" ]; then
+            if [ "$arg" = "--track" ] || [ "$arg" = "-u" ]; then
+                OPTS="${OPTS} -u"
+            else
+                echo -e "\e[1;31mERROR!\e[0m: Unknown arg: $arg"
+                return
+            fi
+        else
+            if [ "${TR}" = "" ]; then
+                TR="${arg}"
+            else
+                echo -e "\e[1;31mERROR!\e[0m: Cannot push to multiple branches"
+                return
+            fi
+        fi
+    done
+
     local BR=`current-branch`
     if [ "$(is-feature-branch ${BR})" = "false" ]; then
         echo -e "\e[1;31mERROR!\e[0m: Not on a feature branch"
         return
     fi
-    if ! [ "${2}" = "" ]; then
-        local TR="${2}"
-    else
+    if [ "${TR}" = "" ]; then
         local TR=`current-tracking-branch | sed 's,^[^/]*/,,'`
         if [ "$(is-feature-branch ${TR})" = "false" ]; then
             # Chop off -1234  or -1234-2  or -1234-v2 from branch name.
@@ -163,9 +189,9 @@ git-feature-push() {
     fi
     # echo UpstreamBranch=$TR
     # echo CurrentBranch=$BR
-    git push ${PUSH_REMOTE} -u ${BR}:${TR}
+    git push ${PUSH_REMOTE} ${OPTS} ${BR}:${TR}
 
-    if [ "${1}" = "1" ]; then
+    if [ "${DO_PR}" = "true" ]; then
         git-feature-pr $TR
     fi
 }
@@ -250,10 +276,8 @@ if [ "${1}" = "START" ]; then
     git-feature-start $2
 elif [ "${1}" = "END" ]; then
     git-feature-end $2
-elif [ "${1}" = "PUSH" ]; then
-    git-feature-push 0 $2
-elif [ "${1}" = "PR" ]; then
-    git-feature-push 1 $2
+elif [ "${1}" = "PUSH" ] || [ "${1}" = "PR" ]; then
+    git-feature-push $@
 elif [ "${1}" = "MERGEABLE" ]; then
     git-feature-mergeable $2
 fi
