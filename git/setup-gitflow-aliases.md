@@ -1,28 +1,29 @@
 <!-- ### Page Linked from setup-git-aliases.md ### -->
-#### Usage
-* `git feature-start <feature>` - create branch `feature` off of PR/develop
-* `git feature-push [<upstream>]` - set upstream branch and push to origin
-    * Use `<upstream>` as upstream branch if passed
-    * else use existing upstream branch if set and is not origin/develop, origin/master, PR/develop, or PR/master
-    * else use branch name, chopping off ticket numbers ("-123", "-123-456") and version numbers ("-v2") off the end.
+## Usage
+* `git feature-start <feature>` - create branch `feature` off of upstream/develop
+* `git feature-push [<push-to-branch>]` - push to origin and set tracking branch
+    * Use `<push-to-branch>` as branch to push to and track
+    * else use existing tracking branch if set and is not origin/develop, origin/master, PR/develop, or PR/master
+    * else use local branch name, chopping off ticket numbers ("-123", "-123-456") and version numbers ("-v2") off the end.
         * abc -> abc
         * abc123 -> abc123
         * abc-123 -> abc
         * abc-123-456 -> abc
         * abc-123-v4 -> abc
         * abc99-123 -> abc99
-* `git feature-pr [<upstream>]` - execute git-featurepush, then open Pull Request
-* `git feature-end [--force]` - checkout develop (create if necessary), fast forward to PR/develop, and delete the feature branch
+* `git feature-pr [<push-to-branch>]` - execute git-featurepush, then open Pull Request
+* `git feature-end [--force]` - checkout develop (create if necessary), fast forward to upstream/develop, and delete the feature branch
     * Command will abort if there are unpushed commits.  --force will bypass this check
 * `git feature-mergeable [<branch>]` - Check if the current branch is mergeable with another branch
-    * Default to PR/develop if no `<branch>`
+    * Default to upstream/develop if no `<branch>`
     * else use local branch `<branch>` if exists
-    * else use PR/<branch> if exists
+    * else use upstream/<branch> if exists
     * else use origin/<branch> if exists
     * else abort
     * Command will abort if there are unpushed commits.
 
-## `~/.gitconfig`
+## Setup
+### `~/.gitconfig`
 ```
 [alias]
     feature-start = "!f() { ~/bin/git-feature.sh START $1 ;}; f"
@@ -32,39 +33,31 @@
     feature-mergeable = "!f() { ~/bin/git-feature.sh MERGEABLE $1 ;}; f"
 ```
 
-## `~/bin/git-feature.sh`
+### `~/bin/git-feature.sh`
 ```bash
 #!/bin/bash
 
 ## Setup:
 # Your local git repo will require 2 remotes to be setup:
-# * origin : this will be the remote you can push directly to
-# * PR : this will be the remote you start feature branches off of and open pull requests to
+# * PUSH_REMOTE : this will be the remote you can push directly to
+# * UPSTREAM_REMOTE : this will be the remote you start feature branches off of and open pull requests to
 # These remotes can point to the same repo.
 #
 # Update the git-*-pr functions to use correct URL for Pull Requests
 
 # Settings for using gitflow with central repo
-# ORIGIN=origin
-# PR=origin
-# MASTER_BRANCH=master
-# DEVELOP_BRANCH=develop
+# PUSH_REMOTE=origin
+# UPSTREAM_REMOTE=origin
+# UPSTREAM_BRANCH=develop
 
-# Settings for opening pull requests to different repos that only use master
-# ORIGIN=origin
-# PR=PR
-# MASTER_BRANCH=master
-# DEVELOP_BRANCH=master
-
-# Default settings
-ORIGIN=origin # Upstream Remote
-PR=PR # Pull Request Remote
-MASTER_BRANCH=master
-DEVELOP_BRANCH=develop
+# Settings for opening pull requests to different repos that only use master (ex: many Open Source projects)
+PUSH_REMOTE=origin # Push Destination Remote
+UPSTREAM_REMOTE=upstream # Pull Request Destination Remote
+UPSTREAM_BRANCH=master # Pull Request Destination Branch
 
 git-feature-start() {
     fetch-all
-    git checkout ${PR}/${DEVELOP_BRANCH} -b $1
+    git checkout ${UPSTREAM_REMOTE}/${UPSTREAM_BRANCH} -b $1
 }
 
 git-feature-end() {
@@ -83,13 +76,13 @@ git-feature-end() {
         fi
     fi
 
-    local LOCAL_DEVELOP_BR=`git branch | sed -rn "s/^ *(${DEVELOP_BRANCH})$/\1/p"`
+    local LOCAL_DEVELOP_BR=`git branch | sed -rn "s/^ *(${UPSTREAM_BRANCH})$/\1/p"`
     fetch-all
-    if [ "${LOCAL_DEVELOP_BR}" = "${DEVELOP_BRANCH}" ]; then
-        git checkout ${DEVELOP_BRANCH}
+    if [ "${LOCAL_DEVELOP_BR}" = "${UPSTREAM_BRANCH}" ]; then
+        git checkout ${UPSTREAM_BRANCH}
         git merge @{u} --ff-only
     else
-        git checkout --track ${PR}/${DEVELOP_BRANCH} -b ${DEVELOP_BRANCH}
+        git checkout --track ${UPSTREAM_REMOTE}/${UPSTREAM_BRANCH} -b ${UPSTREAM_BRANCH}
     fi
 
     git branch -D $BR
@@ -97,7 +90,7 @@ git-feature-end() {
 
 git-feature-pr() {
     local BR_REV=`git rev-parse HEAD`
-    local TR_REV=`git rev-parse ${ORIGIN}/${1}`
+    local TR_REV=`git rev-parse ${PUSH_REMOTE}/${1}`
     if ! [ "${BR_REV}" = "${TR_REV}" ]; then
         echo -e "\e[1;31mERROR!\e[0m: Push Failed"
     else
@@ -109,15 +102,15 @@ git-feature-pr() {
 }
 
 git-feature-github-pr() {
-    local OWNER=`get-github-remote-part ${ORIGIN} 1`
-    local PROWNER=`get-github-remote-part ${PR} 1`
-    local PRREPO=`get-github-remote-part ${PR} 2`
-    if [ "${PROWNER}" = "" ]; then
-        echo -e "\e[1;31mERROR!\e[0m: remote ${PR} not found!"
+    local UPSTREAM_OWNER=`get-github-remote-part ${UPSTREAM_REMOTE} 1`
+    local UPSTREAM_REPO=`get-github-remote-part ${UPSTREAM_REMOTE} 2`
+    local PUSH_OWNER=`get-github-remote-part ${PUSH_REMOTE} 1`
+    if [ "${UPSTREAM_OWNER}" = "" ]; then
+        echo -e "\e[1;31mERROR!\e[0m: remote ${UPSTREAM_REMOTE} not found!"
     else
         # Windows: Create ~/bin/firefox.bat, and change command to "firefox.bat"
         #     @"c:\Program Files (x86)\Mozilla Firefox\firefox.exe" %*
-        firefox "https://github.com/${PROWNER}/${PRREPO}/compare/${DEVELOP_BRANCH}...${OWNER}:${1}"
+        firefox "https://github.com/${UPSTREAM_OWNER}/${UPSTREAM_REPO}/compare/${UPSTREAM_BRANCH}...${PUSH_OWNER}:${1}"
     fi
 }
 
@@ -128,11 +121,18 @@ get-github-remote-part() {
 }
 
 git-feature-bitbucket-pr() {
-    local PROJECT=`get-bitbucket-remote-part ${ORIGIN} 1`
-    local REPO=`get-bitbucket-remote-part ${ORIGIN} 2`
-    # Windows: Create ~/bin/firefox.bat, and change command to "firefox.bat"
-    #     @"c:\Program Files (x86)\Mozilla Firefox\firefox.exe" %*
-    firefox "https://bitbucket.org/${PROJECT}/${REPO}/branches/compare/${1}%0Ddevelop"
+    local UPSTREAM_PROJECT=`get-bitbucket-remote-part ${UPSTREAM_REMOTE} 1`
+    local UPSTREAM_REPO=`get-bitbucket-remote-part ${UPSTREAM_REMOTE} 2`
+    local PUSH_PROJECT=`get-bitbucket-remote-part ${PUSH_REMOTE} 1`
+    local PUSH_REPO=`get-bitbucket-remote-part ${PUSH_REMOTE} 2`
+    local PUSH_BRANCH="${1}"
+    if [ "${UPSTREAM_PROJECT}" = "" ]; then
+        echo -e "\e[1;31mERROR!\e[0m: remote ${UPSTREAM_REMOTE} not found!"
+    else
+        # Windows: Create ~/bin/firefox.bat, and change command to "firefox.bat"
+        #     @"c:\Program Files (x86)\Mozilla Firefox\firefox.exe" %*
+        firefox "https://bitbucket.org/${PUSH_PROJECT}/${PUSH_REPO}/branches/compare/${PUSH_PROJECT}/${PUSH_REPO}:${PUSH_BRANCH}%0D${UPSTREAM_PROJECT}/${UPSTREAM_REPO}:${UPSTREAM_BRANCH}"
+    fi
 }
 
 get-bitbucket-remote-part() {
@@ -159,7 +159,7 @@ git-feature-push() {
     fi
     # echo UpstreamBranch=$TR
     # echo CurrentBranch=$BR
-    git push ${ORIGIN} -u ${BR}:${TR}
+    git push ${PUSH_REMOTE} -u ${BR}:${TR}
 
     if [ "${1}" = "1" ]; then
         git-feature-pr $TR
@@ -178,13 +178,13 @@ git-feature-mergeable() {
     fi
 
     if [ "${1}" = "" ]; then
-        local MERGE_BRANCH="${PR}/${DEVELOP_BRANCH}"
+        local MERGE_BRANCH="${UPSTREAM_REMOTE}/${UPSTREAM_BRANCH}"
     elif [ "$(does-branch-exist ${1})" = "true" ]; then
         local MERGE_BRANCH="${1}"
-    elif [ "$(does-branch-exist ${ORIGIN}/${1})" = "true" ]; then
-        local MERGE_BRANCH=${PR}/${1}
-    elif [ "$(does-branch-exist ${PR}/${1})" = "true" ]; then
-        local MERGE_BRANCH=${ORIGIN}/${1}
+    elif [ "$(does-branch-exist ${PUSH_REMOTE}/${1})" = "true" ]; then
+        local MERGE_BRANCH=${UPSTREAM_REMOTE}/${1}
+    elif [ "$(does-branch-exist ${UPSTREAM_REMOTE}/${1})" = "true" ]; then
+        local MERGE_BRANCH=${PUSH_REMOTE}/${1}
     else
         echo -e "\e[1;31mERROR!\e[0m: Unable to find branch ${1}"
         return
@@ -204,7 +204,7 @@ git-feature-mergeable() {
 }
 
 current-tracking-branch() {
-    git branch -vv | sed -rn "s,^\*.*\[(${ORIGIN}|${PR})/,\1/,p" | sed 's/\].*$//' | sed -r 's/:( ahead [0-9]+)?,?( behind [0-9]+)?$//'
+    git branch -vv | sed -rn "s,^\*.*\[(${PUSH_REMOTE}|${UPSTREAM_REMOTE})/,\1/,p" | sed 's/\].*$//' | sed -r 's/:( ahead [0-9]+)?,?( behind [0-9]+)?$//'
 }
 
 current-branch() {
@@ -212,7 +212,7 @@ current-branch() {
 }
 
 is-feature-branch() {
-    if [ "${1}" = "" ] || [ "${1}" = "${DEVELOP_BRANCH}" ] || [ "${1}" = "${MASTER_BRANCH}" ]; then
+    if [ "${1}" = "" ] || [ "${1}" = "${UPSTREAM_BRANCH}" ] || [ "${1}" = "master" ]; then
         echo false
     else
         echo true
@@ -236,9 +236,9 @@ does-branch-exist() {
 }
 
 fetch-all() {
-    git fetch $PR
-    if ! [ "${PR}" = "$ORIGIN" ]; then
-        git fetch $ORIGIN
+    git fetch $UPSTREAM_REMOTE
+    if ! [ "${UPSTREAM_REMOTE}" = "$PUSH_REMOTE" ]; then
+        git fetch $PUSH_REMOTE
     fi
 }
 
