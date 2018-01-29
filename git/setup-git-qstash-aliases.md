@@ -23,6 +23,11 @@ WIP="WIP!"
 CHECKPOINT="CHECKPOINT!"
 
 git-stash() {
+    if [ "$(is-working-copy-clean)" = "true" ]; then
+        echo -e "\e[1;31mERROR!\e[0m: No changes to stash!"
+        return
+    fi
+
     STASH_TYPE="${1}"
     shift
     local MSG_PARAM="$@"
@@ -91,6 +96,14 @@ is-head-qstashed() {
     fi
 
     echo "false"
+}
+
+is-working-copy-clean() {
+    if [ -z "$(git status --porcelain)" ]; then
+      echo true
+    else
+      echo false
+    fi
 }
 
 if [ "${1}" = "STASH" ] || [ "${1}" = "CHECKPOINT" ]; then
