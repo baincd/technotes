@@ -23,9 +23,10 @@ WIP="WIP!"
 CHECKPOINT="CHECKPOINT!"
 
 git-stash() {
-    local ARGS="$@"
-    local MSG_PARAM=`echo "${ARGS}" | sed -r "s/^${1} ?//"`
-    if [ "${1}" = "CHECKPOINT" ]; then
+    STASH_TYPE="${1}"
+    shift
+    local MSG_PARAM="$@"
+    if [ "${STASH_TYPE}" = "CHECKPOINT" ]; then
         MSG="${CHECKPOINT} ${MSG_PARAM}"
     else
         MSG="${WIP} ${MSG_PARAM}"
