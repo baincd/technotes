@@ -14,8 +14,7 @@
         * abc99-123 -> abc99
     * if `-u` or `--track` is used, the local branch will track the remote branch
 * `git feature-pr [<push-to-branch>]` - execute feature-push, then open Pull Request
-* `git feature-end [--force]` - checkout develop (create if necessary), fast forward to upstream/develop, and delete the feature branch
-    * Command will abort if there are unpushed commits.  --force will bypass this check
+* `git feature-end` - checkout develop (create if necessary), fast forward to upstream/develop, and delete the feature branch
 * `git feature-mergeable [<branch>]` - Check if the current branch is mergeable with another branch
     * Default to upstream/develop if no `<branch>`
     * else use local branch `<branch>` if exists
@@ -77,15 +76,16 @@ git-feature-end() {
         return
     fi
 
-    if ! [ "${1}" = "--force" ]; then
-        local TR=`current-tracking-branch`
-        local COMMITS_NOT_PUSHED=`git log --oneline \`git rev-parse ${BR}\` ^\`git rev-parse ${TR}\` | wc -l`
-        if ! [ "${COMMITS_NOT_PUSHED}" = "0" ]; then
-            echo -e "\e[1;31mERROR!\e[0m: local feature branch has commits not pushed (use --force to delete anyway)"
-            return
-        fi
-    fi
-
+    # Removed - conflicts with set upstream not being default in feature-push
+    # if ! [ "${1}" = "--force" ]; then
+    #     local TR=`current-tracking-branch`
+    #     local COMMITS_NOT_PUSHED=`git log --oneline \`git rev-parse ${BR}\` ^\`git rev-parse ${TR}\` | wc -l`
+    #     if ! [ "${COMMITS_NOT_PUSHED}" = "0" ]; then
+    #         echo -e "\e[1;31mERROR!\e[0m: local feature branch has commits not pushed (use --force to delete anyway)"
+    #         return
+    #     fi
+    # fi
+    #
     local LOCAL_DEVELOP_BR=`git branch | sed -rn "s/^ *(${UPSTREAM_BRANCH})$/\1/p"`
     fetch-all
     if [ "${LOCAL_DEVELOP_BR}" = "${UPSTREAM_BRANCH}" ]; then
