@@ -48,6 +48,6 @@ source ~/.bash-git-prompt/gitprompt.sh
 # NOTE: Update .gitconfig colors to match prompt colors
 ```
 
-## Misc
+## Reference
 #### Create custom Bash prompts
 http://ezprompt.net/
