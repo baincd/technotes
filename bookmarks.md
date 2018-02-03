@@ -15,3 +15,5 @@ Relearning how to learn: https://www.infoq.com/articles/relearning-learn
 [Git Workflows](git/bookmarks-git-workflows.md)
 
 [Java](java/bookmarks.md)
+
+[Open Source Licensing](misc/licensing.md)
