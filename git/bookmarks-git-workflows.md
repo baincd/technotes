@@ -1,4 +1,4 @@
-<!-- ### Page Linked from /bookmarks.md ### -->
+<!-- ### Page Linked from /bookmarks.md, bookmarks-git.md ### -->
 # Git Workflows
 ## git flow:
 Original description: http://nvie.com/posts/a-successful-git-branching-model/
