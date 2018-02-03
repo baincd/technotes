@@ -4,21 +4,11 @@
 1) Create environment variable HOME to new home path
 2) If exist, move `.gitconfig`, `.bash*`, and `.ssh/` from old home path to new home path
 
-### Setup ~/.bashrc file
-1) If not already there, add to `~/.bash_profile`
-```bash
-if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
-```
-2) Create `~/.bashrc`
-```bash
-$ touch ~/.bashrc
-```
-
 ### Setup Git Bash command prompt and window title
-1) See [bash/bash-prompt](https://github.com/baincd/technotes/blob/master/bash/bash-prompt.md) for setup
+See [bash/bash-prompt](https://github.com/baincd/technotes/blob/master/bash/bash-prompt.md) for setup
 
 ### Setup initial directory for Git Bash
-1) Add to `~/.bashrc`
+Add to `~/.bashrc`
 ```bash
 if [[ `pwd` = $HOME ]]; then
     cd /c/wc
