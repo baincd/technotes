@@ -16,7 +16,7 @@ fi
 ```
 
 ### Speed up git on windows
-# Source: http://Stackoverflow.com/a/24045966
+Source: http://Stackoverflow.com/a/24045966 \
 Add to `.gitconfig`
 ```
 [core]
