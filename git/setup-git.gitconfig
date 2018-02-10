@@ -19,7 +19,7 @@
 	# Linux http- use git cache to cache credentials
 	helper = cache
 	helper = cache --timeout=3600 # change the timeout from the default 15 mins to 60 mins
-	# ssh - use ssh-cache bash alias
+	# ssh - use ssh-cache alias
 [gc]
 	auto = 256
 [gui]
