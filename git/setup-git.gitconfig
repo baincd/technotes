@@ -1,3 +1,4 @@
+# ~/.gitconfig
 [user]
 	name = Your Name
 	email = yourname@example.com
