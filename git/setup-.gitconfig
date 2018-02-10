@@ -21,6 +21,9 @@
 	# ssh - use ssh-cache bash alias
 [gc]
 	auto = 256
+[gui]
+	# disable git gui loose objects warning
+	gcwarning = false
 [color "status"]
 	added = green # default
 	changed = red bold # Changed from red
