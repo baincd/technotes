@@ -8,6 +8,8 @@
 	logd = log --decorate
 	logg = log --graph --oneline --date=relative --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%<(8,trunc)%an%C(reset) %s%C(bold yellow)%d%C(reset)'
 	logv = log --graph --oneline --date=local --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%an%C(reset) %C(bold yellow)%d%C(reset)%n%w(0,8,8)%B'
+	logw = "!f() { gitk "$@" & }; f"
+	commitw = "!f() { git gui "$@" & }; f"
 	pullr = pull --rebase
 	pullm = pull
 	pullf = pull --ff-only
