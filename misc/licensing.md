@@ -8,6 +8,6 @@ https://opensource.stackexchange.com/a/2567
 https://stackoverflow.com/a/16934573
 
 
-
+http://oss-watch.ac.uk/apps/licdiff/
 https://choosealicense.com/
 https://tldrlegal.com/search
