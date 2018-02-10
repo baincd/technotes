@@ -15,6 +15,17 @@ if [[ `pwd` = $HOME ]]; then
 fi
 ```
 
+### Speed up git on windows
+# Source: http://Stackoverflow.com/a/24045966
+Add to `.gitconfig`
+```
+[core]
+    preloadindex = true
+    fscache = true
+[gc]
+    auto = 256
+```
+
 <!--
 ## Old
 #### <git>/etc/profile:
