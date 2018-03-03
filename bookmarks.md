@@ -14,6 +14,10 @@ Hiring trends: https://www.hntrends.com/
 
 [The Decline of Dynamic Typing](http://www.javamagazine.mozaicreader.com/JanFeb2018/Default/5/0?token=B6J6D7QC44R7T19H)
 
+[Rule of Three (when to genericise)](http://blog.scottlogic.com/2018/02/19/generic-platforms-the-rule-of-three.html)
+
+[Package by feature vs package by layer](https://lkrnac.net/blog/2018/02/package-by-layer-obsolete/)
+
 # More Bookmarks
 [Git](git/bookmarks-git.md)
 
