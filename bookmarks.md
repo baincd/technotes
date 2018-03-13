@@ -18,6 +18,8 @@ Hiring trends: https://www.hntrends.com/
 
 [Package by feature vs package by layer](https://lkrnac.net/blog/2018/02/package-by-layer-obsolete/)
 
+[Code Test Coverage Traps](https://sdtimes.com/test/two-big-traps-code-test-coverage/)
+
 # More Bookmarks
 [Git](git/bookmarks-git.md)
 
