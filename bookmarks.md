@@ -7,6 +7,8 @@ Model for software documentation abstractions: https://c4model.com/
 
 Hiring trends: https://www.hntrends.com/
 
+Books compiled from Stack Overflow Documentation: http://books.goalkicker.com/
+
 # Software Development articles
 [Relearning how to learn](https://www.infoq.com/articles/relearning-learn)
 
