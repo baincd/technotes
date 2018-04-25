@@ -9,6 +9,8 @@
 	editor = vi
 
 	pager = less -S
+[merge]
+	conflictstyle = diff3
 [push]
 	default = upstream
 [rebase]
