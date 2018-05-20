@@ -1,5 +1,14 @@
 # Add to ~/.bashrc
 
+# 1) Execute:
+# ln -s ~/wc/technotes/bash/setup-bash-aliases.bash ~/.bash-aliases.bash
+#
+# 2) Add to ~/.bashrc:
+# if [ -f ~/.bash-aliases.bash ]; then
+#     . ~/.bash-aliases.bash
+# fi
+
+
 # Helpful defaults
 alias grep='grep --color=auto '
 alias grepsrc='grep --exclude-dir=".svn" --exclude-dir=".git" --exclude-dir="target" --exclude-dir="node_modules" '
@@ -16,7 +25,7 @@ alias lessc='less -R'
 # No options set versions
 alias grepX='/bin/grep'
 alias findX='/usr/bin/find'
-alias lsX='/usr/bin/ls'
+alias lsX='/bin/ls'
 alias lessX='/usr/bin/less'
 
 alias atom-clean="rm -rf ~/.atom/compile-cache && rm -rf ~/.atom/storage && atom"

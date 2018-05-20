@@ -1,4 +1,12 @@
-# ~/.gitconfig
+# Add to ~/.gitconfig
+
+# 1) Execute:
+# ln -s ~/wc/technotes/git/setup-git-aliases.gitconfig ~/.git-aliases.gitconfig
+#
+# 2) Add to ~/.gitconfig:
+# [include]
+#     path = ~/.git-aliases.gitconfig
+
 [alias]
 	diffw = diff --ignore-space-change --ignore-space-at-eol
 	staged = diff --cached
@@ -19,6 +27,8 @@
 	addall = add -A -v
 	# Based on alias from https://haacked.com/archive/2014/07/28/github-flow-aliases/
 	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git --no-pager log --color=always HEAD~1..HEAD --pretty='%C(dim)%h%C(reset) %s:' --stat && echo '' && git reset HEAD~1 --hard
+
+	shallow-clone = clone --depth 1
 
 	# Cache SSH credentials
 	# setup in ~/.bashrc

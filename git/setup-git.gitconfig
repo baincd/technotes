@@ -1,13 +1,22 @@
-# ~/.gitconfig
-[user]
-	name = Your Name
-	email = yourname@example.com
-[core]
-	# Set Notepad++ as editor in git
-	editor = 'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
-	# Set vi as editor in git
-	editor = vi
+# Add to ~/.gitconfig
 
+# 1) Execute:
+# ln -s ~/wc/technotes/git/setup-git.gitconfig ~/.git.gitconfig
+#
+# 2) Add to ~/.gitconfig:
+# [include]
+#     path = ~/.git.gitconfig
+# [user]
+# 	name = Your Name
+# 	email = yourname@example.com
+# [core]
+# 	# Set Notepad++ as editor in git
+# 	editor = 'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
+# 	# Set vi as editor in git
+# 	editor = vi
+
+
+[core]
 	pager = less -S
 [merge]
 	conflictstyle = diff3
