@@ -7,11 +7,9 @@
 	* git config
 * link to common files drive
 	* docs
-	* downloads
 	* music
 	* pictures
 	* videos
-	* backups
 	* books
 	* images
 	* dev
@@ -19,7 +17,7 @@
 * Rename User Directories to lower case
 	* edit ~/.config/user-dirs/dirs
 	* Fix Bluetooth/Local Services
-	* Fix File Manager Booksmarks (Home, Desktop, wc, dev, docs, downloads, files)
+	* Fix File Manager Bookmarks (Home, Desktop, wc, dev, docs, downloads, files)
 * Redshift
 
 # Software
@@ -31,6 +29,8 @@
 	* Disable touchpad tap-to-click
 	* touchpad 2-finger scroll (down-goes-down) (disable natural scrolling)
 * Toggle touchscreen (xinput)
+* Toggle touchpad (xinput)
+* Shutdown/Reboot/Logoff
 * Hotkeys
  	* Window Sizing
 		* Win-L/R/+/- (Left/Right/Max vertical/Max Horizontal)

@@ -29,3 +29,5 @@ alias lsX='/bin/ls'
 alias lessX='/usr/bin/less'
 
 alias atom-clean="rm -rf ~/.atom/compile-cache && rm -rf ~/.atom/storage && atom"
+
+PATH=$PATH:~/bin
