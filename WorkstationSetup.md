@@ -12,6 +12,7 @@
 * Redshift
 
 # Software
+* Firefox
 * Atom
 * Synapse?
 
@@ -31,7 +32,9 @@
 	* Shift-ctrl-alt-L/R
 * Hotkeys - misc
 	* Win-E, Win-T, Win-D, Win-R
+* Login Manager? (lightdm)
 * Shutdown/Reboot/Logoff shortcuts
+* Numlock on restart
 
 ## Theme
 * Panels Layout
