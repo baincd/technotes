@@ -1,19 +1,10 @@
 # New Distro installed
 * Grub menu
 * Label partition
-* Setup
-	* Bash alias
-	* Bash prompt
-	* git config
-* link to common files drive
-	* docs
-	* music
-	* pictures
-	* videos
-	* books
-	* images
-	* dev
-	* wc
+* Setup Bash prompt
+* Setup Bash aliases
+* Setup git config
+* link to common files drive (docs, music, pictures, videos) (books, images, dev, wc)
 * Rename User Directories to lower case
 	* edit ~/.config/user-dirs/dirs
 	* Fix Bluetooth/Local Services
@@ -30,18 +21,17 @@
 	* touchpad 2-finger scroll (down-goes-down) (disable natural scrolling)
 * Toggle touchscreen (xinput)
 * Toggle touchpad (xinput)
-* Shutdown/Reboot/Logoff
-* Hotkeys
- 	* Window Sizing
-		* Win-L/R/+/- (Left/Right/Max vertical/Max Horizontal)
-		* Win-Enter (toggle Maximize)
-		* (Win-Shift-Enter) (toggle fullscreen)
-		* (Win-Shift/Ctrl-L/R) (corners)
-	* Switch Workspace
-		* Ctrl-Alt-L/R
-		* Shift-ctrl-alt-L/R
+* Hotkeys - Window sizing
+	* Win-L/R/+/- (Left/Right/Max vertical/Max Horizontal)
+	* Win-Enter (toggle Maximize)
+	* (Win-Shift-Enter) (toggle fullscreen)
+	* (Win-Shift/Ctrl-L/R) (corners)
+* Hotkeys - Switch Workspace
+	* Ctrl-Alt-L/R
+	* Shift-ctrl-alt-L/R
+* Hotkeys - misc
 	* Win-E, Win-T, Win-D, Win-R
-	* Shutdown,Logoff,Reboot
+* Shutdown/Reboot/Logoff shortcuts
 
 ## Theme
 * Panels Layout
