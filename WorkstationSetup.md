@@ -4,14 +4,14 @@
 * Setup Bash prompt
 * Setup Bash aliases
 * Setup git config
-* link to common files drive (docs, music, pictures, videos) (books, images, dev, wc)
+* link to common files drive (docs, music, pictures, videos, books, images, dev, wc)
 * Rename User Directories to lower case
 	* edit ~/.config/user-dirs/dirs
 	* Fix Bluetooth/Local Services
 	* Fix File Manager Bookmarks (Home, Desktop, wc, dev, docs, downloads, files)
 * Redshift
 
-# Software
+## Software
 * Firefox
 * Atom
 * Synapse?
@@ -20,8 +20,8 @@
 * Touchpad
 	* Disable touchpad tap-to-click
 	* touchpad 2-finger scroll (down-goes-down) (disable natural scrolling)
-* Toggle touchscreen (xinput)
-* Toggle touchpad (xinput)
+* Toggle touchscreen shortcuts (xinput)
+* Toggle touchpad shortcuts (xinput)
 * Hotkeys - Window sizing
 	* Win-L/R/+/- (Left/Right/Max vertical/Max Horizontal)
 	* Win-Enter (toggle Maximize)
