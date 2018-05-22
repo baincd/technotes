@@ -15,7 +15,7 @@ DEFAULT_PS1=$PS1
 
 # For Servers:
 # username@hostname dir
-# export PS1="\n\[\e[01;32m\]\u@\h\[\e[m\] \[\e[01;33m\]\w\[\e[m\]\n$ "
+# export PS1="\[\033]0;\u@\h \w\007\]\n\[\e[01;32m\]\u@\h\[\e[m\] \[\e[01;33m\]\w\[\e[m\]\n$ "
 
 # For development workstation:
 # dir (gitbranch)
