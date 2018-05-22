@@ -14,6 +14,12 @@
 # 	editor = 'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
 # 	# Set vi as editor in git
 # 	editor = vi
+# [credential]
+# 	# Windows http - Use windows to cache credentials
+# 	helper = wincred
+# 	# Linux http- use git cache to cache credentials (change timeout from default 15 mins to 60 mins)
+# 	helper = cache --timeout=3600 # change the timeout from the default 15 mins to 60 mins
+# 	# ssh - use ssh-cache alias
 
 
 [core]
@@ -26,13 +32,6 @@
 	default = upstream
 [rebase]
 	autosquash = true
-[credential]
-	# Windows http - Use windows to cache credentials
-	helper = wincred
-	# Linux http- use git cache to cache credentials
-	helper = cache
-	helper = cache --timeout=3600 # change the timeout from the default 15 mins to 60 mins
-	# ssh - use ssh-cache alias
 [gc]
 	auto = 256
 [gui]
