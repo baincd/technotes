@@ -18,6 +18,8 @@
 
 [core]
 	pager = less -S
+[commit]
+	verbose = true
 [merge]
 	conflictstyle = diff3
 [push]
