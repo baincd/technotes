@@ -23,16 +23,22 @@
 
 
 [core]
+	# Disable long line wrap
 	pager = less -S
 [commit]
+	# Add staged diff to the bottom of the commit message template (when using an editor)
 	verbose = true
 [merge]
+	# Add common ancestor in merge conflict blocks
 	conflictstyle = diff3
 [push]
+	# Default branch to push to is the tracking (upstream) branch
 	default = upstream
 [rebase]
+	# automatically modify the todo list of rebase -i for squash and fixup commits
 	autosquash = true
 [gc]
+	# Housekeep after ~256 loose objects (default is ~6700)
 	auto = 256
 [gui]
 	# disable git gui loose objects warning
