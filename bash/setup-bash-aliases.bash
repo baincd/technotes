@@ -8,6 +8,11 @@
 #     . ~/.bash-aliases.bash
 # fi
 
+# No options set versions
+alias grepX=`which grep`
+alias findX=`which find`
+alias lsX=`which ls`
+alias lessX=`which ls`
 
 # Helpful defaults
 alias grep='grep --color=auto '
@@ -21,12 +26,6 @@ alias grepc='grep --color=always'
 alias grepsrcc='grepsrc --color=always'
 alias lsc='ls --color=always'
 alias lessc='less -R'
-
-# No options set versions
-alias grepX='/bin/grep'
-alias findX='/usr/bin/find'
-alias lsX='/bin/ls'
-alias lessX='/usr/bin/less'
 
 alias atom-clean="rm -rf ~/.atom/compile-cache && rm -rf ~/.atom/storage && atom"
 
