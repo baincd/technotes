@@ -15,7 +15,7 @@ DEFAULT_PS1=$PS1
 
 # For Servers:
 # username@hostname dir
-# export PS1="\[\033]0;\u@\h \w\007\]\n\[\e[01;32m\]\u@\h\[\e[m\] \[\e[01;33m\]\w\[\e[m\]\n$ "
+# export PS1="\[\033]0;\u@\h \w\007\]\n\[\033[01;32m\]\u@\h\[\033[m\] \[\033[01;33m\]\w\[\033[m\]\n$ "
 
 # For development workstation:
 # dir (gitbranch)
@@ -23,7 +23,7 @@ PS1='\[\033]0;\w\007\]\n\[\033[01;33m\]\w\[\033[01;36m\]`__git_ps1`\[\033[0m\]\n
 
 # Other development workstation variations:
 # Do not change terminal window title
-# export PS1="\n\[\e[01;33m\]\w\[\e[m\]\[\033[01;36m\]`__git_ps1`\[\033[0m\]\n$ "
+# export PS1="\n\[\033[01;33m\]\w\[\033[m\]\[\033[01;36m\]`__git_ps1`\[\033[0m\]\n$ "
 
 # Use full path in terminal window title
 # PS1='\[\033]0;${PWD//[^[:ascii:]]/?}\007\]\n\[\033[01;33m\]\w\[\033[01;36m\]`__git_ps1`\[\033[0m\]\n$ '
@@ -32,7 +32,7 @@ PS1='\[\033]0;\w\007\]\n\[\033[01;33m\]\w\[\033[01;36m\]`__git_ps1`\[\033[0m\]\n
 
 
 GIT_PROMPT_ONLY_IN_REPO=1
-GIT_PROMPT_START="\[\033]0;\w\007\]\n\[\e[01;33m\]\w\[\e[m\]\[\033[0m\]"
+GIT_PROMPT_START="\[\033]0;\w\007\]\n\[\033[01;33m\]\w\[\033[m\]\[\033[0m\]"
 GIT_PROMPT_PREFIX="("
 GIT_PROMPT_SUFFIX=")"
 GIT_PROMPT_END="\n$ "
