@@ -23,3 +23,8 @@ else
 fi
 
 echo SUCCESS
+
+# Loop over lines
+while read -r line; do
+  echo "$line"
+done <<< `git status --porcelain=2 --branch  2> /dev/null`
