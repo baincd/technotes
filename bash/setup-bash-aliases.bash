@@ -27,6 +27,9 @@ alias grepsrcc='grepsrc --color=always'
 alias lsc='ls --color=always'
 alias lessc='less -R'
 
+alias s='git s'
+alias sv='git status'
+
 alias atom-clean="rm -rf ~/.atom/compile-cache && rm -rf ~/.atom/storage && atom"
 
 PATH=$PATH:~/bin
