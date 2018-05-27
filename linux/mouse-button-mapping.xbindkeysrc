@@ -1,0 +1,18 @@
+# Install xbindkeys, xautomation
+# 1) Install xbindkeys, xautomation
+# 2) Run `xbindkeys --defaults > ~/.xbindkeysrc` to create default default config
+
+# Setup button mapping
+# 1) Run `xev` to find mouse button to be mapped
+# 2) Add custom mapping to ~/.xbindkeysrc
+# 3) Run `xbindkeys -p` to refresh xbindkeys
+
+# Mapping for current Logitech Mouse
+
+# Map Back Mouse Button to AltKey-LeftKey
+"xte 'keydown Alt_R' 'keydown Left' 'keyup Alt_R' 'keyup Left'"
+    b:8
+
+# Map Forward Mouse button to AltKey-RightKey
+"xte 'keydown Alt_R' 'keydown Right' 'keyup Alt_R' 'keyup Right'"
+    b:9
