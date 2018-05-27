@@ -33,6 +33,7 @@ _PROMPT_COMMAND_NOTHING_='echo ""'
 
 alias gpq='PS1=$_PS1_NO_BRANCH_       PROMPT_COMMAND=$_PROMPT_COMMAND_NOTHING_'    # Git Prompt Quiet (no git info)
 alias gpb='PS1=$_PS1_WITH_GIT_BRANCH_ PROMPT_COMMAND=$_PROMPT_COMMAND_NOTHING_'    # Git Prompt Branch (include branch name - similar to default git prompt)
+alias gpba='gpq && if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then source ~/.bash-git-prompt/gitprompt.sh; else echo "bash-git-prompt not installed!" && gpb; fi' # Git Prompt Branch AwesomeBash Verbose (fall back to gpb otherwise)
 alias gps='PS1=$_PS1_NO_BRANCH_       PROMPT_COMMAND=$_PROMPT_COMMAND_GIT_STATUS_' # Git Prompt Status (include short git status)
 alias gpss='PS1=$_PS1_NO_BRANCH_      PROMPT_COMMAND=$_PROMPT_COMMAND_GIT_SHORT_STATUS_' # Git Prompt branch Status and file count
 
@@ -63,7 +64,3 @@ GIT_PROMPT_UNTRACKED=' \[\033[0;33m\]…' # Change from cyan to yellow
 # My New Values
 GIT_PROMPT_SYMBOLS_PRETAG="tag:"
 GIT_PROMPT_DETACHED_HEAD="\[\033[1;35m\]" # Set to [Bold Magenta]
-
-if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
-    source ~/.bash-git-prompt/gitprompt.sh
-fi
