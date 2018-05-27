@@ -21,6 +21,9 @@ DEFAULT_PS1=$PS1
 # dir (gitbranch)
 PS1='\[\033]0;\w\007\]\n\[\033[01;33m\]\w\[\033[01;36m\]`__git_ps1`\[\033[0m\]\n$ '
 
+# For Windows Git Bash (to increase performance)
+# PS1='\[\033]0;\w\007\]\n\[\033[01;33m\]\w\[\033[01;36m\]`__fast_git_ps1`\[\033[0m\]\n\$ '
+
 # Other development workstation variations:
 # Do not change terminal window title
 # export PS1="\n\[\e[01;33m\]\w\[\e[m\]\[\033[01;36m\]`__git_ps1`\[\033[0m\]\n$ "
