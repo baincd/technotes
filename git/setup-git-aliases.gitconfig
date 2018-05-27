@@ -8,11 +8,13 @@
 #     path = ~/.git-aliases.gitconfig
 
 [alias]
-	diffw = diff --ignore-space-change --ignore-space-at-eol
+	diffiw = diff --ignore-space-change --ignore-space-at-eol #Diff Ignore Whitespace
+	id = rev-parse --default HEAD
 	staged = diff --cached
 	ffup = merge --ff-only @{u}
 	ff = merge --ff-only
 	merge2 = merge --strategy-option=patience
+	info = show --pretty=fuller --name-status
 	s = status --short --branch
 	logd = log --decorate
 	logg = log --graph --oneline --date=relative --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%<(8,trunc)%an%C(reset) %s%C(bold yellow)%d%C(reset)'
@@ -22,7 +24,9 @@
 	pullr = pull --rebase
 	pullm = pull
 	pullf = pull --ff-only
+	fetchall = fetch --all
 	br = checkout -b
+	brr = branch -m # Branch Rename
 	track = branch -u
 	untrack = branch --unset-upstream
 	addall = add -A -v

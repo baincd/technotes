@@ -32,8 +32,12 @@
 	# Add common ancestor in merge conflict blocks
 	conflictstyle = diff3
 [push]
+	# https://git-scm.com/docs/git-config#git-config-pushdefault
+
 	# Default branch to push to is the tracking (upstream) branch
-	default = upstream
+	# default = upstream
+	# Default branch to push to is a remote branch with the same name as the local branch
+	default = current
 [rebase]
 	# automatically modify the todo list of rebase -i for squash and fixup commits
 	autosquash = true
