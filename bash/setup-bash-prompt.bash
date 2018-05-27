@@ -28,11 +28,13 @@ _PS1_NO_BRANCH_='\[\033]0;\w\007\]\[\033[01;33m\]\w\[\033[0m\]\n$ '
 # git status apparently doesn't reset bold before outputting the branch name - so localBranch=cyan makes the branch name is bold cyan, but the ahead count is normal cyan
 # To anyone reading this - please don't fix this "feature" in git - I like it  :-)
 _PROMPT_COMMAND_GIT_STATUS_='echo -e "\033[01;36m" && git -c color.status=always -c color.status.localBranch="cyan" status --short --branch 2> /dev/null && echo -e -n "\033[0m"'
+_PROMPT_COMMAND_GIT_SHORT_STATUS_='git -c color.status=always -c color.status.localBranch="cyan" status --short --branch 2> /dev/null | cat > _____TMP_STATUS && if [ -s _____TMP_STATUS ]; then echo -e "\033[01;36m" && head -1 < _____TMP_STATUS && echo -e -n "\033[0m(" && echo -n `cat _____TMP_STATUS | grep -v "^##" | grep -v "_____TMP_STATUS" | wc -l` && echo " file(s) modified)"; else echo ""; fi && rm _____TMP_STATUS'
 _PROMPT_COMMAND_NOTHING_='echo ""'
 
 alias gpq='PS1=$_PS1_NO_BRANCH_       PROMPT_COMMAND=$_PROMPT_COMMAND_NOTHING_'    # Git Prompt Quiet (no git info)
 alias gpb='PS1=$_PS1_WITH_GIT_BRANCH_ PROMPT_COMMAND=$_PROMPT_COMMAND_NOTHING_'    # Git Prompt Branch (include branch name - similar to default git prompt)
 alias gps='PS1=$_PS1_NO_BRANCH_       PROMPT_COMMAND=$_PROMPT_COMMAND_GIT_STATUS_' # Git Prompt Status (include short git status)
+alias gpss='PS1=$_PS1_NO_BRANCH_      PROMPT_COMMAND=$_PROMPT_COMMAND_GIT_SHORT_STATUS_' # Git Prompt branch Status and file count
 
 gps
 
