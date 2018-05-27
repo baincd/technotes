@@ -24,14 +24,17 @@ DEFAULT_PS1=$PS1
 # For development workstation:
 _PS1_WITH_GIT_BRANCH_='\[\033]0;\w\007\]\[\033[01;33m\]\w\[\033[01;36m\]`__git_ps1`\[\033[0m\]\n$ '
 _PS1_NO_BRANCH_='\[\033]0;\w\007\]\[\033[01;33m\]\w\[\033[0m\]\n$ '
-_PROMPT_COMMAND_GIT_STATUS_='echo "" && git -c color.status=always status --short --branch 2> /dev/null'
+# First echo statement changes color to bold cyan (which affects the ## in the git status line)
+# git status apparently doesn't reset bold before outputting the branch name - so localBranch=cyan makes the branch name is bold cyan, but the ahead count is normal cyan
+# To anyone reading this - please don't fix this "feature" in git - I like it  :-)
+_PROMPT_COMMAND_GIT_STATUS_='echo -e "\033[01;36m" && git -c color.status=always -c color.status.localBranch="cyan" status --short --branch 2> /dev/null && echo -e -n "\033[0m"'
 _PROMPT_COMMAND_NOTHING_='echo ""'
 
 alias gpq='PS1=$_PS1_NO_BRANCH_       PROMPT_COMMAND=$_PROMPT_COMMAND_NOTHING_'    # Git Prompt Quiet (no git info)
-alias gpb='PS1=$_PS1_WITH_GIT_BRANCH_ PROMPT_COMMAND=$_PROMPT_COMMAND_NOTHING_'    # Git Prompt Branch (include branch name)
+alias gpb='PS1=$_PS1_WITH_GIT_BRANCH_ PROMPT_COMMAND=$_PROMPT_COMMAND_NOTHING_'    # Git Prompt Branch (include branch name - similar to default git prompt)
 alias gps='PS1=$_PS1_NO_BRANCH_       PROMPT_COMMAND=$_PROMPT_COMMAND_GIT_STATUS_' # Git Prompt Status (include short git status)
 
-gpb
+gps
 
 # Bash Prompt Notes:
 # Remove '\[\033]0;\w\007\]' at beginning to not change window title
