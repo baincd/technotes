@@ -32,7 +32,7 @@ PS1='\[\033]0;\w\007\]\n\[\033[01;33m\]\w\[\033[01;36m\]`__git_ps1`\[\033[0m\]\n
 
 
 GIT_PROMPT_ONLY_IN_REPO=1
-GIT_PROMPT_START="\n\[\e[01;33m\]\w\[\e[m\]\[\033[0m\]"
+GIT_PROMPT_START="\[\033]0;\w\007\]\n\[\e[01;33m\]\w\[\e[m\]\[\033[0m\]"
 GIT_PROMPT_PREFIX="("
 GIT_PROMPT_SUFFIX=")"
 GIT_PROMPT_END="\n$ "
