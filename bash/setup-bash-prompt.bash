@@ -8,6 +8,10 @@
 #     . ~/.bash-prompt.bash
 # fi
 #
+# # add default prompt (gps, gpb, or gpq)
+# # use gpq (or leave off) if awesome git prompt (#3) is unstalled
+# gpb
+#
 # 3) (optional) install awesome git prompt
 # git clone https://github.com/magicmonty/bash-git-prompt ~/.bash-git-prompt
 
@@ -18,15 +22,22 @@ DEFAULT_PS1=$PS1
 # export PS1="\[\033]0;\u@\h \w\007\]\n\[\033[01;32m\]\u@\h\[\033[m\] \[\033[01;33m\]\w\[\033[m\]\n$ "
 
 # For development workstation:
-# dir (gitbranch)
-PS1='\[\033]0;\w\007\]\n\[\033[01;33m\]\w\[\033[01;36m\]`__git_ps1`\[\033[0m\]\n$ '
+_PS1_WITH_GIT_BRANCH_='\[\033]0;\w\007\]\[\033[01;33m\]\w\[\033[01;36m\]`__git_ps1`\[\033[0m\]\n$ '
+_PS1_NO_BRANCH_='\[\033]0;\w\007\]\[\033[01;33m\]\w\[\033[0m\]\n$ '
+_PROMPT_COMMAND_GIT_STATUS_='echo "" && git -c color.status=always status --short --branch 2> /dev/null'
+_PROMPT_COMMAND_NOTHING_='echo ""'
 
-# Other development workstation variations:
-# Do not change terminal window title
-# export PS1="\n\[\033[01;33m\]\w\[\033[m\]\[\033[01;36m\]`__git_ps1`\[\033[0m\]\n$ "
+alias gpq='PS1=$_PS1_NO_BRANCH_       PROMPT_COMMAND=$_PROMPT_COMMAND_NOTHING_'    # Git Prompt Quiet (no git info)
+alias gpb='PS1=$_PS1_WITH_GIT_BRANCH_ PROMPT_COMMAND=$_PROMPT_COMMAND_NOTHING_'    # Git Prompt Branch (include branch name)
+alias gps='PS1=$_PS1_NO_BRANCH_       PROMPT_COMMAND=$_PROMPT_COMMAND_GIT_STATUS_' # Git Prompt Status (include short git status)
 
-# Use full path in terminal window title
-# PS1='\[\033]0;${PWD//[^[:ascii:]]/?}\007\]\n\[\033[01;33m\]\w\[\033[01;36m\]`__git_ps1`\[\033[0m\]\n$ '
+gpb
+
+# Bash Prompt Notes:
+# Remove '\[\033]0;\w\007\]' at beginning to not change window title
+
+# Replace '\w' with '${PWD//[^[:ascii:]]/?}' to avoid beeps on non-printable chars
+# https://github.com/msysgit/msysgit/issues/128
 
 # Create custom Bash prompts: http://ezprompt.net/
 
