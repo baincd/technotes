@@ -13,6 +13,7 @@ alias grepX=`which grep`
 alias findX=`which find`
 alias lsX=`which ls`
 alias lessX=`which ls`
+alias killallX=`which killall`
 
 # Helpful defaults
 alias grep='grep --color=auto '
@@ -20,6 +21,7 @@ alias grepsrc='grep --exclude-dir=".svn" --exclude-dir=".git" --exclude-dir="tar
 alias findsrc='find -not -path "*/.svn/*" -not -name .svn -not -path "*/.git/*" -not -name .git -not -path "*/node_modules/*" -not -name node_modules '
 alias ls='ls -l -F --color=auto --show-control-chars' # -F = append indicator (one of */=>@|) to entries
 alias less='less -S' 	# Disable long line wrap
+alias killall='killall -v'
 
 # Colorized versions
 alias grepc='grep --color=always'
