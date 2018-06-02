@@ -18,14 +18,17 @@ DEFAULT_PS1=$PS1
 # export PS1="\[\033]0;\u@\h \w\007\]\n\[\033[01;32m\]\u@\h\[\033[m\] \[\033[01;33m\]\w\[\033[m\]\n$ "
 
 # For development workstation:
-_PS1_WITH_GIT_BRANCH_='\[\033]0;\w\007\]\[\033[01;33m\]\w\[\033[01;36m\]`__git_ps1`\[\033[0m\]\n$ '
-_PS1_NO_BRANCH_='\[\033]0;\w\007\]\[\033[01;33m\]\w\[\033[0m\]\n$ '
+_PS1_PRE_='\[\033]0;\w\007\]\[\033[01;33m\]\w\[\033[01;36m\]'
+_PS1_POST_='\[\033[0m\]\n$ '
+
+_PS1_NO_BRANCH_="$_PS1_PRE_$_PS1_POST_"
+_PROMPT_COMMAND_GIT_PS1_='__git_ps1 "\n$_PS1_PRE_" "$_PS1_POST_" '
 _PROMPT_COMMAND_GIT_STATUS_='__git_status_cmd_for_prompt'
 _PROMPT_COMMAND_GIT_SHORT_STATUS_='__git_status_cmd_for_prompt SHORT'
 _PROMPT_COMMAND_NOTHING_='echo ""'
 
 alias gpq='PS1=$_PS1_NO_BRANCH_       PROMPT_COMMAND=$_PROMPT_COMMAND_NOTHING_'    # Git Prompt Quiet (no git info)
-alias gpb='PS1=$_PS1_WITH_GIT_BRANCH_ PROMPT_COMMAND=$_PROMPT_COMMAND_NOTHING_'    # Git Prompt Branch (include branch name - similar to default git prompt)
+alias gpb='PS1=                       PROMPT_COMMAND=$_PROMPT_COMMAND_GIT_PS1_'    # Git Prompt Branch (include branch name - similar to default git prompt)
 alias gps='PS1=$_PS1_NO_BRANCH_       PROMPT_COMMAND=$_PROMPT_COMMAND_GIT_STATUS_' # Git Prompt Status (include short git status)
 alias gpss='PS1=$_PS1_NO_BRANCH_      PROMPT_COMMAND=$_PROMPT_COMMAND_GIT_SHORT_STATUS_' # Git Prompt branch Status and file count
 
