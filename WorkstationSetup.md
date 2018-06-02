@@ -32,9 +32,11 @@
 	* Shift-ctrl-alt-L/R
 * Hotkeys - misc
 	* Win-E, Win-T, Win-D, Win-R
+* Setup mouse buttons
 * Login Manager? (lightdm)
-* Shutdown/Reboot/Logoff shortcuts
-* Numlock on restart
+* Shutdown/Restart/Logout shortcuts
+* Numlock on restart (numlockx)
+* Disable bluetooth on startup (rfkill block bluetooth)
 
 ## Theme
 * Panels Layout
