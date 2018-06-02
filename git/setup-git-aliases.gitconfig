@@ -11,6 +11,8 @@
 	diffiw = diff --ignore-space-change --ignore-space-at-eol #Diff Ignore Whitespace
 	id = rev-parse --default HEAD
 	addall = add -A -v
+	commitall = !git addall && git commit
+	pushall = !git commitall && git push
 	staged = diff --cached
 	ffup = merge --ff-only @{u}
 	ff = merge --ff-only
@@ -25,14 +27,14 @@
 	pullr = pull --rebase
 	pullm = pull
 	pullf = pull --ff-only
-	fetchall = fetch --all
+	fa = fetch --all
 	br = checkout -b
 	brr = branch -m # Branch Rename
 	track = branch -u
 	untrack = branch --unset-upstream
+	setdefaultpushremote = config remote.pushdefault
 	# Based on alias from https://haacked.com/archive/2014/07/28/github-flow-aliases/
 	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git --no-pager log --color=always HEAD~1..HEAD --pretty='%C(dim)%h%C(reset) %s:' --stat && echo '' && git reset HEAD~1 --hard
-
 	shallow-clone = clone --depth 1
 
 	# Cache SSH credentials
