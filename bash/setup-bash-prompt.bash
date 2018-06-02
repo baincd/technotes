@@ -24,11 +24,8 @@ DEFAULT_PS1=$PS1
 # For development workstation:
 _PS1_WITH_GIT_BRANCH_='\[\033]0;\w\007\]\[\033[01;33m\]\w\[\033[01;36m\]`__git_ps1`\[\033[0m\]\n$ '
 _PS1_NO_BRANCH_='\[\033]0;\w\007\]\[\033[01;33m\]\w\[\033[0m\]\n$ '
-# First echo statement changes color to bold cyan (which affects the ## in the git status line)
-# git status apparently doesn't reset bold before outputting the branch name - so localBranch=cyan makes the branch name is bold cyan, but the ahead count is normal cyan
-# To anyone reading this - please don't fix this "feature" in git - I like it  :-)
-_PROMPT_COMMAND_GIT_STATUS_='echo -e "\033[01;36m" && git -c color.status=always -c color.status.localBranch="cyan" status --short --branch 2> /dev/null && echo -e -n "\033[0m"'
-_PROMPT_COMMAND_GIT_SHORT_STATUS_='echo -e "\033[01;36m" && git -c color.status=always -c color.status.localBranch="cyan" status --short --branch 2> /dev/null | sed "s/^[^#][^#].*$/Files Changes/" | uniq -c | sed -e "s/^ *1 ##/##/" -e "s/^ *//" -e "s/^1 Files/1 File/" && echo -e -n "\033[0m"'
+_PROMPT_COMMAND_GIT_STATUS_='__git_status_cmd_for_prompt'
+_PROMPT_COMMAND_GIT_SHORT_STATUS_='__git_status_cmd_for_prompt SHORT'
 _PROMPT_COMMAND_NOTHING_='echo ""'
 
 alias gpq='PS1=$_PS1_NO_BRANCH_       PROMPT_COMMAND=$_PROMPT_COMMAND_NOTHING_'    # Git Prompt Quiet (no git info)
@@ -64,3 +61,22 @@ GIT_PROMPT_UNTRACKED=' \[\033[0;33m\]…' # Change from cyan to yellow
 # My New Values
 GIT_PROMPT_SYMBOLS_PRETAG="tag:"
 GIT_PROMPT_DETACHED_HEAD="\[\033[1;35m\]" # Set to [Bold Magenta]
+
+__git_status_cmd_for_prompt() {
+  local type="$1"
+  local g="$(git rev-parse --git-dir 2> /dev/null)";
+
+  echo ""
+  if [ -z "$g" ]; then
+    return 0;
+  fi;
+
+  local OUTPUT=`git -c color.status=always -c color.status.localBranch="cyan" status --short --branch 2> /dev/null`
+  if [ "$type" == "SHORT" ]; then
+    OUTPUT=`echo -e "$OUTPUT" | sed "s/^[^#][^#].*$/Files Changed/" | uniq -c | sed -e "s/^ *1 ##/##/" -e "s/^ *//" -e "s/^1 Files/1 File/"`
+  fi
+
+  echo -e -n "\033[01;36m" # Change color to bold cyan (which affects the ## in the git status line because git status apparently doesn't reset bold before outputting the branch name - To anyone reading this - please don't fix this "feature" in git - I like it  :-)
+  echo -e -n "$OUTPUT"
+  echo -e "\033[0m"
+}
