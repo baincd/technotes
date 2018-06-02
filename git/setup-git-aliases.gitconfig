@@ -37,6 +37,28 @@
 	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git --no-pager log --color=always HEAD~1..HEAD --pretty='%C(dim)%h%C(reset) %s:' --stat && echo '' && git reset HEAD~1 --hard
 	shallow-clone = clone --depth 1
 
+	feature-start = "!f () {                                                  \
+		if test -n \"$(git status --short 2> /dev/null)\"; then                 \
+			echo \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\";        \
+		else                                                                    \
+			git fetch --all &&                                                    \
+			git br \"$1\" origin/master;                                          \
+		fi;                                                                     \
+	}; f"
+
+	feature-end = "!f () {                                                           \
+		if test -n \"$(git status --short 2> /dev/null)\"; then                        \
+			echo \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\";               \
+		else                                                                           \
+			local OLD_BRANCH=\"$(git rev-parse --abbrev-ref HEAD 2> /dev/null)\" &&      \
+			git fetch --all &&                                                           \
+			(git branch master origin/master 2> /dev/null || true) &&                    \
+			git checkout master &&                                                       \
+			(git ffup || true)  &&                                                       \
+			git branch -D \"$OLD_BRANCH\";                                               \
+		fi;                                                                            \
+	}; f"
+
 	# Cache SSH credentials
 	# setup in ~/.bashrc
 	# alias ssh-cache='eval `ssh-agent` && ssh-add'
