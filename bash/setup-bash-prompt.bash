@@ -71,11 +71,11 @@ __git_status_cmd_for_prompt() {
 __git_repo_status() {
   # Adapted from __git_ps1 function
   local r="";
-  # local b="";
+  local b="";
   local step="";
   local total="";
   if [ -d "$g/rebase-merge" ]; then
-      # __git_eread "$g/rebase-merge/head-name" b;
+      __git_eread "$g/rebase-merge/head-name" b;
       __git_eread "$g/rebase-merge/msgnum" step;
       __git_eread "$g/rebase-merge/end" total;
       if [ -f "$g/rebase-merge/interactive" ]; then
@@ -88,7 +88,7 @@ __git_repo_status() {
           __git_eread "$g/rebase-apply/next" step;
           __git_eread "$g/rebase-apply/last" total;
           if [ -f "$g/rebase-apply/rebasing" ]; then
-              # __git_eread "$g/rebase-apply/head-name" b;
+              __git_eread "$g/rebase-apply/head-name" b;
               r="|REBASE";
           else
               if [ -f "$g/rebase-apply/applying" ]; then
@@ -144,6 +144,10 @@ __git_repo_status() {
       #         fi;
       #     fi;
       # fi;
+  fi;
+
+  if [ -n "$b" ]; then
+      r="$r (${b##refs/heads/})";
   fi;
   if [ -n "$step" ] && [ -n "$total" ]; then
       r="$r $step/$total";
