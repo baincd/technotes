@@ -29,8 +29,12 @@ alias grepsrcc='grepsrc --color=always'
 alias lsc='ls --color=always'
 alias lessc='less -R'
 
-alias s='git s'
-alias sv='git status'
+alias s='skip-prompt-command-once && git s'
+alias sv='skip-prompt-command-once && git status'
+alias f='git fa'
+
+alias reset-prompt-command='echo "" && PROMPT_COMMAND=${PROMPT_COMMAND_TMP} && unset PROMPT_COMMAND_TMP'
+alias skip-prompt-command-once='PROMPT_COMMAND_TMP=$PROMPT_COMMAND PROMPT_COMMAND=reset-prompt-command'
 
 alias atom-clean="rm -rf ~/.atom/compile-cache && rm -rf ~/.atom/storage && atom"
 
