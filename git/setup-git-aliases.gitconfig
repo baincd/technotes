@@ -59,6 +59,35 @@
 		fi;                                                                            \
 	}; f"
 
+	qstash = "!f() {                                                                                             \
+		if test -z \"$(git status --short 2> /dev/null)\"; then                                                    \
+			echo -e \"\\033[01;31mERROR!\\033[0m: No changes to stash!\";                                            \
+		else                                                                                                       \
+			git add -A &&                                                                                            \
+			git commit -qm \"WIP! $1\" &&                                                                            \
+			git --no-pager log --color=always --oneline HEAD~1..HEAD --pretty=\"%C(dim)%h%C(reset) %s\" --stat;      \
+    fi;                                                                                                        \
+	}; f"
+
+	qunstash = "!f() {                                                                                          \
+		local HEAD_WIP=\"$(git log HEAD~1..HEAD --format='%H' --grep '^WIP')\";                                   \
+		if test -z $HEAD_WIP; then                                                                                \
+			echo \"\\033[01;31mERROR!\\033[0m Head not a WIP\";                                                     \
+		else                                                                                                      \
+			if test \"${1}\" = \"--all\"; then                                                                      \
+				local NEW_HEAD=\"$(git log HEAD --format='%H' --grep '^WIP' --invert-grep | head -1)\";               \
+			else                                                                                                    \
+				local NEW_HEAD=\"HEAD~1\";                                                                            \
+			fi &&                                                                                                   \
+			git reset $NEW_HEAD >> /dev/null &&                                                                     \
+			local MARKER=\"##-##-##-##-##\" &&                                                                      \
+			git log --color=always HEAD..$HEAD_WIP --pretty=\"Unstashed: %C(dim)%h%C(reset) %C(bold green)${MARKER}%ad${MARKER}%C(reset) %s\" | sed -r \"s/${MARKER}(.{16}).*${MARKER}/\\1/\" ; \
+		fi;                                                                                                       \
+	}; f"
+
+	qunstashall = "!git qunstash --all"
+
+
 	# Cache SSH credentials
 	# setup in ~/.bashrc
 	# alias ssh-cache='eval `ssh-agent` && ssh-add'
