@@ -11,6 +11,8 @@ Hiring trends: https://www.hntrends.com/
 
 Books compiled from Stack Overflow Documentation: http://books.goalkicker.com/
 
+Best/Essential Linux Apps: https://www.ubuntupit.com/best-linux-software-our-editorial-list-of-essential-linux-apps/
+
 # Software Development articles
 [Relearning how to learn](https://www.infoq.com/articles/relearning-learn)
 
