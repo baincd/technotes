@@ -26,6 +26,8 @@ Best/Essential Linux Apps: https://www.ubuntupit.com/best-linux-software-our-edi
 
 [Code Test Coverage Traps](https://sdtimes.com/test/two-big-traps-code-test-coverage/)
 
+[Dealing with Open Source Vulnerabilities](https://www.infoq.com/articles/vulnerability-open-source)
+
 # More Bookmarks
 [Git](git/bookmarks-git.md)
 
