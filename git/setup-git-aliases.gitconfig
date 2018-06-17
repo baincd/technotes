@@ -41,6 +41,16 @@
 	tags = tag -l
 	remotes = remote -v
 
+	# Take all staged and unstaged changes and immediately fixup the commit passed in (you will need to save the
+	# interactive rebase editor)
+	fixup-now = "!f() { git addall && git commit --fixup $1 && git rebase -i $1~1 ; }; f"
+
+	# Remove all branches that are merged into the passed in branch/commit (excluding the current branch and the passed in branch)
+	rm-merged-branches = "!f() { git fa && git branch --merged \"$1\" | grep -v '\\*' | grep -v \"^ *$1$\" | xargs -n 1 git branch -D ; }; f"
+
+	# Find all commits that have not been cherrypicked onto the branch
+	unpicked-cherries = "!f() { git cherry -v $@ | sed -n 's/^+ //p'; }; f"
+
 	feature-start = "!f () {                                                  \
 		if test -n \"$(git status --short 2> /dev/null)\"; then                 \
 			echo \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\";        \
@@ -91,6 +101,15 @@
 
 	qunstashall = "!git qunstash --all"
 
+	# Remove files that should not be tracked from the index, fix line endings and permissions
+	hard-reset-index = "!f () {                                                        \
+			if test -n \"$(git status --short 2> /dev/null)\"; then                        \
+				echo \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\";               \
+			else                                                                           \
+				git rm -r -q --cached . &&                                                   \
+				git add . ;                                                                  \
+			fi;                                                                            \
+		}; f"
 
 	# Cache SSH credentials
 	# setup in ~/.bashrc
