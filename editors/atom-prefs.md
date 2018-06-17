@@ -1,6 +1,6 @@
-# Installed Packages
+# My Atom Preferences
 
-#### General
+## General Installed Packages
 * custom-window-title (pixilz/baincd)
   * settings:
   ```
@@ -9,6 +9,6 @@
 * platformio-ide-terminal (platformio)
     * Disable login shell (unless .bashrc is configured to run on login shell)
 
-#### HTML
+## HTML Installed Packages
 * autoclose-html (mattberkowitz)
 * double-tag (dsandstrom)

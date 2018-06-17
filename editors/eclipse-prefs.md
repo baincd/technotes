@@ -1,4 +1,4 @@
-# Eclipse Setup
+# My Eclipse Preferences
 
 ## Plugins
     MoreUnit
