@@ -8,8 +8,8 @@
 #     path = ~/.git-aliases.gitconfig
 
 [alias]
-	diffiw = diff --ignore-space-change --ignore-space-at-eol #Diff Ignore Whitespace
-	id = rev-parse --default HEAD
+	diffiw = diff --ignore-space-change --ignore-space-at-eol # Diff Ignore Whitespace
+	id = rev-parse --default HEAD # Print the Git ID (by default of head, but you can pass in a commitish ref)
 	addall = add -A -v
 	commitall = !git addall && git commit
 	pushall = !git commitall && git push
@@ -17,21 +17,21 @@
 	ffup = merge --ff-only @{u}
 	ff = merge --ff-only
 	merge2 = merge --strategy-option=patience
-	info = show --pretty=fuller --name-status
-	s = status --short --branch
+	info = show --pretty=fuller --name-status # Show author and committer information and list files changed (but don't show diff)
+	s = status --short --branch # Short status
 	logd = log --decorate
 	logg = log --graph --oneline --date=relative --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%<(8,trunc)%an%C(reset) %s%C(bold yellow)%d%C(reset)'
 	logv = log --graph --oneline --date=local --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%an%C(reset) %C(bold yellow)%d%C(reset)%n%w(0,8,8)%B'
-	logw = "!f() { gitk "$@" & }; f" # Log Window
-	commitw = "!f() { git gui "$@" & }; f" # Commit Window
+	logw = "!f() { gitk \"$@\" & }; f" # Log Window
+	commitw = "!f() { git gui \"$@\" & }; f" # Commit Window
 	pullr = pull --rebase
 	pullm = pull
 	pullf = pull --ff-only
 	fa = fetch --all --tags
-	br = checkout -b
+	br = checkout -b # Create and checkout branch ex: git br newbranch   git br newbranch existingbranch
 	brr = branch -m # Branch Rename
-	track = branch -u
-	untrack = branch --unset-upstream
+	track = branch -u # Set tracking (upstream) branch
+	untrack = branch --unset-upstream # Unset tracking (upstream) branch
 	setdefaultpushremote = config remote.pushdefault
 	# Based on alias from https://haacked.com/archive/2014/07/28/github-flow-aliases/
 	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git --no-pager log --color=always HEAD~1..HEAD --pretty='%C(dim)%h%C(reset) %s:' --stat && echo '' && git reset HEAD~1 --hard
