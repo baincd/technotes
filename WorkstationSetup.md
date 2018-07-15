@@ -37,6 +37,10 @@
 * Shutdown/Restart/Logout shortcuts
 * Numlock on restart (numlockx)
 * Disable bluetooth on startup (rfkill block bluetooth)
+* Swap Keyboard Keys (Insert should be default, and fn+Insert should be PrtScr)
+  * edit /usr/share/X11/xkb/symbols/pc
+	* sudo dpkg-reconfigure xkb-data
+	* source: https://forums.linuxmint.com/viewtopic.php?t=239174
 
 ## Theme
 * Panels Layout
