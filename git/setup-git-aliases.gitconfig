@@ -8,6 +8,7 @@
 #     path = ~/.git-aliases.gitconfig
 
 [alias]
+	git = "!f() { git \"$@\" ; }; f" # Fix when you type `git git status` BWAHAHAHAHA
 	diffiw = diff --ignore-space-change --ignore-space-at-eol # Diff Ignore Whitespace
 	id = rev-parse --default HEAD # Print the Git ID (by default of head, but you can pass in a commitish ref)
 	addall = add -A -v
