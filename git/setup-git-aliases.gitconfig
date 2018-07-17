@@ -20,6 +20,7 @@
 	merge2 = merge --strategy-option=patience
 	info = show --pretty=fuller --name-status # Show author and committer information and list files changed (but don't show diff)
 	s = status --short --branch # Short status
+	sv = status # Verbose status
 	logd = log --decorate
 	logg = log --graph --oneline --date=relative --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%<(8,trunc)%an%C(reset) %s%C(bold yellow)%d%C(reset)'
 	logv = log --graph --oneline --date=local --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%an%C(reset) %C(bold yellow)%d%C(reset)%n%w(0,8,8)%B'
@@ -28,7 +29,7 @@
 	pullr = pull --rebase
 	pullm = pull
 	pullf = pull --ff-only
-	fa = fetch --all --tags
+	f = fetch --all --tags
 	br = checkout -b # Create and checkout branch ex: git br newbranch   git br newbranch existingbranch
 	brr = branch -m # Branch Rename
 	track = branch -u # Set tracking (upstream) branch
@@ -47,7 +48,7 @@
 	fixup-now = "!f() { git addall && git commit --fixup $1 && git rebase -i $1~1 ; }; f"
 
 	# Remove all branches that are merged into the passed in branch/commit (excluding the current branch and the passed in branch)
-	rm-merged-branches = "!f() { git fa && git branch --merged \"$1\" | grep -v '\\*' | grep -v \"^ *$1$\" | xargs -n 1 git branch -D ; }; f"
+	rm-merged-branches = "!f() { git f && git branch --merged \"$1\" | grep -v '\\*' | grep -v \"^ *$1$\" | xargs -n 1 git branch -D ; }; f"
 
 	# Find all commits that have not been cherrypicked onto the branch
 	unpicked-cherries = "!f() { git cherry -v $@ | sed -n 's/^+ //p'; }; f"

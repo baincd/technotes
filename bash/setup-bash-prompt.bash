@@ -36,7 +36,7 @@ gps
 
 # Helpful aliases that run git status, and not run git status a second time as part of the prompt
 alias s='skip-prompt-command-once && git s'
-alias sv='skip-prompt-command-once && git status'
+alias sv='skip-prompt-command-once && git sv'
 alias reset-prompt-command='echo "" && PROMPT_COMMAND=${PROMPT_COMMAND_TMP} && unset PROMPT_COMMAND_TMP'
 alias skip-prompt-command-once='PROMPT_COMMAND_TMP=$PROMPT_COMMAND PROMPT_COMMAND=reset-prompt-command'
 

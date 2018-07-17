@@ -22,7 +22,7 @@ alias findsrc='find -not -path "*/.svn/*" -not -name .svn -not -path "*/.git/*" 
 alias ls='ls -l -F --color=auto --show-control-chars' # -F = append indicator (one of */=>@|) to entries
 alias less='less -S' 	# Disable long line wrap
 alias killall='killall -v'
-alias f='git fa'
+alias f='git f'
 
 # Colorized versions
 alias grepc='grep --color=always'
