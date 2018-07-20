@@ -43,6 +43,14 @@
 	tags = tag -l
 	remotes = remote -v
 
+	# Stand up a git server:
+	# Refs:
+	#   https://railsware.com/blog/2013/09/19/taming-the-git-daemon-to-quickly-share-git-repository/
+	#   https://git-scm.com/docs/git-daemon#git-daemon---export-all
+	# Remote example: git://ip-address/path-to-repo-from-base-path
+	serve = daemon --base-path=/files/wc/ --export-all --reuseaddr --informative-errors --verbose
+	fetch-cmp = -c core.compression=9 fetch # Fetch seems to work better increasing compression
+
 	# Take all staged and unstaged changes and immediately fixup the commit passed in (you will need to save the
 	# interactive rebase editor)
 	fixup-now = "!f() { git addall && git commit --fixup $1 && git rebase -i $1~1 ; }; f"
