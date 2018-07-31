@@ -28,6 +28,8 @@ Best/Essential Linux Apps: https://www.ubuntupit.com/best-linux-software-our-edi
 
 [Dealing with Open Source Vulnerabilities](https://www.infoq.com/articles/vulnerability-open-source)
 
+[Anatomy of a perfect pull request](https://opensource.com/article/18/6/anatomy-perfect-pull-request)
+
 # More Bookmarks
 [Git](git/bookmarks-git.md)
 
