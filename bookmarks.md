@@ -30,6 +30,8 @@ Best/Essential Linux Apps: https://www.ubuntupit.com/best-linux-software-our-edi
 
 [Anatomy of a perfect pull request](https://opensource.com/article/18/6/anatomy-perfect-pull-request)
 
+[10-to-1 rule of programming](https://www.ybrikman.com/writing/2018/08/12/the-10-to-1-rule-of-writing-and-programming/)
+
 # More Bookmarks
 [Git](git/bookmarks-git.md)
 
