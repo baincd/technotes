@@ -34,4 +34,7 @@ alias lessc='less -R'
 
 alias atom-clean="rm -rf ~/.atom/compile-cache && rm -rf ~/.atom/storage && atom"
 
+# Do not add commands that start with a space to the bash history
+HISTCONTROL=ignorespace
+
 PATH=$PATH:~/bin
