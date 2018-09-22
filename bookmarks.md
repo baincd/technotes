@@ -1,4 +1,4 @@
-# Software Development
+# Software Development Sites
 Top Books: http://www.dev-books.com/
 
 Multi-API reference: https://devdocs.io/
@@ -13,10 +13,8 @@ Books compiled from Stack Overflow Documentation: http://books.goalkicker.com/
 
 Best/Essential Linux Apps: https://www.ubuntupit.com/best-linux-software-our-editorial-list-of-essential-linux-apps/
 
-# Software Development articles
+# General Software Development articles
 [Relearning how to learn](https://www.infoq.com/articles/relearning-learn)
-
-[React vs Angular 2/4/...](https://medium.com/@chriscordle/why-angular-2-4-is-too-little-too-late-ea86d7fa0bae)
 
 [The Decline of Dynamic Typing](http://www.javamagazine.mozaicreader.com/JanFeb2018/Default/5/0?token=B6J6D7QC44R7T19H)
 
@@ -32,13 +30,55 @@ Best/Essential Linux Apps: https://www.ubuntupit.com/best-linux-software-our-edi
 
 [10-to-1 rule of programming](https://www.ybrikman.com/writing/2018/08/12/the-10-to-1-rule-of-writing-and-programming/)
 
+# Git articles
+[Good Commit Messages](https://chris.beams.io/posts/git-commit/)
+
+[Git reset demystified](https://git-scm.com/blog/2011/07/11/reset.html)
+
+[Trust Git Merge/Branching (coming from SVN)](https://www.atlassian.com/git/articles/trust-the-merge-and-branch-simplification-musings)
+
+[Git for Advanced Beginners](http://think-like-a-git.net/)
+
+# Git Workflows
+## git flow:
+[Original gitflow description](http://nvie.com/posts/a-successful-git-branching-model/)
+
+[Why gitflow](http://jeffkreeftmeijer.com/2010/why-arent-you-using-git-flow/)
+
+[gitflow tool](https://github.com/nvie/gitflow)
+
+## github flow
+[Simple github flow description](https://help.github.com/articles/github-flow-in-the-browser/)
+
+[Graphical github flow description](https://guides.github.com/introduction/flow/)
+
+[github flow compared to git flow](http://scottchacon.com/2011/08/31/github-flow.html)
+
+# Java
+[DO NOT USE java.sql.Date](http://web.archive.org/web/20161229042520/http://wiki.fasterxml.com/JacksonFAQDateHandling#line-47)
+
+[JUnit best practices](http://examples.javacodegeeks.com/core-java/junit/junit-best-practices/)
+
+[A guide to logging in Java](https://www.marcobehler.com/guides/a-guide-to-logging-in-java)
+
+# Web Development
+[React vs Angular 2/4/...](https://medium.com/@chriscordle/why-angular-2-4-is-too-little-too-late-ea86d7fa0bae)
+
 [WebAssembly: How and why](https://blog.logrocket.com/webassembly-how-and-why-559b7f96cd71)
 
-# More Bookmarks
-[Git](git/bookmarks-git.md)
+# Open Source Licensing
+## FAQ
+[Licensing a Repository (GitHub)](https://help.github.com/articles/licensing-a-repository/)
 
-[Git Workflows](git/bookmarks-git-workflows.md)
+[No License => No Permission](https://choosealicense.com/no-permission/)
 
-[Java](java/bookmarks.md)
+[Why Licenses Matter](https://opensource.stackexchange.com/a/2567)
 
-[Open Source Licensing](misc/licensing.md)
+[Can a Public GitHub Project not be Open Source?](https://stackoverflow.com/a/16934573)
+
+## Tools
+Interactive License Chooser/Differentiator: http://oss-watch.ac.uk/apps/licdiff/
+
+Simple Choose a License: https://choosealicense.com/
+
+Simple License Explanations: https://tldrlegal.com/search
