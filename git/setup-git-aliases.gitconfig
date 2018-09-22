@@ -14,6 +14,7 @@
 	addall = add -A -v
 	commitall = !git addall && git commit
 	pushall = !git commitall && git push
+	pushup = -c push.default=upstream push
 	staged = diff --cached
 	ffup = merge --ff-only @{u}
 	ff = merge --ff-only

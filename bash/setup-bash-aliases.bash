@@ -23,6 +23,8 @@ alias ls='ls -l -F --color=auto --show-control-chars' # -F = append indicator (o
 alias less='less -S' 	# Disable long line wrap
 alias killall='killall -v'
 alias f='git f'
+alias nl='nl -b a ' # Number all lines
+alias column='column -t -e -s ' # Break input into columns, delimiting on first param
 
 # Colorized versions
 alias grepc='grep --color=always'
