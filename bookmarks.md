@@ -32,6 +32,8 @@ Best/Essential Linux Apps: https://www.ubuntupit.com/best-linux-software-our-edi
 
 [10-to-1 rule of programming](https://www.ybrikman.com/writing/2018/08/12/the-10-to-1-rule-of-writing-and-programming/)
 
+[WebAssembly: How and why](https://blog.logrocket.com/webassembly-how-and-why-559b7f96cd71)
+
 # More Bookmarks
 [Git](git/bookmarks-git.md)
 
