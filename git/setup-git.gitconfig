@@ -41,6 +41,8 @@
 [rebase]
 	# automatically modify the todo list of rebase -i for squash and fixup commits
 	autosquash = true
+[grep]
+	extendRegexp = false
 [gc]
 	# Housekeep after ~256 loose objects (default is ~6700)
 	auto = 256
