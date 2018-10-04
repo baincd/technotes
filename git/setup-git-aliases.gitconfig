@@ -61,6 +61,17 @@
 	# [`-S and -G`](https://git-scm.com/docs/git-log#git-log--Sltstringgt) \
 	# [`--grep`](https://git-scm.com/docs/git-log#git-log---grepltpatterngt)
 
+	helpme-log-output = "!f () {                                                       \
+		echo \"--graph\";                                                                \
+		echo \"--decorate (show refs)\";                                                 \
+		echo \"--oneline\";                                                              \
+		echo \"--format=oneline|short|medium|full|fuller|<format> (default => medium)\"; \
+		echo \"--abbrev-commit\";                                                        \
+		echo \"--date=relative|local|short|format:<format> (short is YYYY-MM-DD)\";      \
+		echo \"--all (all refs on command line)\";                                       \
+		echo \"-p (print patches)\";                                                     \
+	}; f"
+
 	# Stand up a git server:
 	# Refs:
 	#   https://railsware.com/blog/2013/09/19/taming-the-git-daemon-to-quickly-share-git-repository/
