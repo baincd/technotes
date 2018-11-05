@@ -30,6 +30,8 @@ Best/Essential Linux Apps: https://www.ubuntupit.com/best-linux-software-our-edi
 
 [10-to-1 rule of programming](https://www.ybrikman.com/writing/2018/08/12/the-10-to-1-rule-of-writing-and-programming/)
 
+[SOLID Principles Every Developer Should Know](https://blog.bitsrc.io/solid-principles-every-developer-should-know-b3bfa96bb688)
+
 # Git articles
 [Good Commit Messages](https://chris.beams.io/posts/git-commit/)
 
