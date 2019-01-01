@@ -32,6 +32,10 @@ alias grepsrcc='grepsrc --color=always'
 alias lsc='ls --color=always'
 alias lessc='less -R'
 
+alias dirs='dirs -v'
+function pushcd() { pushd "$@" > /dev/null && dirs; }
+function popcd()  { popd  "$@" > /dev/null && dirs; }
+
 alias atom-clean="rm -rf ~/.atom/compile-cache && rm -rf ~/.atom/storage && atom"
 
 # Do not add commands that start with a space to the bash history
