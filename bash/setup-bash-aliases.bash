@@ -109,3 +109,5 @@ alias atom-clean="rm -rf ~/.atom/compile-cache && rm -rf ~/.atom/storage && atom
 HISTCONTROL=ignorespace
 
 PATH=$PATH:~/bin
+
+alias gnucash-monthly-expense-report-to-spreadsheet="tac | tac | sed -re 's/^(Monthly Expense Report:)/##### \1 #####/' -re '/^Act\tAct\tAct/d' -re '/^(Big )?Expenses/d' -re 's/^[\t ]+//' -re 's/([^\t]*)\t\t/\1\t/' -re '4s/^/\t/' -re 's/\$//g'"
