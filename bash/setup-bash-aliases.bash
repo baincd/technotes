@@ -14,6 +14,8 @@ alias findX=`which find`
 alias lsX=`which ls`
 alias lessX=`which ls`
 alias killallX=`which killall`
+alias pushdX='builtin pushd'
+alias popdX='builtin popd'
 
 # Helpful defaults
 alias grep='grep --color=auto '
@@ -33,8 +35,15 @@ alias lsc='ls --color=always'
 alias lessc='less -R'
 
 alias dirs='dirs -v'
-function pushcd() { pushd "$@" > /dev/null && dirs; }
-function popcd()  { popd  "$@" > /dev/null && dirs; }
+function pushd() { pushdX "$@" > /dev/null && dirs; }
+function popd() { popdX "$@" > /dev/null && dirs; }
+function sd() { # swap dir
+  if [ ! "$1" = "" ]; then
+    echo "ERROR: sd should not be passed any params!"
+    return 1
+  fi
+  pushdX > /dev/null;
+}
 
 alias atom-clean="rm -rf ~/.atom/compile-cache && rm -rf ~/.atom/storage && atom"
 
