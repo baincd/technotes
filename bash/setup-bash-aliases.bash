@@ -16,6 +16,7 @@ alias lessX=`which ls`
 alias killallX=`which killall`
 alias pushdX='builtin pushd'
 alias popdX='builtin popd'
+alias cdX='builtin cd'
 
 # Helpful defaults
 alias grep='grep --color=auto '
@@ -44,6 +45,18 @@ function sd() { # swap dir
   fi
   pushdX > /dev/null;
 }
+
+_LAST_CD_TS=0
+function cd() {
+  local PREV_CD_TS=$_LAST_CD_TS
+  export _LAST_CD_TS=`date +%s` # Seconds since the epoch
+  if [ `expr $_LAST_CD_TS - $PREV_CD_TS` -gt "10" ]; then # if more than 10 seconds since last cd, push onto stack
+    pushdX "$@" > /dev/null
+  else
+    cdX "$@"
+  fi
+}
+
 
 alias atom-clean="rm -rf ~/.atom/compile-cache && rm -rf ~/.atom/storage && atom"
 
