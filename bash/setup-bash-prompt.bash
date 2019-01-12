@@ -87,7 +87,10 @@ __git_status_cmd_for_prompt() {
 
   local OUTPUT=`git -c color.status=always -c color.status.localBranch="cyan" status --short --branch 2> /dev/null`
   if [ "$type" == "SHORT" ]; then
-    OUTPUT=`echo -e "$OUTPUT" | sed "s/^[^#][^#].*$/Files Changed/" | uniq -c | sed -e "s/^ *1 ##/##/" -e "s/^ *//" -e "s/^1 Files/1 File/"`
+    esc=$(printf '\033')
+    local RED_BOLD="${esc}[1;31m"
+    local RESET_COLOR="${esc}[0m"
+    OUTPUT=`echo -e "$OUTPUT" | sed "s/^[^#][^#].*$/Files Changed/" | uniq -c | sed -e "s/^ *1 ##/##/" -e "s/^ *//" -e "s/^1 Files/1 File/" -e "s/^\([0-9]\+\) \(.*\)/ ${RED_BOLD}\1${RESET_COLOR} \2 /"`
   fi
 
   local r=`__git_repo_status`
