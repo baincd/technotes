@@ -17,6 +17,7 @@ alias killallX=`which killall`
 alias pushdX='builtin pushd'
 alias popdX='builtin popd'
 alias cdX='builtin cd'
+alias mkdirX=`which mkdir`
 
 # Helpful defaults
 alias grep='grep --color=auto '
@@ -57,6 +58,9 @@ function cd() {
   fi
 }
 
+function mkdir() {
+  if [ -d "${@: -1}" ]; then echo "ERROR: ${@: -1} already exists!"; else mkdirX -p -v -- "$@" && echo cd "${@: -1}" && cd "${@: -1}"; fi
+}
 
 alias atom-clean="rm -rf ~/.atom/compile-cache && rm -rf ~/.atom/storage && atom"
 
