@@ -51,11 +51,15 @@ _LAST_CD_TS=0
 function cd() {
   local PREV_CD_TS=$_LAST_CD_TS
   export _LAST_CD_TS=`date +%s` # Seconds since the epoch
-  if [ `expr $_LAST_CD_TS - $PREV_CD_TS` -gt "10" ]; then # if more than 10 seconds since last cd, push onto stack
-    pushdX "$@" > /dev/null
-  else
-    cdX "$@"
+  if [ `expr $_LAST_CD_TS - $PREV_CD_TS` -gt "0" ]; then # if more than 10 seconds since last cd
+    local TOP_OF_STACK=`dirs -v | sed -ne '2s/^ \([0-9]\)\+ *\(.*\)/\2/p'`
+    local CWD=`pwd | sed -E "s#^${HOME}(/.*)?\\$#~\1#"` # current dir, replacing $HOME with ~ so it matches the dirs output
+    if [ "$CWD" != "$TOP_OF_STACK" ]; then # if the current directory is not the same as the top of the dirstack
+      pushdX "$@" > /dev/null # push on dirstack
+      return
+    fi
   fi
+  cdX "$@" # default to just a boring cd command
 }
 
 function mkdir() {
