@@ -15,10 +15,10 @@ DEFAULT_PS1=$PS1
 
 # For Servers:
 # username@hostname dir
-# export PS1="\[\033]0;\u@\h \w\007\]\n\[\033[01;32m\]\u@\h\[\033[m\] \[\033[01;33m\]\w\[\033[m\]\n$ "
+# export PS1="\[\033]0;\${_TT}\u@\h \w\007\]\n\[\033[01;35m\]\${_TT}\[\033[01;32m\]\u@\h\[\033[m\] \[\033[01;33m\]\w\[\033[m\]\n$ "
 
 # For development workstation:
-_PS1_PRE_='\[\033]0;\w\007\]\[\033[01;33m\]\w\[\033[01;36m\]'
+_PS1_PRE_="\[\033]0;\${_TT}\w\007\]\[\033[01;35m\]\${_TT}\[\033[01;33m\]\w\[\033[01;36m\]"
 _PS1_POST_='\[\033[0m\]\n$ '
 
 _PS1_NO_BRANCH_="$_PS1_PRE_$_PS1_POST_"
@@ -75,6 +75,14 @@ __dirs_prompt() {
   fi
 }
 
+bt() { # bash title
+  if [ "$1" == "" ]; then
+    export _TT=
+  else
+    export _TT="[$1] "
+  fi
+
+}
 
 __git_status_cmd_for_prompt() {
   local type="$1"
