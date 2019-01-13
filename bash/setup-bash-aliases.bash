@@ -37,8 +37,8 @@ alias lsc='ls --color=always'
 alias lessc='less -R'
 
 alias dirs='dirs -v'
-function pushd() { pushdX "$@" > /dev/null && dirs; }
-function popd() { popdX "$@" > /dev/null && dirs; }
+function pushd() { pushdX "$@" > /dev/null; }
+function popd() { popdX "$@" > /dev/null; }
 function sd() { # swap dir
   if [ ! "$1" = "" ]; then
     echo "ERROR: sd should not be passed any params!"
