@@ -22,10 +22,10 @@ _PS1_PRE_="\[\033]0;\${_TT}\w\007\]\[\033[01;35m\]\${_TT}\[\033[01;33m\]\w\[\033
 _PS1_POST_='\[\033[0m\]\n$ '
 
 _PS1_NO_BRANCH_="$_PS1_PRE_$_PS1_POST_"
-_PROMPT_COMMAND_GIT_PS1_='__dirs_prompt && __git_ps1 "\n$_PS1_PRE_" "$_PS1_POST_" '
-_PROMPT_COMMAND_GIT_STATUS_='__dirs_prompt && __git_status_cmd_for_prompt'
-_PROMPT_COMMAND_GIT_SHORT_STATUS_='__dirs_prompt && __git_status_cmd_for_prompt SHORT'
-_PROMPT_COMMAND_NOTHING_='__dirs_prompt && echo ""'
+_PROMPT_COMMAND_GIT_PS1_='__git_ps1 "\n$_PS1_PRE_" "$_PS1_POST_" '
+_PROMPT_COMMAND_GIT_STATUS_='__git_status_cmd_for_prompt'
+_PROMPT_COMMAND_GIT_SHORT_STATUS_='__git_status_cmd_for_prompt SHORT'
+_PROMPT_COMMAND_NOTHING_='echo ""'
 
 alias gpq='PS1=$_PS1_NO_BRANCH_       PROMPT_COMMAND=$_PROMPT_COMMAND_NOTHING_'    # Git Prompt Quiet (no git info)
 alias gpb='PS1=                       PROMPT_COMMAND=$_PROMPT_COMMAND_GIT_PS1_'    # Git Prompt Branch (include branch name - similar to default git prompt)
@@ -49,31 +49,6 @@ alias skip-prompt-command-once='PROMPT_COMMAND_TMP=$PROMPT_COMMAND PROMPT_COMMAN
 # https://github.com/msysgit/msysgit/issues/128
 
 # Create custom Bash prompts: http://ezprompt.net/
-_PROMPT_DIRS_ENABLED="true"
-
-dirspr-on() { # dirs prompt on
-  export _PROMPT_DIRS_ENABLED="true"
-}
-
-dirspr-off() { # dirs priompt off
-  export _PROMPT_DIRS_ENABLED="false"
-}
-
-__dirs_prompt() {
-  if [ "$_PROMPT_DIRS_ENABLED" = "true" ]; then
-    #  dirs -v : List all dirs in stack, one per line
-    #  sed ... : Show rows 2-6 only (first 5 in stack not including current dir) and format like "/path/to/dir (1) | "
-    #  tr ...  : Chomp off all new lines, making entire string a single line
-    #  sed ... : Remove final " | "
-    #  cut ... : Chomp off at terminal width (do not wrap)
-    local OUT=`dirs -v | sed -ne '2,6s/^ \([0-9]\)\+ *\(.*\)/\2 (\1) | /p' | tr -d '\n' | sed 's/ | $//' | cut -b -$(tput cols)`
-    if [ "$OUT" ]; then
-      echo -e "\e[2m" # dim
-      echo -n "$OUT" # Show only first 5, move row number to end, and reverse order
-      echo -en "\e[0m" # reset
-    fi
-  fi
-}
 
 bt() { # bash title
   if [ "$1" == "" ]; then
