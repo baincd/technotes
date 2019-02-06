@@ -13,6 +13,8 @@ Books compiled from Stack Overflow Documentation: http://books.goalkicker.com/
 
 Best/Essential Linux Apps: https://www.ubuntupit.com/best-linux-software-our-editorial-list-of-essential-linux-apps/
 
+A collection of full-stack resources for programmers https://github.com/charlax/professional-programming
+
 # General Software Development articles
 [Relearning how to learn](https://www.infoq.com/articles/relearning-learn)
 
