@@ -40,6 +40,11 @@
 	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git --no-pager log --color=always HEAD~1..HEAD --pretty='%C(dim)%h%C(reset) %s:' --stat && echo '' && git reset HEAD~1 --hard
 	shallow-clone = clone --depth 1
 
+	rec  = "!f() { find -name .git -type d -exec echo \"\" \\; -exec echo --- \\; -exec echo {} \\; -execdir git $@ \\; ; }; f"
+	recp = "!f() { find -name .git -type d -exec echo \"\" \\; -exec echo --- \\;                   -okdir   git $@ \\; ; }; f"
+	rpullf = !git rec pullf
+	rfetch = !git rec f
+
 	branches = branch -a -vv
 	tags = tag -l
 	remotes = remote -v
