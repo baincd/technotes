@@ -36,6 +36,8 @@ A collection of full-stack resources for programmers https://github.com/charlax/
 
 [Why Good Developers Write Bad Tests](https://mtlynch.io/good-developers-bad-tests/)
 
+[Factors to determine if that should be a microservice](https://content.pivotal.io/blog/should-that-be-a-microservice-keep-these-six-factors-in-mind)
+
 # Git articles
 [Good Commit Messages](https://chris.beams.io/posts/git-commit/)
 
