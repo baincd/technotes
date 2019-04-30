@@ -99,7 +99,7 @@ function cd() {
 }
 
 function mkdir() {
-  if [ -d "${@: -1}" ]; then echo "ERROR: ${@: -1} already exists!"; else mkdirX -p -v -- "$@" && echo cd "${@: -1}" && cd "${@: -1}"; fi
+  if [ -d "${@: -1}" ]; then echo "ERROR: ${@: -1} already exists!"; else mkdirX -p -v -- "$@"; fi
 }
 
 alias atom-clean="rm -rf ~/.atom/compile-cache && rm -rf ~/.atom/storage && atom"
