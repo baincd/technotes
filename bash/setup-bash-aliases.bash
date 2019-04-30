@@ -101,6 +101,7 @@ function cd() {
 function mkdir() {
   if [ -d "${@: -1}" ]; then echo "ERROR: ${@: -1} already exists!"; else mkdirX -p -v -- "$@"; fi
 }
+function mkttmp() { export ttmp=~/tmp/`date +%Y-%m-%d`; mkdir $ttmp; }
 
 alias atom-clean="rm -rf ~/.atom/compile-cache && rm -rf ~/.atom/storage && atom"
 
