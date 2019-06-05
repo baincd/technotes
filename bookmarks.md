@@ -38,6 +38,8 @@ A collection of full-stack resources for programmers https://github.com/charlax/
 
 [Factors to determine if that should be a microservice](https://content.pivotal.io/blog/should-that-be-a-microservice-keep-these-six-factors-in-mind)
 
+[Stop Writing Code Comments](https://blog.usejournal.com/stop-writing-code-comments-28fef5272752)
+
 # Git articles
 [Good Commit Messages](https://chris.beams.io/posts/git-commit/)
 
