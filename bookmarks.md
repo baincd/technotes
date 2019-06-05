@@ -22,8 +22,6 @@ A collection of full-stack resources for programmers https://github.com/charlax/
 
 [Rule of Three (when to genericise)](http://blog.scottlogic.com/2018/02/19/generic-platforms-the-rule-of-three.html)
 
-[Package by feature vs package by layer](https://lkrnac.net/blog/2018/02/package-by-layer-obsolete/)
-
 [Code Test Coverage Traps](https://sdtimes.com/test/two-big-traps-code-test-coverage/)
 
 [Dealing with Open Source Vulnerabilities](https://www.infoq.com/articles/vulnerability-open-source)
@@ -36,9 +34,13 @@ A collection of full-stack resources for programmers https://github.com/charlax/
 
 [Why Good Developers Write Bad Tests](https://mtlynch.io/good-developers-bad-tests/)
 
-[Factors to determine if that should be a microservice](https://content.pivotal.io/blog/should-that-be-a-microservice-keep-these-six-factors-in-mind)
-
 [Stop Writing Code Comments](https://blog.usejournal.com/stop-writing-code-comments-28fef5272752)
+
+[Application Continuum (start with a monolith or microservices?)](http://www.appcontinuum.io/)
+* [Application Continuum slides](http://deck.appcontinuum.io/)
+* [Package by feature vs package by layer](https://lkrnac.net/blog/2018/02/package-by-layer-obsolete/)
+* [Factors to determine if that should be a microservice](https://content.pivotal.io/blog/should-that-be-a-microservice-keep-these-six-factors-in-mind)
+
 
 # Git articles
 [Good Commit Messages](https://chris.beams.io/posts/git-commit/)
