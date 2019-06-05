@@ -71,6 +71,10 @@ A collection of full-stack resources for programmers https://github.com/charlax/
 
 [A guide to logging in Java](https://www.marcobehler.com/guides/a-guide-to-logging-in-java)
 
+[JDK downloads](https://jdk.dev/)
+
+[Java is still free](https://docs.google.com/document/d/1nFGazvrCvHMZJgFstlbzoHjpAVwv5DEdnaBr_5pKuHo/preview) [(post on Medium)](https://medium.com/@javachampions/java-is-still-free-2-0-0-6b9aa8d6d244)
+
 # Web Development
 [React vs Angular 2/4/...](https://medium.com/@chriscordle/why-angular-2-4-is-too-little-too-late-ea86d7fa0bae)
 
