@@ -10,6 +10,7 @@ https://bugs.eclipse.org/bugs/show_bug.cgi?id=481417#c8
 Under Java/Editor/Content Assist/Favorites
 ```
 java.text.MessageFormat.*
+org.assertj.core.api.Assertions.*
 org.hamcrest.Matchers.*
 org.junit.Assert.*
 org.mockito.Matchers.*
