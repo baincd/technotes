@@ -41,6 +41,7 @@ A collection of full-stack resources for programmers https://github.com/charlax/
 * [Package by feature vs package by layer](https://lkrnac.net/blog/2018/02/package-by-layer-obsolete/)
 * [Factors to determine if that should be a microservice](https://content.pivotal.io/blog/should-that-be-a-microservice-keep-these-six-factors-in-mind)
 
+* [Imperative and Declarative in 60 seconds](https://twitter.com/tylermcginnis/status/1136358106751889409)
 
 # Git articles
 [Good Commit Messages](https://chris.beams.io/posts/git-commit/)
