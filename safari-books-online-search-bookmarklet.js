@@ -8,10 +8,6 @@ wait, and all publishers (as of the last modification of this script) will be
 selected except Packt Publishing (as new publishers are added to Safari
 Books Online they will also need to be added to this script).
 
-Known Limitations:
-After bookmarklet has been run, the Publishers dropdown has to be toggled for
-the search to occur (pressing the Search button directly does not work)
-
 Tested in Firefox and Chrome.
 
 A Huge Thank You to https://mrcoles.com/bookmarklet/ ,
@@ -269,6 +265,14 @@ javascript:
           el.click();
         }
       });
+
+      var publishersEl = $(':contains("publishers")')
+                            .filter(function() {return $(this).text() === "publishers"});
+      publishersEl.parent().parent().click();
+      
+      var resultsEl = $(':contains("View")')
+                            .filter(function() {return $(this).text().includes("results")});
+      resultsEl.parent().click();
       /********* END MY CODE **********/
     })
     (jQuery.noConflict(true))
