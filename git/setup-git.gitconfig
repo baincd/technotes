@@ -31,6 +31,8 @@
 [merge]
 	# Add common ancestor in merge conflict blocks
 	conflictstyle = diff3
+[rerere]
+	enabled = true
 [push]
 	# https://git-scm.com/docs/git-config#git-config-pushdefault
 
