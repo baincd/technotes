@@ -99,3 +99,6 @@ Interactive License Chooser/Differentiator: http://oss-watch.ac.uk/apps/licdiff/
 Simple Choose a License: https://choosealicense.com/
 
 Simple License Explanations: https://tldrlegal.com/search
+
+# Presentations
+[Public Speaking Tips](https://www.themuse.com/advice/public-speaking-tips)
