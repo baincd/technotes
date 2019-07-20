@@ -1,0 +1,12 @@
+# Eclipse defaults to core.autocrlf=false which causes issues on Windows
+# See https://netmikey.wordpress.com/2016/06/01/eclipse-git-mind-your-windows-line-endings/
+
+# The following configuration will effectively enable autocrlf to true
+# for the repo (even from Eclipse) and prevent those annoying line ending issues
+
+# Handle line endings automatically for files detected as text
+# and leave all files detected as binary untouched.
+* text=auto
+
+# To do a one-time cleanup of line endings and executable bits on all files in the repo, execute
+# git rm -r -q --cached . && git add .
