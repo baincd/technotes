@@ -87,7 +87,7 @@
 
 	# Take all staged and unstaged changes and immediately fixup the commit passed in (you will need to save the
 	# interactive rebase editor)
-	fixup-now = "!f() { git addall && git commit --fixup $1 && git rebase -i $1~1 ; }; f"
+	fixup-now = "!f() { local COMMIT=`git id $1` && git addall && git commit --fixup $COMMIT && git rebase -i $COMMIT~1 ; }; f"
 
 	# Remove all branches that are merged into the passed in branch/commit (excluding the current branch and the passed in branch)
 	rm-merged-branches = "!f() { git f && git branch --merged \"$1\" | grep -v '\\*' | grep -v \"^ *$1$\" | xargs -n 1 git branch -D ; }; f"
