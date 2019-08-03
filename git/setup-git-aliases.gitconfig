@@ -8,7 +8,7 @@
 #     path = ~/.git-aliases.gitconfig
 
 [alias]
-	git = "!f() { git \"$@\" ; }; f" # Fix when you type `git git status` BWAHAHAHAHA
+	git = "!f() { cd -- ${GIT_PREFIX:-.} && git \"$@\" ; }; f" # Fix when you type `git git status` BWAHAHAHAHA
 	diffiw = diff --ignore-space-change --ignore-space-at-eol # Diff Ignore Whitespace
 	id = rev-parse --default HEAD # Print the Git ID (by default of head, but you can pass in a commitish ref)
 	addall = add -A -v
@@ -23,14 +23,14 @@
 	s = status --short --branch # Short status
 	sv = status # Verbose status
 	# List all conflict files
-	conflicts = "!f() { git -c color.status=always status --short | sed -nr '/^[^ A-Z]*(U[DAU]|[DAU]U|AA|DD)/p' ; }; f"
+	conflicts = "!f() { cd -- ${GIT_PREFIX:-.} && git -c color.status=always status --short | sed -nr '/^[^ A-Z]*(U[DAU]|[DAU]U|AA|DD)/p' ; }; f"
 	# Return a specific conflict file
-	conflict = "!f() { git conflicts | sed -re 's/^[^ A-Z]*[DAU][DAU][^ A-Z]* //' -ne ${1}p ; }; f"
+	conflict = "!f() { cd -- ${GIT_PREFIX:-.} && git conflicts | sed -re 's/^[^ A-Z]*[DAU][DAU][^ A-Z]* //' -ne ${1}p ; }; f"
 	logd = log --decorate
 	logg = log --graph --oneline --date=relative --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%<(8,trunc)%an%C(reset) %s%C(bold yellow)%d%C(reset)'
 	logv = log --graph --oneline --date=local --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%an%C(reset) %C(bold yellow)%d%C(reset)%n%w(0,8,8)%B'
-	logw = "!f() { gitk \"$@\" & }; f" # Log Window
-	commitw = "!f() { git gui \"$@\" & }; f" # Commit Window
+	logw = "!f() { cd -- ${GIT_PREFIX:-.} && gitk \"$@\" & }; f" # Log Window
+	commitw = "!f() { cd -- ${GIT_PREFIX:-.} && git gui \"$@\" & }; f" # Commit Window
 	pullr = pull --rebase
 	pullm = pull
 	pullf = pull --ff-only
@@ -44,8 +44,8 @@
 	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git --no-pager log --color=always HEAD~1..HEAD --pretty='%C(dim)%h%C(reset) %s:' --stat && echo '' && git reset HEAD~1 --hard
 	shallow-clone = clone --depth 1
 
-	rec  = "!f() { find -name .git -type d -exec echo \"\" \\; -exec echo --- \\; -exec echo {} \\; -execdir git $@ \\; ; }; f"
-	recp = "!f() { find -name .git -type d -exec echo \"\" \\; -exec echo --- \\;                   -okdir   git $@ \\; ; }; f"
+	rec  = "!f() { cd -- ${GIT_PREFIX:-.} && find -name .git -type d -exec echo \"\" \\; -exec echo --- \\; -exec echo {} \\; -execdir git $@ \\; ; }; f"
+	recp = "!f() { cd -- ${GIT_PREFIX:-.} && find -name .git -type d -exec echo \"\" \\; -exec echo --- \\;                   -okdir   git $@ \\; ; }; f"
 	rpullf = !git rec pullf
 	rfetch = !git rec f
 
@@ -100,6 +100,7 @@
 	unpicked-cherries = "!f() { git cherry -v $@ | sed -n 's/^+ //p'; }; f"
 
 	feature-start = "!f () {                                                  \
+		cd -- ${GIT_PREFIX:-.};                                                 \
 		if test -n \"$(git status --short 2> /dev/null)\"; then                 \
 			echo \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\";        \
 		else                                                                    \
@@ -109,6 +110,7 @@
 	}; f"
 
 	feature-end = "!f () {                                                           \
+		cd -- ${GIT_PREFIX:-.};                                                        \
 		if test -n \"$(git status --short 2> /dev/null)\"; then                        \
 			echo \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\";               \
 		else                                                                           \
@@ -122,6 +124,7 @@
 	}; f"
 
 	qstash = "!f() {                                                                                             \
+		cd -- ${GIT_PREFIX:-.};                                                                                    \
 		if test -z \"$(git status --short 2> /dev/null)\"; then                                                    \
 			echo -e \"\\033[01;31mERROR!\\033[0m: No changes to stash!\";                                            \
 		else                                                                                                       \
@@ -132,6 +135,7 @@
 	}; f"
 
 	qunstash = "!f() {                                                                                          \
+		cd -- ${GIT_PREFIX:-.};                                                                                   \
 		local HEAD_WIP=\"$(git log HEAD~1..HEAD --format='%H' --grep '^WIP')\";                                   \
 		if test -z $HEAD_WIP; then                                                                                \
 			echo \"\\033[01;31mERROR!\\033[0m Head not a WIP\";                                                     \
