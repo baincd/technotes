@@ -22,6 +22,8 @@
 	info = show --pretty=fuller --name-status # Show author and committer information and list files changed (but don't show diff)
 	s = status --short --branch # Short status
 	sv = status # Verbose status
+	# List all conflict files
+	conflicts = "!f() { git -c color.status=always status --short | sed -nr '/^[^ A-Z]*(U[DAU]|[DAU]U|AA|DD)/p' ; }; f"
 	logd = log --decorate
 	logg = log --graph --oneline --date=relative --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%<(8,trunc)%an%C(reset) %s%C(bold yellow)%d%C(reset)'
 	logv = log --graph --oneline --date=local --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%an%C(reset) %C(bold yellow)%d%C(reset)%n%w(0,8,8)%B'
