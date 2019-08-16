@@ -31,6 +31,7 @@ Pattern: System.out.println(java.text.MessageFormat.format("===> ${user}/${enclo
   * Remap "Matching bracket/character/tag" commands to Shift+Ctrl+]
 * Shift-Ctrl-F - Bind to Find Text in File in Windows
   * Remap "Format" commands to Ctrl+Alt+F
+* Shift-F4 - Bind to Show in (Package Explorer) in Windows
 
 # Refresh
 General > Workspace > Refresh using native hooks or polling (Enable)
