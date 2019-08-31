@@ -1,4 +1,6 @@
 # New Distro installed
+* Confirm UID
+* Mount files
 * Grub menu
 * Label partition
 * Setup Bash prompt
@@ -12,9 +14,13 @@
 * Redshift
 
 ## Software
-* Firefox
+* Firefox (copy profile?)
+* Chrome?
 * Atom
 * Synapse?
+* Java
+* Eclipse
+* Acrobat?  Flash?
 
 # New Desktop Environment
 * Touchpad
@@ -42,6 +48,10 @@
 	* sudo dpkg-reconfigure xkb-data
 	* source: https://forums.linuxmint.com/viewtopic.php?t=239174
 
+* Setup mouse
+* Setup printer
+
+
 ## Theme
 * Panels Layout
 	* Menu
@@ -58,3 +68,8 @@
     Controls: BlueMenta
     Mouse Pointer: DMZ-White
     Desktop: Eleganse-dark
+
+## Windows 🤮
+* Change Power Settings
+* Office
+* Restore Disk
