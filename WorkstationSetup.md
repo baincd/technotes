@@ -1,3 +1,5 @@
+TODO: reorganize this page
+
 # New Distro installed
 * Confirm UID
 * Mount files
