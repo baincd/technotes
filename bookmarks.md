@@ -43,6 +43,8 @@ A collection of full-stack resources for programmers https://github.com/charlax/
 
 * [Imperative and Declarative in 60 seconds](https://twitter.com/tylermcginnis/status/1136358106751889409)
 
+[An Engineer’s Guide to a Good Night’s Sleep](https://www.infoq.com/articles/engineers-guide-to-sleep/)
+
 # Git articles
 [Good Commit Messages](https://chris.beams.io/posts/git-commit/)
 
