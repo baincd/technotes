@@ -45,6 +45,8 @@ A collection of full-stack resources for programmers https://github.com/charlax/
 
 [An Engineer’s Guide to a Good Night’s Sleep](https://www.infoq.com/articles/engineers-guide-to-sleep/)
 
+[Good and Bad Technical Debt (and how TDD helps)](https://blog.crisp.se/2013/10/11/henrikkniberg/good-and-bad-technical-debt)
+
 # Git articles
 [Good Commit Messages](https://chris.beams.io/posts/git-commit/)
 
