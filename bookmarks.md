@@ -47,6 +47,12 @@ A collection of full-stack resources for programmers https://github.com/charlax/
 
 [Good and Bad Technical Debt (and how TDD helps)](https://blog.crisp.se/2013/10/11/henrikkniberg/good-and-bad-technical-debt)
 
+RESTful API design
+* [1 of 3: How to design a RESTful API architecture from a human-language spec](https://www.oreilly.com/learning/how-to-design-a-restful-api-architecture-from-a-human-language-spec)
+* [2 of 3: How a RESTful API server reacts to requests](https://www.oreilly.com/ideas/how-a-restful-api-server-reacts-to-requests)
+* [3 of 3: How a RESTful API represents resources](https://www.oreilly.com/ideas/how-a-restful-api-represents-resources)
+* [Reference](https://www.restapitutorial.com/lessons/httpmethods.html)
+
 # Git articles
 [Good Commit Messages](https://chris.beams.io/posts/git-commit/)
 
