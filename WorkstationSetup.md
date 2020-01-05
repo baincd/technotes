@@ -46,9 +46,11 @@ TODO: reorganize this page
 * Numlock on restart (numlockx)
 * Disable bluetooth on startup (rfkill block bluetooth)
 * Swap Keyboard Keys (Insert should be default, and fn+Insert should be PrtScr)
-  * edit /usr/share/X11/xkb/symbols/pc
-	* sudo dpkg-reconfigure xkb-data
-	* source: https://forums.linuxmint.com/viewtopic.php?t=239174
+  * ~/bin/ins-prsc-swap: xmodmap -e "keycode 118 = Print"; xmodmap -e "keycode 107 = Insert"
+  * ~/bin/ins-prsc-unswap: xmodmap -e "keycode 107 = Print"; xmodmap -e "keycode 118 = Insert"
+  * ~/bin/ins-prsc-toggle: if [ "$(xmodmap -pk | grep "(Insert)" | grep 118 | wc -l)" = "1" ]; then ~/bin/ins-prsc-swap.sh else ~/bin/ins-prsc-unswap.sh fi
+  * Hotkey - Win + Print -> ~/bin/ins-prsc-toggle
+  * Source: https://ictsolved.github.io/remap-key-in-linux/
 
 * Setup mouse
 * Setup printer
