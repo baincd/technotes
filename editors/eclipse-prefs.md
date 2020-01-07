@@ -29,7 +29,7 @@ Pattern: System.out.println(java.text.MessageFormat.format("===> ${user}/${enclo
 # Key Bindings
 * Shift+Ctrl+P - Bind to Quick Access in Windows
   * Remap "Matching bracket/character/tag" commands to Shift+Ctrl+]
-* Shift-Ctrl-F - Bind to Find Text in File in Windows
+* Shift-Ctrl-F - Bind to File Search in Windows
   * Remap "Format" commands to Ctrl+Alt+F
 * Shift-F4 - Bind to Show in (Package Explorer) in Windows
 
