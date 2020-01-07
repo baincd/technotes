@@ -21,10 +21,10 @@ org.mockito.Mockito.*
 
 # Templates
 Java > Editor > Templates
-Name: debugout
-Context: Java statements
-Description: println for debugging (temporary)
-Pattern: System.out.println(java.text.MessageFormat.format("===> ${user}/${enclosing_method}/${currentDate:date('msS')}: {0} - {1} - {2} <===",${cursor})); // TODO: delete temporary debugging line
+- Name: debugout
+  - Context: Java statements
+  - Description: println for debugging (temporary)
+  - Pattern: System.out.println(java.text.MessageFormat.format("===> ${user}/${enclosing_method}/${currentDate:date('msS')}: {0} - {1} - {2} <===",${cursor})); // TODO: delete temporary debugging line
 
 # Key Bindings
 * Shift+Ctrl+P - Bind to Quick Access in Windows
