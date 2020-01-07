@@ -110,4 +110,6 @@ HISTCONTROL=ignorespace
 
 PATH=$PATH:~/bin
 
+function mkmvndirs() { mkdir "$1/src/main/java" && mkdir "$1/src/main/resources" && mkdir "$1/src/test/java" && mkdir "$1/src/test/resources" && touch "$1/pom.xml" ; }
+
 alias gnucash-monthly-expense-report-to-spreadsheet="tac | tac | sed -re 's/^(Monthly Expense Report:)/##### \1 #####/' -re '/^Act\tAct\tAct/d' -re '/^(Big )?Expenses/d' -re 's/^[\t ]+//' -re 's/([^\t]*)\t\t/\1\t/' -re '4s/^/\t/' -re 's/\$//g'"
