@@ -35,3 +35,17 @@ Java > Editor > Templates
 
 # Refresh
 General > Workspace > Refresh using native hooks or polling (Enable)
+
+# Workstation layout
+```
++-----------------------------------------+--------------------------------+----------------------+
+| Package Explorer; Type Hierarchy        | <editor>                       | Git Staging; History |
+|                                         |                                |                      |
+|                                         +--------------------------------+----------------------+
+|                                         | Problems; Console; JUnit; Tasks; Bookmarks; Search    |
++-----------------------------------------+                                                       |
+| Servers; Boot Dashboard                 |                                                       |
+|                                         |                                                       |
++-----------------------------------------+-------------------------------------------------------+
+```
+* On right side, put Problems view collection on top
