@@ -15,6 +15,8 @@ Best/Essential Linux Apps: https://www.ubuntupit.com/best-linux-software-our-edi
 
 A collection of full-stack resources for programmers https://github.com/charlax/professional-programming
 
+Markdown Reference https://www.markdownguide.org/basic-syntax
+
 # General Software Development articles
 [Relearning how to learn](https://www.infoq.com/articles/relearning-learn)
 
