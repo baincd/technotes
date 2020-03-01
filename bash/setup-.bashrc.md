@@ -10,4 +10,5 @@ fi
 ```
 
 ### Reference
+[http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html](http://web.archive.org/web/20200213230525/http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html)
 https://apple.stackexchange.com/a/51038
