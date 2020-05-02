@@ -19,6 +19,8 @@ A collection of full-stack resources for programmers https://github.com/charlax/
 
 Markdown Reference https://www.markdownguide.org/basic-syntax
 
+Unicode characters: https://www.htmlsymbols.xyz/
+
 # General Software Development articles
 [Relearning how to learn](https://www.infoq.com/articles/relearning-learn)
 
