@@ -1,25 +1,30 @@
-# Software Development Sites
-Top Books: http://www.dev-books.com/
-
+# Software Development Tools
 Multi-API reference: https://devdocs.io/
 
 Unix Toolbox: http://cb.vu/unixtoolbox.xhtml
 
+Markdown Reference https://www.markdownguide.org/basic-syntax
+
+Unicode characters: https://www.htmlsymbols.xyz/
+
+# Top Software Development Learning Resources
+Top Books: http://www.dev-books.com/
+
+Books compiled from Stack Overflow Documentation: http://books.goalkicker.com/
+
+A collection of full-stack resources for programmers https://github.com/charlax/professional-programming
+
+# Top Software Development Concepts & Topics
 Twelve-Factor App: https://12factor.net/
 
 Model for software documentation abstractions: https://c4model.com/
 
+[Application Continuum (start with a monolith or microservices?)](http://www.appcontinuum.io/)
+* [Application Continuum slides](http://deck.appcontinuum.io/)
+* [Package by feature vs package by layer](https://lkrnac.net/blog/2018/02/package-by-layer-obsolete/)
+* [Factors to determine if that should be a microservice](https://content.pivotal.io/blog/should-that-be-a-microservice-keep-these-six-factors-in-mind)
+
 Hiring trends: https://www.hntrends.com/
-
-Books compiled from Stack Overflow Documentation: http://books.goalkicker.com/
-
-Best/Essential Linux Apps: https://www.ubuntupit.com/best-linux-software-our-editorial-list-of-essential-linux-apps/
-
-A collection of full-stack resources for programmers https://github.com/charlax/professional-programming
-
-Markdown Reference https://www.markdownguide.org/basic-syntax
-
-Unicode characters: https://www.htmlsymbols.xyz/
 
 # General Software Development articles
 [Relearning how to learn](https://www.infoq.com/articles/relearning-learn)
@@ -32,8 +37,6 @@ Unicode characters: https://www.htmlsymbols.xyz/
 
 [Dealing with Open Source Vulnerabilities](https://www.infoq.com/articles/vulnerability-open-source)
 
-[Anatomy of a perfect pull request](https://opensource.com/article/18/6/anatomy-perfect-pull-request)
-
 [10-to-1 rule of programming](https://www.ybrikman.com/writing/2018/08/12/the-10-to-1-rule-of-writing-and-programming/)
 
 [SOLID Principles Every Developer Should Know](https://blog.bitsrc.io/solid-principles-every-developer-should-know-b3bfa96bb688)
@@ -42,12 +45,7 @@ Unicode characters: https://www.htmlsymbols.xyz/
 
 [Stop Writing Code Comments](https://blog.usejournal.com/stop-writing-code-comments-28fef5272752)
 
-[Application Continuum (start with a monolith or microservices?)](http://www.appcontinuum.io/)
-* [Application Continuum slides](http://deck.appcontinuum.io/)
-* [Package by feature vs package by layer](https://lkrnac.net/blog/2018/02/package-by-layer-obsolete/)
-* [Factors to determine if that should be a microservice](https://content.pivotal.io/blog/should-that-be-a-microservice-keep-these-six-factors-in-mind)
-
-* [Imperative and Declarative in 60 seconds](https://twitter.com/tylermcginnis/status/1136358106751889409)
+[Imperative and Declarative in 60 seconds](https://twitter.com/tylermcginnis/status/1136358106751889409)
 
 [An Engineer’s Guide to a Good Night’s Sleep](https://www.infoq.com/articles/engineers-guide-to-sleep/)
 
@@ -67,6 +65,8 @@ RESTful API design
 [Trust Git Merge/Branching (coming from SVN)](https://www.atlassian.com/git/articles/trust-the-merge-and-branch-simplification-musings)
 
 [Git for Advanced Beginners](http://think-like-a-git.net/)
+
+[Anatomy of a perfect pull request](https://opensource.com/article/18/6/anatomy-perfect-pull-request)
 
 # Git Workflows
 ## git flow:
@@ -98,6 +98,9 @@ RESTful API design
 [React vs Angular 2/4/...](https://medium.com/@chriscordle/why-angular-2-4-is-too-little-too-late-ea86d7fa0bae)
 
 [WebAssembly: How and why](https://blog.logrocket.com/webassembly-how-and-why-559b7f96cd71)
+
+# Linux
+[Best/Essential Linux Apps](https://www.ubuntupit.com/best-linux-software-our-editorial-list-of-essential-linux-apps/)
 
 # Open Source Licensing
 ## FAQ
