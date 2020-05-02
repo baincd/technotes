@@ -9,6 +9,8 @@
 
 [alias]
 	git = "!f() { cd -- ${GIT_PREFIX:-.} && git \"$@\" ; }; f" # Fix when you type `git git status` BWAHAHAHAHA
+	aliases = "!f() { git config --get-regexp '^alias\\.' | sed -rne 's/^alias\\.([^ ]*).*$/\\1/p' | sort ; }; f"
+	alias = "!f() { git config --get-regexp \"^alias\\.${1}\\b\" | sed -rne \"s/^alias\\.${1}\\s//p\" ; }; f"
 	diffiw = diff --ignore-space-change --ignore-space-at-eol # Diff Ignore Whitespace
 	id = rev-parse --default HEAD # Print the Git ID (by default of head, but you can pass in a commitish ref)
 	addall = add -A -v
