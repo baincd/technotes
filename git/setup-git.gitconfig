@@ -1,26 +1,51 @@
-# Add to ~/.gitconfig
+################################################################################
+# # Chris' Awesome Git Config                                                  #
+#                                                                              #
+# A very useful and helpful git configuration.                                 #
+#                                                                              #
+# IMPORTANT: See below for git configuration settings that are unique to the   #
+# workstation, and configure these directly in ~/.gitconfig                    #
+#                                                                              #
+# ## Setup Option 1: Import into ~/.gitconfig                                  #
+#                                                                              #
+# 1. Create `~/.git.gitconfig`                                                 #
+#    a. Create symbolic link with following command                            #
+#     `ln -s ~/wc/technotes/git/setup-git.gitconfig ~/.git.gitconfig`          #
+#    b. OR Save this file to `~/.git.gitconfig`                                #
+#                                                                              #
+# 2. Add to ~/.gitconfig:                                                      #
+# ```                                                                          #
+# [include]                                                                    #
+#     path = ~/.git.gitconfig                                                  #
+# ```                                                                          #
+#                                                                              #
+# ## Setup Option 2: Copy contents directly into ~/.gitconfig                  #
+################################################################################
 
-# 1) Execute:
-# ln -s ~/wc/technotes/git/setup-git.gitconfig ~/.git.gitconfig
-#
-# 2) Add to ~/.gitconfig:
-# [include]
-#     path = ~/.git.gitconfig
+########################################
+# The following are settings are       #
+# unique for each workstation and must #
+# be configured directly in            #
+# ~/.gitconfig                         #
+########################################
 # [user]
 # 	name = Your Name
 # 	email = yourname@example.com
 # [core]
 # 	# Set Notepad++ as editor in git
 # 	editor = 'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
+## OR
 # 	# Set vi as editor in git
 # 	editor = vi
 # [credential]
 # 	# Windows http - Use windows to cache credentials
 # 	helper = wincred
+## OR
 # 	# Linux http- use git cache to cache credentials (change timeout from default 15 mins to 60 mins)
 # 	helper = cache --timeout=3600 # change the timeout from the default 15 mins to 60 mins
 # 	# ssh - use ssh-cache alias
 
+###
 
 [core]
 	# Disable long line wrap
@@ -30,6 +55,7 @@
 	verbose = true
 [merge]
 	# Add common ancestor in merge conflict blocks
+	# Why is diff3 awesome?  https://blog.nilbus.com/take-the-pain-out-of-git-conflict-resolution-use-diff3/
 	conflictstyle = diff3
 [rerere]
 	enabled = true

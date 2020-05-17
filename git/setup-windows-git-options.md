@@ -1,11 +1,10 @@
-# Git for windows setup
+# Git for windows setup options
+
+These are useful options for configuring git bash on Windows.
 
 ### Set home to specific path
 1) Create environment variable HOME to new home path
 2) If exist, move `.gitconfig`, `.bash*`, and `.ssh/` from old home path to new home path
-
-### Setup Git Bash command prompt and window title
-See [bash/bash-prompt](https://github.com/baincd/technotes/blob/master/bash/bash-prompt.md) for setup
 
 ### Setup initial directory for Git Bash
 Add to `~/.bashrc`

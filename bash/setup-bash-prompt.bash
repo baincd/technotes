@@ -1,15 +1,56 @@
-# Add to ~/.bashrc
-
-# 1) Execute:
-# ln -s ~/wc/technotes/bash/setup-bash-prompt.bash ~/.bash-prompt.bash
-#
-# 2) Add to ~/.bashrc:
-# if [ -f ~/.bash-prompt.bash ]; then
-#     . ~/.bash-prompt.bash
-# fi
-#
-# # add default prompt (gps, gpss, gpb, or gpq)
-# gpb
+################################################################################
+# # Chris' Awesome Bash Prompt                                                 #
+#                                                                              #
+# This will configure a useful Bash Prompt                                     #
+# - Current directory path will be displayed in yellow on it's own line        #
+# - Current directory path will also be displayed in the window title          #
+# - If a git repo, a status will be displayed above current directory.         #
+#                                                                              #
+# The git status can be controlled via the following commands:                 #
+# - `gps` (Git Prompt Status)                                                  #
+#        Display the git branch, status, and changed files [DEFAULT]           #
+# - `gpss` (Git Prompt Short Status)                                           #
+#        Display git branch, status, and file count                            #
+# - `gpb` (Git Prompt Branch)                                                  #
+#        Display branch name only, in format similar to the bash prompt that   #
+#        ships with git                                                        #
+# - `gpq` (Git Prompt Quiet)                                                   #
+#        Do not display any git info                                           #
+#                                                                              #
+# This also includes the following helpful commands                            #
+#                                                                              #
+# - `gitq <git_params>` (Git Quiet)                                            #
+#        Execute the git command, and hide the git status information for the  #
+#        git prompt one time.  This is helpful when there are many file        #
+#        changes, and you do not want to see those changes in the bash prompt  #
+#        after executing this command.  (ex: "gitq add pom.xml")               #
+# - `s` (Status)                                                               #
+#        Execute git short status without repeating the status in the bash     #
+#        prompt. Equivalent to `gitq status --short --branch`                  #
+# - `sv` (Status Verbose)                                                      #
+#        Execute git status without repeating the status in the bash prompt.   #
+#        Equivalent to `gitq status`                                           #
+# - `bt <title>` (Bash Title)                                                  #
+#        Add a title to the bash prompt and window title.  This can be helpful #
+#        to differentiate between multiple bash windows. To remove title,      #
+#        execute with no parameter.                                            #
+#                                                                              #
+# ## Setup Option 1: Import into ~/.bashrc                                     #
+#                                                                              #
+# 1. Create `~/.bash-prompt.bash`                                              #
+#    a. Create symbolic link with following command                            #
+#     `ln -s ~/wc/technotes/bash/setup-bash-prompt.bash ~/.bash-prompt.bash`   #
+#    b. OR Save this file to `~/.bash-prompt.bash`                             #
+#                                                                              #
+# 2. Add to ~/.bashrc:                                                         #
+# ```                                                                          #
+# if [ -f ~/.bash-prompt.bash ]; then                                          #
+#     . ~/.bash-prompt.bash                                                    #
+# fi                                                                           #
+# ```                                                                          #
+#                                                                              #
+# ## Setup Option 2: Copy contents directly into ~/.bashrc                     #
+################################################################################
 
 DEFAULT_PS1=$PS1
 
@@ -32,11 +73,12 @@ alias gpb='PS1=                       PROMPT_COMMAND=$_PROMPT_COMMAND_GIT_PS1_' 
 alias gps='PS1=$_PS1_NO_BRANCH_       PROMPT_COMMAND=$_PROMPT_COMMAND_GIT_STATUS_' # Git Prompt Status (include short git status)
 alias gpss='PS1=$_PS1_NO_BRANCH_      PROMPT_COMMAND=$_PROMPT_COMMAND_GIT_SHORT_STATUS_' # Git Prompt branch Status and file count
 
+# Set default prompt to gps
 gps
 
 # Helpful aliases that run git status, and not run git status a second time as part of the prompt
-alias s='skip-prompt-command-once && git s'
-alias sv='skip-prompt-command-once && git sv'
+alias s='skip-prompt-command-once && git status --short --branch'
+alias sv='skip-prompt-command-once && git status'
 alias gitq='skip-prompt-command-once && git'
 alias reset-prompt-command='echo "" && PROMPT_COMMAND=${PROMPT_COMMAND_TMP} && unset PROMPT_COMMAND_TMP'
 alias skip-prompt-command-once='PROMPT_COMMAND_TMP=$PROMPT_COMMAND PROMPT_COMMAND=reset-prompt-command'

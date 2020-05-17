@@ -1,59 +1,92 @@
-# Add to ~/.gitconfig
-
-# 1) Execute:
-# ln -s ~/wc/technotes/git/setup-git-aliases.gitconfig ~/.git-aliases.gitconfig
-#
-# 2) Add to ~/.gitconfig:
-# [include]
-#     path = ~/.git-aliases.gitconfig
+################################################################################
+# # Chris' Awesome Git Aliases                                                 #
+#                                                                              #
+# Very useful, helpful, and AWESOME! git aliases.  View the file contents to   #
+# see git aliases defined.                                                     #
+#                                                                              #
+# ## Setup Option 1: Import into ~/.gitconfig                                  #
+#                                                                              #
+# 1. Create `~/.git-aliases.gitconfig`                                         #
+#    a. Create symbolic link with following command                            #
+#     `ln -s ~/wc/technotes/git/setup-git-aliases.gitconfig ~/.git-aliases.gitconfig` #
+#    b. OR Save this file to `~/.git-aliases.gitconfig`                        #
+#                                                                              #
+# 2. Add to ~/.gitconfig:                                                      #
+# ```                                                                          #
+# [include]                                                                    #
+#     path = ~/.git.gitconfig                                                  #
+# ```                                                                          #
+#                                                                              #
+# ## Setup Option 2: Copy contents directly into ~/.gitconfig                  #
+################################################################################
 
 [alias]
 	git = "!f() { cd -- ${GIT_PREFIX:-.} && git \"$@\" ; }; f" # Fix when you type `git git status` BWAHAHAHAHA
-	aliases = "!f() { git config --get-regexp '^alias\\.' | sed -rne 's/^alias\\.([^ ]*).*$/\\1/p' | sort ; }; f"
-	alias = "!f() { git config --get-regexp \"^alias\\.${1}\\b\" | sed -rne \"s/^alias\\.${1}\\s//p\" ; }; f"
-	diffiw = diff --ignore-space-change --ignore-space-at-eol # Diff Ignore Whitespace
+	aliases = "!f() { git config --get-regexp '^alias\\.' | sed -rne 's/^alias\\.([^ ]*).*$/\\1/p' | sort ; }; f" # List all aliases configured
+	alias = "!f() { git config --get-regexp \"^alias\\.${1}\\b\" | sed -rne \"s/^alias\\.${1}\\s//p\" ; }; f" # Show the git alias command.  Usage: `git alias diffiw`
+
+	logw = "!f() { cd -- ${GIT_PREFIX:-.} && gitk \"$@\" & }; f" # Log GUI - also accepts many parameters of `git log`
+	commitw = "!f() { cd -- ${GIT_PREFIX:-.} && git gui \"$@\" & }; f" # Commit GUI
+
 	id = rev-parse --default HEAD # Print the Git ID (by default of head, but you can pass in a commitish ref)
-	addall = add -A -v
-	commitall = !git addall && git commit
-	pushall = !git commitall && git push
-	pushup = -c push.default=upstream push
-	staged = diff --cached
-	ffup = merge --ff-only @{u}
-	ff = merge --ff-only
-	merge2 = merge --strategy-option=patience
 	info = show --pretty=fuller --name-status # Show author and committer information and list files changed (but don't show diff)
+
+	logd = log --decorate # Log Decorated with branch information
+	logg = log --graph --oneline --date=relative --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%<(8,trunc)%an%C(reset) %s%C(bold yellow)%d%C(reset)' # Log Graph
+	logv = log --graph --oneline --date=local --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%an%C(reset) %C(bold yellow)%d%C(reset)%n%w(0,8,8)%B' # Log Verbose Graph
+
+	addall = add -A -v # Add all files to staging area
+	commitall = !git addall && git commit # Commit all changes
+	pushall = !git commitall && git push # Commit all changes and push
+	fixup-now = "!f() { local COMMIT=`git id $1` && git addall && git commit --fixup $COMMIT && git rebase -i $COMMIT~1 ; }; f" # Take all staged and unstaged changes and immediately fixup the commit passed in (you will need to save the interactive rebase editor)
+
 	s = status --short --branch # Short status
 	sv = status # Verbose status
-	# List all conflict files
-	conflicts = "!f() { cd -- ${GIT_PREFIX:-.} && git -c color.status=always status --short | sed -nr '/^[^ A-Z]*(U[DAU]|[DAU]U|AA|DD)/p' ; }; f"
-	# Return a specific conflict file
-	conflict = "!f() { cd -- ${GIT_PREFIX:-.} && git conflicts | sed -re 's/^[^ A-Z]*[DAU][DAU][^ A-Z]* //' -ne ${1}p ; }; f"
-	logd = log --decorate
-	logg = log --graph --oneline --date=relative --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%<(8,trunc)%an%C(reset) %s%C(bold yellow)%d%C(reset)'
-	logv = log --graph --oneline --date=local --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%an%C(reset) %C(bold yellow)%d%C(reset)%n%w(0,8,8)%B'
-	logw = "!f() { cd -- ${GIT_PREFIX:-.} && gitk \"$@\" & }; f" # Log Window
-	commitw = "!f() { cd -- ${GIT_PREFIX:-.} && git gui \"$@\" & }; f" # Commit Window
-	pullr = pull --rebase
-	pullm = pull
-	pullf = pull --ff-only
-	f = fetch --all --tags
-	br = checkout -b # Create and checkout branch ex: git br newbranch   git br newbranch existingbranch
+	staged = diff --cached # Show staged changes
+	diffiw = diff --ignore-space-change --ignore-space-at-eol # Diff Ignore Whitespace
+	conflicts = "!f() { cd -- ${GIT_PREFIX:-.} && git -c color.status=always status --short | sed -nr '/^[^ A-Z]*(U[DAU]|[DAU]U|AA|DD)/p' ; }; f" # List all conflict files
+	conflict = "!f() { cd -- ${GIT_PREFIX:-.} && git conflicts | sed -re 's/^[^ A-Z]*[DAU][DAU][^ A-Z]* //' -ne ${1}p ; }; f" # Return a specific conflict file
+
+	ff = merge --ff-only # Fast Forward branch to another branch (Usage: `git ff origin/anotherbranch`)
+	ffup = merge --ff-only @{u} # Fast Forward branch to upstream branch
+	merge2 = merge --strategy-option=patience # Merge using a different strategy
+
+	f = fetch --all --tags # Fetch All
+	pullr = pull --rebase # Pull using rebase
+	pullm = pull # Pull using Merge
+	pullf = pull --ff-only # Pull using Fast Forward
+	pushup = -c push.default=upstream push # Push to the upstream branch
+
+	br = checkout -b # Create and checkout branch ex: `git br newbranch` or  `git br newbranch existingbranch`
 	brr = branch -m # Branch Rename
 	track = branch -u # Set tracking (upstream) branch
 	untrack = branch --unset-upstream # Unset tracking (upstream) branch
+
+	# Do a hard reset, but save all changes in the working copy to the reflog
 	# Based on alias from https://haacked.com/archive/2014/07/28/github-flow-aliases/
 	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git --no-pager log --color=always HEAD~1..HEAD --pretty='%C(dim)%h%C(reset) %s:' --stat && echo '' && git reset HEAD~1 --hard
+
+	# Execute a git command recursively on all git repos in subdirectories
+	rec  = "!f() { cd -- ${GIT_PREFIX:-.} && find -name .git -type d -exec echo \"\" \\; -exec echo --- \\; -exec echo {} \\; -execdir git $@ \\; ; }; f"
+	# Execute a git command recursively on all git repos in subdirectories, prompting for each repo
+	recp = "!f() { cd -- ${GIT_PREFIX:-.} && find -name .git -type d -exec echo \"\" \\; -exec echo --- \\;                   -okdir   git $@ \\; ; }; f"
+	rpullf = !git rec pullf # Recursively pull all repos in subdirectories
+	rfetch = !git rec f # Recursively fetch all repos in subdirectories
+
+	branches = branch -a -vv # List all branches
+	tags = tag -l # List all tags
+	remotes = remote -v # List all remotes
+
+	# Remove all branches that are merged into the passed in branch/commit (excluding the current branch and the passed in branch)
+	rm-merged-branches = "!f() { git f && git branch --merged \"$1\" | grep -v '\\*' | grep -v \"^ *$1$\" | xargs -n 1 git branch -D ; }; f"
+
+	# Find all commits that have not been cherrypicked onto the branch
+	unpicked-cherries = "!f() { git cherry -v $@ | sed -n 's/^+ //p'; }; f"
+
+	# Clone only the HEAD commit (no history will be cloned)
 	shallow-clone = clone --depth 1
 
-	rec  = "!f() { cd -- ${GIT_PREFIX:-.} && find -name .git -type d -exec echo \"\" \\; -exec echo --- \\; -exec echo {} \\; -execdir git $@ \\; ; }; f"
-	recp = "!f() { cd -- ${GIT_PREFIX:-.} && find -name .git -type d -exec echo \"\" \\; -exec echo --- \\;                   -okdir   git $@ \\; ; }; f"
-	rpullf = !git rec pullf
-	rfetch = !git rec f
-
-	branches = branch -a -vv
-	tags = tag -l
-	remotes = remote -v
-
+	# Display useful tips for log command search options
 	helpme-log-search = "!f () {                                                                               \
 		echo \"\\033[1mSearch commit message\\033[0m\";                                                          \
 		echo \"  --grep=<regex>\";                                                                               \
@@ -71,6 +104,7 @@
 	# [`-S and -G`](https://git-scm.com/docs/git-log#git-log--Sltstringgt) \
 	# [`--grep`](https://git-scm.com/docs/git-log#git-log---grepltpatterngt)
 
+	# Display useful tips for log command output options
 	helpme-log-output = "!f () {                                                       \
 		echo \"--graph\";                                                                \
 		echo \"--decorate (show refs)\";                                                 \
@@ -82,17 +116,8 @@
 		echo \"-p (print patches)\";                                                     \
 	}; f"
 
-
-	# Take all staged and unstaged changes and immediately fixup the commit passed in (you will need to save the
-	# interactive rebase editor)
-	fixup-now = "!f() { local COMMIT=`git id $1` && git addall && git commit --fixup $COMMIT && git rebase -i $COMMIT~1 ; }; f"
-
-	# Remove all branches that are merged into the passed in branch/commit (excluding the current branch and the passed in branch)
-	rm-merged-branches = "!f() { git f && git branch --merged \"$1\" | grep -v '\\*' | grep -v \"^ *$1$\" | xargs -n 1 git branch -D ; }; f"
-
-	# Find all commits that have not been cherrypicked onto the branch
-	unpicked-cherries = "!f() { git cherry -v $@ | sed -n 's/^+ //p'; }; f"
-
+	# Fetch and create a new branch off of origin/master
+	# Usage: `git feature-start my-new-feature`
 	feature-start = "!f () {                                                  \
 		cd -- ${GIT_PREFIX:-.};                                                 \
 		if test -n \"$(git status --short 2> /dev/null)\"; then                 \
@@ -103,6 +128,7 @@
 		fi;                                                                     \
 	}; f"
 
+	# Fetch, checkout master (create if necessary), and delete current feature branch
 	feature-end = "!f () {                                                           \
 		cd -- ${GIT_PREFIX:-.};                                                        \
 		if test -n \"$(git status --short 2> /dev/null)\"; then                        \
@@ -117,8 +143,14 @@
 		fi;                                                                            \
 	}; f"
 
+	# Equivalent to `git feature-end && git feature-start <branchname>`
 	feature-swap = "!f() { git feature-end &&  git feature-start "$@" ; }; f"
 
+	# Quick Stash - Commit all changes with the commit message starting with "WIP!"
+	# Usage: `git qstash` OR `git qstash "Added FooBar"`
+	# Can be used to commit frequently so code can be rolled back quickly to a good state
+	# or to store changes on the branch temporarily so a different branch can be checked out
+	# see qunstash
 	qstash = "!f() {                                                                                             \
 		cd -- ${GIT_PREFIX:-.};                                                                                    \
 		if test -z \"$(git status --short 2> /dev/null)\"; then                                                    \
@@ -130,6 +162,10 @@
     fi;                                                                                                        \
 	}; f"
 
+	# Remove commits added by qstash, leaving changes to working copy
+	# Usage:
+	#    `git qunstash` - remove only the HEAD commit
+	#    `git qunstash --all` - remove all consecutive qstash'd commits
 	qunstash = "!f() {                                                                                          \
 		cd -- ${GIT_PREFIX:-.};                                                                                   \
 		local HEAD_WIP=\"$(git log HEAD~1..HEAD --format='%H' --grep '^WIP')\";                                   \
