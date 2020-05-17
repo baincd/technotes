@@ -125,6 +125,8 @@
 		fi;                                                                            \
 	}; f"
 
+	feature-swap = "!f() { git feature-end &&  git feature-start "$@" ; }; f"
+
 	qstash = "!f() {                                                                                             \
 		cd -- ${GIT_PREFIX:-.};                                                                                    \
 		if test -z \"$(git status --short 2> /dev/null)\"; then                                                    \
