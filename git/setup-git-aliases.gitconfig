@@ -41,7 +41,6 @@
 	brr = branch -m # Branch Rename
 	track = branch -u # Set tracking (upstream) branch
 	untrack = branch --unset-upstream # Unset tracking (upstream) branch
-	setdefaultpushremote = config remote.pushdefault
 	# Based on alias from https://haacked.com/archive/2014/07/28/github-flow-aliases/
 	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git --no-pager log --color=always HEAD~1..HEAD --pretty='%C(dim)%h%C(reset) %s:' --stat && echo '' && git reset HEAD~1 --hard
 	shallow-clone = clone --depth 1
@@ -83,13 +82,6 @@
 		echo \"-p (print patches)\";                                                     \
 	}; f"
 
-	# Stand up a git server:
-	# Refs:
-	#   https://railsware.com/blog/2013/09/19/taming-the-git-daemon-to-quickly-share-git-repository/
-	#   https://git-scm.com/docs/git-daemon#git-daemon---export-all
-	# Remote example: git://ip-address/path-to-repo-from-base-path
-	serve = daemon --base-path=/files/wc/ --export-all --reuseaddr --informative-errors --verbose
-	fetch-cmp = -c core.compression=9 fetch # Fetch seems to work better increasing compression
 
 	# Take all staged and unstaged changes and immediately fixup the commit passed in (you will need to save the
 	# interactive rebase editor)
