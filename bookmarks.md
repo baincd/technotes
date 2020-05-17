@@ -45,6 +45,8 @@ Hiring trends: https://www.hntrends.com/
 
 [Stop Writing Code Comments](https://blog.usejournal.com/stop-writing-code-comments-28fef5272752)
 
+[Comment Only What the Code Cannot Say](https://medium.com/@kevlinhenney/comment-only-what-the-code-cannot-say-dfdb7b8595ac)
+
 [Imperative and Declarative in 60 seconds](https://twitter.com/tylermcginnis/status/1136358106751889409)
 
 [An Engineer’s Guide to a Good Night’s Sleep](https://www.infoq.com/articles/engineers-guide-to-sleep/)
