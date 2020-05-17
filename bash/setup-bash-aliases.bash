@@ -113,4 +113,12 @@ PATH=$PATH:~/bin
 
 function mkmvndirs() { mkdir "$1/src/main/java" && mkdir "$1/src/main/resources" && mkdir "$1/src/test/java" && mkdir "$1/src/test/resources" && touch "$1/pom.xml" ; }
 
+# Delete files and directories associated with Eclipse Java projects
+# - This will delete these files and folders only from directories that contain a .project file
+# - The filtering of "No such file or directory" in the output is to ignore that error due to the find command attempting to traverse a directory it previously deleted.
+# - Does not delete .metadata/ (the Eclipse workspace)
+# - (I know the target/ folder is from Maven and not Eclipse directly, but I still think it is helpful to delete it :-)  )
+alias eclipse-clean='find -name .project -type f -execdir rm -rfv .project .classpath .wtpmodules bin/ .settings/ target/ \; 2>&1 | grep -v "No such file or directory"'
+
+
 alias gnucash-monthly-expense-report-to-spreadsheet="tac | tac | sed -re 's/^(Monthly Expense Report:)/##### \1 #####/' -re '/^Act\tAct\tAct/d' -re '/^(Big )?Expenses/d' -re 's/^[\t ]+//' -re 's/([^\t]*)\t\t/\1\t/' -re '4s/^/\t/' -re 's/\$//g'"
