@@ -21,180 +21,180 @@
 ################################################################################
 
 [alias]
-	git = "!f() { cd -- ${GIT_PREFIX:-.} && git \"$@\" ; }; f" # Fix when you type `git git status` BWAHAHAHAHA
-	aliases = "!f() { git config --get-regexp '^alias\\.' | sed -rne 's/^alias\\.([^ ]*).*$/\\1/p' | sort ; }; f" # List all aliases configured
-	alias = "!f() { git config --get-regexp \"^alias\\.${1}\\b\" | sed -rne \"s/^alias\\.${1}\\s//p\" ; }; f" # Show the git alias command.  Usage: `git alias diffiw`
+  git = "!f() { cd -- ${GIT_PREFIX:-.} && git \"$@\" ; }; f" # Fix when you type `git git status` BWAHAHAHAHA
+  aliases = "!f() { git config --get-regexp '^alias\\.' | sed -rne 's/^alias\\.([^ ]*).*$/\\1/p' | sort ; }; f" # List all aliases configured
+  alias = "!f() { git config --get-regexp \"^alias\\.${1}\\b\" | sed -rne \"s/^alias\\.${1}\\s//p\" ; }; f" # Show the git alias command.  Usage: `git alias diffiw`
 
-	logw = "!f() { cd -- ${GIT_PREFIX:-.} && gitk \"$@\" & }; f" # Log GUI - also accepts many parameters of `git log`
-	commitw = "!f() { cd -- ${GIT_PREFIX:-.} && git gui \"$@\" & }; f" # Commit GUI
+  logw = "!f() { cd -- ${GIT_PREFIX:-.} && gitk \"$@\" & }; f" # Log GUI - also accepts many parameters of `git log`
+  commitw = "!f() { cd -- ${GIT_PREFIX:-.} && git gui \"$@\" & }; f" # Commit GUI
 
-	id = rev-parse --default HEAD # Print the Git ID (by default of head, but you can pass in a commitish ref)
-	info = show --pretty=fuller --name-status # Show author and committer information and list files changed (but don't show diff)
+  id = rev-parse --default HEAD # Print the Git ID (by default of head, but you can pass in a commitish ref)
+  info = show --pretty=fuller --name-status # Show author and committer information and list files changed (but don't show diff)
 
-	logd = log --decorate # Log Decorated with branch information
-	logg = log --graph --oneline --date=relative --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%<(8,trunc)%an%C(reset) %s%C(bold yellow)%d%C(reset)' # Log Graph
-	logv = log --graph --oneline --date=local --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%an%C(reset) %C(bold yellow)%d%C(reset)%n%w(0,8,8)%B' # Log Verbose Graph
+  logd = log --decorate # Log Decorated with branch information
+  logg = log --graph --oneline --date=relative --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%<(8,trunc)%an%C(reset) %s%C(bold yellow)%d%C(reset)' # Log Graph
+  logv = log --graph --oneline --date=local --format=format:'%C(bold blue)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold cyan)%an%C(reset) %C(bold yellow)%d%C(reset)%n%w(0,8,8)%B' # Log Verbose Graph
 
-	addall = add -A -v # Add all files to staging area
-	commitall = !git addall && git commit # Commit all changes
-	pushall = !git commitall && git push # Commit all changes and push
-	fixup-now = "!f() { local COMMIT=`git id $1` && git addall && git commit --fixup $COMMIT && git rebase -i $COMMIT~1 ; }; f" # Take all staged and unstaged changes and immediately fixup the commit passed in (you will need to save the interactive rebase editor)
+  addall = add -A -v # Add all files to staging area
+  commitall = !git addall && git commit # Commit all changes
+  pushall = !git commitall && git push # Commit all changes and push
+  fixup-now = "!f() { local COMMIT=`git id $1` && git addall && git commit --fixup $COMMIT && git rebase -i $COMMIT~1 ; }; f" # Take all staged and unstaged changes and immediately fixup the commit passed in (you will need to save the interactive rebase editor)
 
-	s = status --short --branch # Short status
-	sv = status # Verbose status
-	staged = diff --cached # Show staged changes
-	diffiw = diff --ignore-space-change --ignore-space-at-eol # Diff Ignore Whitespace
-	conflicts = "!f() { cd -- ${GIT_PREFIX:-.} && git -c color.status=always status --short | sed -nr '/^[^ A-Z]*(U[DAU]|[DAU]U|AA|DD)/p' ; }; f" # List all conflict files
-	conflict = "!f() { cd -- ${GIT_PREFIX:-.} && git conflicts | sed -re 's/^[^ A-Z]*[DAU][DAU][^ A-Z]* //' -ne ${1}p ; }; f" # Return a specific conflict file
+  s = status --short --branch # Short status
+  sv = status # Verbose status
+  staged = diff --cached # Show staged changes
+  diffiw = diff --ignore-space-change --ignore-space-at-eol # Diff Ignore Whitespace
+  conflicts = "!f() { cd -- ${GIT_PREFIX:-.} && git -c color.status=always status --short | sed -nr '/^[^ A-Z]*(U[DAU]|[DAU]U|AA|DD)/p' ; }; f" # List all conflict files
+  conflict = "!f() { cd -- ${GIT_PREFIX:-.} && git conflicts | sed -re 's/^[^ A-Z]*[DAU][DAU][^ A-Z]* //' -ne ${1}p ; }; f" # Return a specific conflict file
 
-	ff = merge --ff-only # Fast Forward branch to another branch (Usage: `git ff origin/anotherbranch`)
-	ffup = merge --ff-only @{u} # Fast Forward branch to upstream branch
-	merge2 = merge --strategy-option=patience # Merge using a different strategy
+  ff = merge --ff-only # Fast Forward branch to another branch (Usage: `git ff origin/anotherbranch`)
+  ffup = merge --ff-only @{u} # Fast Forward branch to upstream branch
+  merge2 = merge --strategy-option=patience # Merge using a different strategy
 
-	f = fetch --all --tags # Fetch All
-	pullr = pull --rebase # Pull using rebase
-	pullm = pull # Pull using Merge
-	pullf = pull --ff-only # Pull using Fast Forward
-	pushup = -c push.default=upstream push # Push to the upstream branch
+  f = fetch --all --tags # Fetch All
+  pullr = pull --rebase # Pull using rebase
+  pullm = pull # Pull using Merge
+  pullf = pull --ff-only # Pull using Fast Forward
+  pushup = -c push.default=upstream push # Push to the upstream branch
 
-	br = checkout -b # Create and checkout branch ex: `git br newbranch` or  `git br newbranch existingbranch`
-	brr = branch -m # Branch Rename
-	track = branch -u # Set tracking (upstream) branch
-	untrack = branch --unset-upstream # Unset tracking (upstream) branch
+  br = checkout -b # Create and checkout branch ex: `git br newbranch` or  `git br newbranch existingbranch`
+  brr = branch -m # Branch Rename
+  track = branch -u # Set tracking (upstream) branch
+  untrack = branch --unset-upstream # Unset tracking (upstream) branch
 
-	# Do a hard reset, but save all changes in the working copy to the reflog
-	# Based on alias from https://haacked.com/archive/2014/07/28/github-flow-aliases/
-	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git --no-pager log --color=always HEAD~1..HEAD --pretty='%C(dim)%h%C(reset) %s:' --stat && echo '' && git reset HEAD~1 --hard
+  # Do a hard reset, but save all changes in the working copy to the reflog
+  # Based on alias from https://haacked.com/archive/2014/07/28/github-flow-aliases/
+  wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git --no-pager log --color=always HEAD~1..HEAD --pretty='%C(dim)%h%C(reset) %s:' --stat && echo '' && git reset HEAD~1 --hard
 
-	# Execute a git command recursively on all git repos in subdirectories
-	rec  = "!f() { cd -- ${GIT_PREFIX:-.} && find -name .git -type d -exec echo \"\" \\; -exec echo --- \\; -exec echo {} \\; -execdir git $@ \\; ; }; f"
-	# Execute a git command recursively on all git repos in subdirectories, prompting for each repo
-	recp = "!f() { cd -- ${GIT_PREFIX:-.} && find -name .git -type d -exec echo \"\" \\; -exec echo --- \\;                   -okdir   git $@ \\; ; }; f"
-	rpullf = !git rec pullf # Recursively pull all repos in subdirectories
-	rfetch = !git rec f # Recursively fetch all repos in subdirectories
+  # Execute a git command recursively on all git repos in subdirectories
+  rec  = "!f() { cd -- ${GIT_PREFIX:-.} && find -name .git -type d -exec echo \"\" \\; -exec echo --- \\; -exec echo {} \\; -execdir git $@ \\; ; }; f"
+  # Execute a git command recursively on all git repos in subdirectories, prompting for each repo
+  recp = "!f() { cd -- ${GIT_PREFIX:-.} && find -name .git -type d -exec echo \"\" \\; -exec echo --- \\;                   -okdir   git $@ \\; ; }; f"
+  rpullf = !git rec pullf # Recursively pull all repos in subdirectories
+  rfetch = !git rec f # Recursively fetch all repos in subdirectories
 
-	branches = branch -a -vv # List all branches
-	tags = tag -l # List all tags
-	remotes = remote -v # List all remotes
+  branches = branch -a -vv # List all branches
+  tags = tag -l # List all tags
+  remotes = remote -v # List all remotes
 
-	# Remove all branches that are merged into the passed in branch/commit (excluding the current branch and the passed in branch)
-	rm-merged-branches = "!f() { git f && git branch --merged \"$1\" | grep -v '\\*' | grep -v \"^ *$1$\" | xargs -n 1 git branch -D ; }; f"
+  # Remove all branches that are merged into the passed in branch/commit (excluding the current branch and the passed in branch)
+  rm-merged-branches = "!f() { git f && git branch --merged \"$1\" | grep -v '\\*' | grep -v \"^ *$1$\" | xargs -n 1 git branch -D ; }; f"
 
-	# Find all commits that have not been cherrypicked onto the branch
-	unpicked-cherries = "!f() { git cherry -v $@ | sed -n 's/^+ //p'; }; f"
+  # Find all commits that have not been cherrypicked onto the branch
+  unpicked-cherries = "!f() { git cherry -v $@ | sed -n 's/^+ //p'; }; f"
 
-	# Clone only the HEAD commit (no history will be cloned)
-	shallow-clone = clone --depth 1
+  # Clone only the HEAD commit (no history will be cloned)
+  shallow-clone = clone --depth 1
 
-	# Display useful tips for log command search options
-	helpme-log-search = "!f () {                                                                               \
-		echo \"\\033[1mSearch commit message\\033[0m\";                                                          \
-		echo \"  --grep=<regex>\";                                                                               \
-		echo \"    \\033[2m* By default limits to commits that match any --grep=<regex> param\\033[0m\";         \
-		echo \"    \\033[2m* Use --all-match to limit to commits that match all --grep=<regex> params\\033[0m\"; \
-		echo \"    \\033[2m* Use --invert-grep to limit to commits that do not match <regex>\\033[0m\";          \
-		echo \"\";                                                                                               \
-		echo \"\\033[1mSearch patches\\033[0m\";                                                                 \
-		echo \"  -G<regex>\";                                                                                    \
-		echo \"\";                                                                                               \
-		echo \"\\033[1mSearch patches for change in number of occurrences\\033[0m\";                             \
-		echo \"  -S<regex> --pickaxe-regex\";                                                                    \
-		echo \"    \\033[2m* Do not use --pickaxe-regex to search string instead of regex\\033[0m\";             \
-	}; f"
-	# [`-S and -G`](https://git-scm.com/docs/git-log#git-log--Sltstringgt) \
-	# [`--grep`](https://git-scm.com/docs/git-log#git-log---grepltpatterngt)
+  # Display useful tips for log command search options
+  helpme-log-search = "!f () {                                                                               \
+    echo \"\\033[1mSearch commit message\\033[0m\";                                                          \
+    echo \"  --grep=<regex>\";                                                                               \
+    echo \"    \\033[2m* By default limits to commits that match any --grep=<regex> param\\033[0m\";         \
+    echo \"    \\033[2m* Use --all-match to limit to commits that match all --grep=<regex> params\\033[0m\"; \
+    echo \"    \\033[2m* Use --invert-grep to limit to commits that do not match <regex>\\033[0m\";          \
+    echo \"\";                                                                                               \
+    echo \"\\033[1mSearch patches\\033[0m\";                                                                 \
+    echo \"  -G<regex>\";                                                                                    \
+    echo \"\";                                                                                               \
+    echo \"\\033[1mSearch patches for change in number of occurrences\\033[0m\";                             \
+    echo \"  -S<regex> --pickaxe-regex\";                                                                    \
+    echo \"    \\033[2m* Do not use --pickaxe-regex to search string instead of regex\\033[0m\";             \
+  }; f"
+  # [`-S and -G`](https://git-scm.com/docs/git-log#git-log--Sltstringgt) \
+  # [`--grep`](https://git-scm.com/docs/git-log#git-log---grepltpatterngt)
 
-	# Display useful tips for log command output options
-	helpme-log-output = "!f () {                                                       \
-		echo \"--graph\";                                                                \
-		echo \"--decorate (show refs)\";                                                 \
-		echo \"--oneline\";                                                              \
-		echo \"--format=oneline|short|medium|full|fuller|<format> (default => medium)\"; \
-		echo \"--abbrev-commit\";                                                        \
-		echo \"--date=relative|local|short|format:<format> (short is YYYY-MM-DD)\";      \
-		echo \"--all (all refs on command line)\";                                       \
-		echo \"-p (print patches)\";                                                     \
-	}; f"
+  # Display useful tips for log command output options
+  helpme-log-output = "!f () {                                                       \
+    echo \"--graph\";                                                                \
+    echo \"--decorate (show refs)\";                                                 \
+    echo \"--oneline\";                                                              \
+    echo \"--format=oneline|short|medium|full|fuller|<format> (default => medium)\"; \
+    echo \"--abbrev-commit\";                                                        \
+    echo \"--date=relative|local|short|format:<format> (short is YYYY-MM-DD)\";      \
+    echo \"--all (all refs on command line)\";                                       \
+    echo \"-p (print patches)\";                                                     \
+  }; f"
 
-	# Fetch and create a new branch off of origin/master
-	# Usage: `git feature-start my-new-feature`
-	feature-start = "!f () {                                                  \
-		cd -- ${GIT_PREFIX:-.};                                                 \
-		if test -n \"$(git status --short 2> /dev/null)\"; then                 \
-			echo \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\";        \
-		else                                                                    \
-			git fetch --all &&                                                    \
-			git br \"$1\" origin/master;                                          \
-		fi;                                                                     \
-	}; f"
+  # Fetch and create a new branch off of origin/master
+  # Usage: `git feature-start my-new-feature`
+  feature-start = "!f () {                                                  \
+    cd -- ${GIT_PREFIX:-.};                                                 \
+    if test -n \"$(git status --short 2> /dev/null)\"; then                 \
+      echo \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\";        \
+    else                                                                    \
+      git fetch --all &&                                                    \
+      git br \"$1\" origin/master;                                          \
+    fi;                                                                     \
+  }; f"
 
-	# Fetch, checkout master (create if necessary), and delete current feature branch
-	feature-end = "!f () {                                                           \
-		cd -- ${GIT_PREFIX:-.};                                                        \
-		if test -n \"$(git status --short 2> /dev/null)\"; then                        \
-			echo \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\";               \
-		else                                                                           \
-			local OLD_BRANCH=\"$(git rev-parse --abbrev-ref HEAD 2> /dev/null)\" &&      \
-			git fetch --all &&                                                           \
-			(git branch master origin/master 2> /dev/null || true) &&                    \
-			git checkout master &&                                                       \
-			(git ffup || true)  &&                                                       \
-			git branch -D \"$OLD_BRANCH\";                                               \
-		fi;                                                                            \
-	}; f"
+  # Fetch, checkout master (create if necessary), and delete current feature branch
+  feature-end = "!f () {                                                           \
+    cd -- ${GIT_PREFIX:-.};                                                        \
+    if test -n \"$(git status --short 2> /dev/null)\"; then                        \
+      echo \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\";               \
+    else                                                                           \
+      local OLD_BRANCH=\"$(git rev-parse --abbrev-ref HEAD 2> /dev/null)\" &&      \
+      git fetch --all &&                                                           \
+      (git branch master origin/master 2> /dev/null || true) &&                    \
+      git checkout master &&                                                       \
+      (git ffup || true)  &&                                                       \
+      git branch -D \"$OLD_BRANCH\";                                               \
+    fi;                                                                            \
+  }; f"
 
-	# Equivalent to `git feature-end && git feature-start <branchname>`
-	feature-swap = "!f() { git feature-end &&  git feature-start "$@" ; }; f"
+  # Equivalent to `git feature-end && git feature-start <branchname>`
+  feature-swap = "!f() { git feature-end &&  git feature-start "$@" ; }; f"
 
-	# Quick Stash - Commit all changes with the commit message starting with "WIP!"
-	# Usage: `git qstash` OR `git qstash "Added FooBar"`
-	# Can be used to commit frequently so code can be rolled back quickly to a good state
-	# or to store changes on the branch temporarily so a different branch can be checked out
-	# see qunstash
-	qstash = "!f() {                                                                                             \
-		cd -- ${GIT_PREFIX:-.};                                                                                    \
-		if test -z \"$(git status --short 2> /dev/null)\"; then                                                    \
-			echo -e \"\\033[01;31mERROR!\\033[0m: No changes to stash!\";                                            \
-		else                                                                                                       \
-			git add -A &&                                                                                            \
-			git commit -qm \"WIP! $1\" &&                                                                            \
-			git --no-pager log --color=always --oneline HEAD~1..HEAD --pretty=\"%C(dim)%h%C(reset) %s\" --stat;      \
+  # Quick Stash - Commit all changes with the commit message starting with "WIP!"
+  # Usage: `git qstash` OR `git qstash "Added FooBar"`
+  # Can be used to commit frequently so code can be rolled back quickly to a good state
+  # or to store changes on the branch temporarily so a different branch can be checked out
+  # see qunstash
+  qstash = "!f() {                                                                                             \
+    cd -- ${GIT_PREFIX:-.};                                                                                    \
+    if test -z \"$(git status --short 2> /dev/null)\"; then                                                    \
+      echo -e \"\\033[01;31mERROR!\\033[0m: No changes to stash!\";                                            \
+    else                                                                                                       \
+      git add -A &&                                                                                            \
+      git commit -qm \"WIP! $1\" &&                                                                            \
+      git --no-pager log --color=always --oneline HEAD~1..HEAD --pretty=\"%C(dim)%h%C(reset) %s\" --stat;      \
     fi;                                                                                                        \
-	}; f"
+  }; f"
 
-	# Remove commits added by qstash, leaving changes to working copy
-	# Usage:
-	#    `git qunstash` - remove only the HEAD commit
-	#    `git qunstash --all` - remove all consecutive qstash'd commits
-	qunstash = "!f() {                                                                                          \
-		cd -- ${GIT_PREFIX:-.};                                                                                   \
-		local HEAD_WIP=\"$(git log HEAD~1..HEAD --format='%H' --grep '^WIP')\";                                   \
-		if test -z $HEAD_WIP; then                                                                                \
-			echo \"\\033[01;31mERROR!\\033[0m Head not a WIP\";                                                     \
-		else                                                                                                      \
-			if test \"${1}\" = \"--all\"; then                                                                      \
-				local NEW_HEAD=\"$(git log HEAD --format='%H' --grep '^WIP' --invert-grep | head -1)\";               \
-			else                                                                                                    \
-				local NEW_HEAD=\"HEAD~1\";                                                                            \
-			fi &&                                                                                                   \
-			git reset $NEW_HEAD >> /dev/null &&                                                                     \
-			local MARKER=\"##-##-##-##-##\" &&                                                                      \
-			git log --color=always HEAD..$HEAD_WIP --pretty=\"Unstashed: %C(dim)%h%C(reset) %C(bold green)${MARKER}%ad${MARKER}%C(reset) %s\" | sed -r \"s/${MARKER}(.{16}).*${MARKER}/\\1/\" ; \
-		fi;                                                                                                       \
-	}; f"
+  # Remove commits added by qstash, leaving changes to working copy
+  # Usage:
+  #    `git qunstash` - remove only the HEAD commit
+  #    `git qunstash --all` - remove all consecutive qstash'd commits
+  qunstash = "!f() {                                                                                          \
+    cd -- ${GIT_PREFIX:-.};                                                                                   \
+    local HEAD_WIP=\"$(git log HEAD~1..HEAD --format='%H' --grep '^WIP')\";                                   \
+    if test -z $HEAD_WIP; then                                                                                \
+      echo \"\\033[01;31mERROR!\\033[0m Head not a WIP\";                                                     \
+    else                                                                                                      \
+      if test \"${1}\" = \"--all\"; then                                                                      \
+        local NEW_HEAD=\"$(git log HEAD --format='%H' --grep '^WIP' --invert-grep | head -1)\";               \
+      else                                                                                                    \
+        local NEW_HEAD=\"HEAD~1\";                                                                            \
+      fi &&                                                                                                   \
+      git reset $NEW_HEAD >> /dev/null &&                                                                     \
+      local MARKER=\"##-##-##-##-##\" &&                                                                      \
+      git log --color=always HEAD..$HEAD_WIP --pretty=\"Unstashed: %C(dim)%h%C(reset) %C(bold green)${MARKER}%ad${MARKER}%C(reset) %s\" | sed -r \"s/${MARKER}(.{16}).*${MARKER}/\\1/\" ; \
+    fi;                                                                                                       \
+  }; f"
 
-	qunstashall = "!git qunstash --all"
+  qunstashall = "!git qunstash --all"
 
-	# Remove files that should not be tracked from the index, fix line endings and permissions
-	hard-reset-index = "!f () {                                                        \
-			if test -n \"$(git status --short 2> /dev/null)\"; then                        \
-				echo \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\";               \
-			else                                                                           \
-				git rm -r -q --cached . &&                                                   \
-				git add . ;                                                                  \
-			fi;                                                                            \
-		}; f"
+  # Remove files that should not be tracked from the index, fix line endings and permissions
+  hard-reset-index = "!f () {                                                        \
+      if test -n \"$(git status --short 2> /dev/null)\"; then                        \
+        echo \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\";               \
+      else                                                                           \
+        git rm -r -q --cached . &&                                                   \
+        git add . ;                                                                  \
+      fi;                                                                            \
+    }; f"
 
-	# Cache SSH credentials
-	# setup in ~/.bashrc
-	# alias ssh-cache='eval `ssh-agent` && ssh-add'
+  # Cache SSH credentials
+  # setup in ~/.bashrc
+  # alias ssh-cache='eval `ssh-agent` && ssh-add'
