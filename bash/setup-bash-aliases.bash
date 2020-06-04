@@ -72,7 +72,7 @@ PATH=$PATH:~/bin
 alias f='git f'
 
 ## Make Maven Dirs (Create the maven directories and an empty pom.xml file)
-function mkmvndirs() { mkdir "$1/src/main/java" && mkdir "$1/src/main/resources" && mkdir "$1/src/test/java" && mkdir "$1/src/test/resources" && touch "$1/pom.xml" ; }
+function mkmvndirs() { mkdir "${1:-.}/src/main/java" && mkdir "${1:-.}/src/main/resources" && mkdir "${1:-.}/src/test/java" && mkdir "${1:-.}/src/test/resources" && touch "${1:-.}/pom.xml" ; }
 
 ## Delete files and directories associated with Eclipse Java projects
 ### - This will delete these files and folders only from directories that contain a .project file
