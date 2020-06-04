@@ -126,6 +126,28 @@
     echo \"-p (print patches)\";                                                     \
   }; f"
 
+  # Display useful tips for viewing diffs of merge commits in log command
+  helpme-log-merge-diff = "!f () {                                                                          \
+    echo \"\\033[1mCombined diff from each parent\\033[0m\";                                                \
+    echo \"  -c\";                                                                                          \
+    echo \"    \\033[2mShow the differences from each of the parents to the merge result\\033[0m\";         \
+    echo \"    \\033[2msimultaneously, listing only files which were modified from all parents\\033[0m\";   \
+    echo \"\";                                                                                              \
+    echo \"\\033[1mCombined diff from each parent (interesting changes only)\\033[0m\";                     \
+    echo \"  --cc\";                                                                                        \
+    echo \"    \\033[2mSame as -c option but omitting uninteresting hunks\\033[0m\";                        \
+    echo \"\";                                                                                              \
+     echo \"\\033[1mSplit diff for each parent\\033[0m\";                                                   \
+    echo \"  -p -m\";                                                                                       \
+    echo \"    \\033[2mShow the full diff like regular commits for each merge parent. A separate\\033[0m\"; \
+    echo \"    \\033[2mlog entry and diff is generated for each parent\\033[0m\";                           \
+    echo \"\";                                                                                              \
+    echo \"\\033[1mDiff only with first parent (branch merged into)\\033[0m\";                              \
+    echo \"  -p -m --first-parent\";                                                                        \
+    echo \"    \\033[2mShow only the changes the merge brought into the then-current branch\\033[0m\";      \
+  }; f"
+
+
   # Fetch and create a new branch off of origin/master
   # Usage: `git feature-start my-new-feature`
   feature-start = "!f () {                                                  \
