@@ -55,6 +55,8 @@ Hiring trends: https://www.hntrends.com/
 
 [Good and Bad Technical Debt (and how TDD helps)](https://blog.crisp.se/2013/10/11/henrikkniberg/good-and-bad-technical-debt)
 
+[Single Return from function fallacy background](https://softwareengineering.stackexchange.com/questions/118703/where-did-the-notion-of-one-return-only-come-from)
+
 RESTful API design
 * [1 of 3: How to design a RESTful API architecture from a human-language spec](https://www.oreilly.com/learning/how-to-design-a-restful-api-architecture-from-a-human-language-spec)
 * [2 of 3: How a RESTful API server reacts to requests](https://www.oreilly.com/ideas/how-a-restful-api-server-reacts-to-requests)
