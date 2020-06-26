@@ -102,6 +102,8 @@ RESTful API design
 
 [A guide to logging in Java](https://www.marcobehler.com/guides/a-guide-to-logging-in-java)
 
+[Spring Boot: How to Customize the Environment or Application Context before it starts](https://docs.spring.io/spring-boot/docs/2.3.1.RELEASE/reference/html/howto.html#howto-customize-the-environment-or-application-context)
+
 # Web Development
 [React vs Angular 2/4/...](https://medium.com/@chriscordle/why-angular-2-4-is-too-little-too-late-ea86d7fa0bae)
 
