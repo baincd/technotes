@@ -27,7 +27,7 @@ Java > Editor > Templates
   - Pattern: System.out.println(java.text.MessageFormat.format("===> ${user}/${enclosing_method}/${currentDate:date('msS')}: {0} - {1} - {2} <===",${cursor})); // TODO: delete temporary debugging line
 
 # Key Bindings
-* Shift+Ctrl+P - Bind to Quick Access in Windows
+* Shift+Ctrl+P - Bind to Find Actions (previously called Quick Access) in Windows
   * Remap "Matching bracket/character/tag" commands to Shift+Ctrl+]
 * Shift-Ctrl-F - Bind to File Search in Windows
   * Remap "Format" commands to Ctrl+Alt+F
