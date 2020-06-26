@@ -90,15 +90,17 @@ RESTful API design
 [github flow compared to git flow](http://scottchacon.com/2011/08/31/github-flow.html)
 
 # Java
+## JDK
+[Java is still free](https://docs.google.com/document/d/1nFGazvrCvHMZJgFstlbzoHjpAVwv5DEdnaBr_5pKuHo/preview) [(post on Medium)](https://medium.com/@javachampions/java-is-still-free-2-0-0-6b9aa8d6d244)
+
+[JDK downloads](https://jdk.dev/)
+
+## Best Practices / References
 [DO NOT USE java.sql.Date](http://web.archive.org/web/20161229042520/http://wiki.fasterxml.com/JacksonFAQDateHandling#line-47)
 
 [JUnit best practices](http://examples.javacodegeeks.com/core-java/junit/junit-best-practices/)
 
 [A guide to logging in Java](https://www.marcobehler.com/guides/a-guide-to-logging-in-java)
-
-[JDK downloads](https://jdk.dev/)
-
-[Java is still free](https://docs.google.com/document/d/1nFGazvrCvHMZJgFstlbzoHjpAVwv5DEdnaBr_5pKuHo/preview) [(post on Medium)](https://medium.com/@javachampions/java-is-still-free-2-0-0-6b9aa8d6d244)
 
 # Web Development
 [React vs Angular 2/4/...](https://medium.com/@chriscordle/why-angular-2-4-is-too-little-too-late-ea86d7fa0bae)
