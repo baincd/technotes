@@ -25,7 +25,12 @@ add to `~/.atom/keymap.cson`
 ```
 * platformio-ide-terminal (platformio)
     * Disable login shell (unless .bashrc is configured to run on login shell)
+* sublime-style-column-selection (bigfive)
+* atom-beautify (Glavin001)
 
 ## HTML Installed Packages
 * autoclose-html (mattberkowitz)
 * double-tag (dsandstrom)
+
+## Other Useful Packages
+* hex-view (EoinDoherty)
