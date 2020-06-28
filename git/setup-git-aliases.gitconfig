@@ -147,32 +147,45 @@
     echo \"    \\033[2mShow only the changes the merge brought into the then-current branch\\033[0m\";      \
   }; f"
 
+# The feature-* aliases use feature-alias.main-branch to determine where to branch from and return to.
+# The default is master.
+# - To change this globally
+#   - edit ~/.gitconfig and add this config setting
+#   - OR run command `git config --global feature-alias.main-branch new-mainline-branch`
+# - To change this for a single repo
+#   - edit .git/config and add this config setting
+#   - OR run command `git config feature-alias.main-branch new-mainline-branch`
+[feature-alias]
+	main-branch = master
+[alias]
 
-  # Fetch and create a new branch off of origin/master
+  # Fetch and create a new branch off of origin/main-branch (see feature-alias.main-branch)
   # Usage: `git feature-start my-new-feature`
   feature-start = "!f () {                                                  \
     cd -- ${GIT_PREFIX:-.};                                                 \
     if test -n \"$(git status --short 2> /dev/null)\"; then                 \
       echo \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\";        \
     else                                                                    \
+      local MAINLINE_BRANCH=\"$(git config feature-alias.main-branch)\" &&  \
       git fetch --all &&                                                    \
-      git br \"$1\" origin/master;                                          \
+      git br \"$1\" origin/$MAINLINE_BRANCH;                                \
     fi;                                                                     \
   }; f"
 
-  # Fetch, checkout master (create if necessary), and delete current feature branch
-  feature-end = "!f () {                                                           \
-    cd -- ${GIT_PREFIX:-.};                                                        \
-    if test -n \"$(git status --short 2> /dev/null)\"; then                        \
-      echo \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\";               \
-    else                                                                           \
-      local OLD_BRANCH=\"$(git rev-parse --abbrev-ref HEAD 2> /dev/null)\" &&      \
-      git fetch --all &&                                                           \
-      (git branch master origin/master 2> /dev/null || true) &&                    \
-      git checkout master &&                                                       \
-      (git ffup || true)  &&                                                       \
-      git branch -D \"$OLD_BRANCH\";                                               \
-    fi;                                                                            \
+  # Fetch, checkout main-branch (create if necessary), and delete current feature branch (see feature-alias.main-branch)
+  feature-end = "!f () {                                                            \
+    cd -- ${GIT_PREFIX:-.};                                                         \
+    if test -n \"$(git status --short 2> /dev/null)\"; then                         \
+      echo \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\";                \
+    else                                                                            \
+      local OLD_BRANCH=\"$(git rev-parse --abbrev-ref HEAD 2> /dev/null)\" &&       \
+      local MAINLINE_BRANCH=\"$(git config feature-alias.main-branch)\" &&          \
+      git fetch --all &&                                                            \
+      (git branch $MAINLINE_BRANCH origin/$MAINLINE_BRANCH 2> /dev/null || true) && \
+      git checkout $MAINLINE_BRANCH &&                                              \
+      (git ffup || true)  &&                                                        \
+      git branch -D \"$OLD_BRANCH\";                                                \
+    fi;                                                                             \
   }; f"
 
   # Equivalent to `git feature-end && git feature-start <branchname>`
