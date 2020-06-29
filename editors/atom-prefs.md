@@ -18,7 +18,7 @@ add to `~/.atom/keymap.cson`
 ```
 
 ## General Installed Packages
-* custom-window-title (pixilz/baincd)
+* custom-window-title-baincd (baincd)
   * settings:
   ```
 <%= fileName %><% if (projectName) { %> - <%= projectName %><% if (gitHead) { %> [<%= gitHead %>]<% } %><% } %>
