@@ -32,11 +32,13 @@
 # 	name = Your Name
 # 	email = yourname@example.com
 # [core]
-# 	# Set Notepad++ as editor in git
+# 	# Choose editor
+# 	## Windows editors
 # 	editor = 'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
-## OR
-# 	# Set vi as editor in git
+# 	editor = 'C:/Program Files (x86)/Atom/resources/cli/atom.cmd' --new-window --wait
+# 	## Linux / Bash editors
 # 	editor = vi
+# 	editor = atom --wait
 # [credential]
 # 	# Windows http - Use windows to cache credentials
 # 	helper = wincred
