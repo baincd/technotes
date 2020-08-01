@@ -41,3 +41,16 @@ add to `~/.atom/keymap.cson`
 
 ## Other Useful Packages
 * hex-view (EoinDoherty)
+* on-save (baincd fork of mvila)
+  ```js
+    {
+      "srcDir": ".",
+      "files": "**/*.txt",
+      // LINUX command to auto commit on save:
+      "command": "git add ${srcFile} && (git commit -m \"Saved File ${srcFile}\" || true)",
+      // Windows command to auto commit on save:
+      "command": "git add ${srcFile} && (git commit -m \"Saved File ${srcFile}\" || (exit 0))",
+    }
+  ```
+* tree-view-sort (hex-ci)
+  * Disable case-sensitive sorting (matches default Atom sorting)
