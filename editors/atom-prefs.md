@@ -23,7 +23,7 @@ add to `~/.atom/keymap.cson`
   ```
 <%= fileName %><% if (projectName) { %> - <%= projectName %><% if (gitHead) { %> [<%= gitHead %>]<% } %><% } %>
 ```
-* platformio-ide-terminal (platformio)
+* atom-ide-terminal (qicrosoft)
     * Disable login shell (unless .bashrc is configured to run on login shell)
 * sublime-style-column-selection (bigfive)
 * atom-beautify (Glavin001)
