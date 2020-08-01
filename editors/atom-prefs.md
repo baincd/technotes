@@ -27,6 +27,13 @@ add to `~/.atom/keymap.cson`
     * Disable login shell (unless .bashrc is configured to run on login shell)
 * sublime-style-column-selection (bigfive)
 * atom-beautify (Glavin001)
+* recent-files-fuzzy-finder (viddo)
+  * Enable Restore Session
+  * Add to keymap:
+```js
+'atom-workspace':
+  'ctrl-t': 'recent-files-fuzzy-finder:toggle-finder'
+```
 
 ## HTML Installed Packages
 * autoclose-html (mattberkowitz)
