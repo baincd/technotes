@@ -49,3 +49,7 @@ General > Workspace > Refresh using native hooks or polling (Enable)
 +-----------------------------------------+-------------------------------------------------------+
 ```
 * On right side, put Problems view collection on top
+
+# Spring Boot DevTools Prefs
+
+See [../java/spring-prefs.md](../java/spring-prefs.md)

@@ -16,3 +16,7 @@ import static org.mockito.Mockito.mock;
 ## Font Size
 
 Settings->Editor->General->Change font size (zoom) with Ctrl+Mouse Wheel
+
+# Spring Boot DevTools Prefs
+
+See [../java/spring-prefs.md](../java/spring-prefs.md)
