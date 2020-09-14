@@ -47,6 +47,10 @@ alias grepc='grep --color=always'
 alias lsc='ls --color=always'
 alias lessc='less -R'
 
+# Strip common ANSI control sequences, including color output.
+# Courtesy Dennis Kaarsemaker https://unix.stackexchange.com/a/55547
+alias strip-ansi-control-seqs="sed -e 's/\x1B\[[0-9;]*[JKmsu]//g'"
+
 # Commands for source code - ignore .svn/, .git/, target/, and node_modules/
 alias grepsrc='grep --exclude-dir=".svn" --exclude-dir=".git" --exclude-dir="target" --exclude-dir="node_modules" '
 alias grepsrcc='grepsrc --color=always'
