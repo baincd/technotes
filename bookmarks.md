@@ -1,14 +1,3 @@
-# Software Development Tools
-Multi-API reference: https://devdocs.io/
-
-Unix Toolbox: http://cb.vu/unixtoolbox.xhtml
-
-Markdown Reference https://www.markdownguide.org/basic-syntax
-
-Unicode characters: https://www.htmlsymbols.xyz/
-
-http://shoulditestprivatemethods.com/
-
 # Top Software Development Learning Resources
 Top Books: http://www.dev-books.com/
 
@@ -27,6 +16,8 @@ Model for software documentation abstractions: https://c4model.com/
 * [Factors to determine if that should be a microservice](https://content.pivotal.io/blog/should-that-be-a-microservice-keep-these-six-factors-in-mind)
 
 Hiring trends: https://www.hntrends.com/
+
+http://shoulditestprivatemethods.com/
 
 # General Software Development articles
 [Relearning how to learn](https://www.infoq.com/articles/relearning-learn)
@@ -49,7 +40,9 @@ Hiring trends: https://www.hntrends.com/
 
 [Comment Only What the Code Cannot Say](https://medium.com/@kevlinhenney/comment-only-what-the-code-cannot-say-dfdb7b8595ac)
 
-[Imperative and Declarative in 60 seconds](https://twitter.com/tylermcginnis/status/1136358106751889409)
+[Imperative and Declarative in 60 seconds](https://twitter.com/tylermcginnis/status/1136358106751889409)  
+- Declarative: specify what to do
+- Imperative: specify how to do it
 
 [An Engineer’s Guide to a Good Night’s Sleep](https://www.infoq.com/articles/engineers-guide-to-sleep/)
 
@@ -94,6 +87,11 @@ RESTful API design
 [Java is still free](https://docs.google.com/document/d/1nFGazvrCvHMZJgFstlbzoHjpAVwv5DEdnaBr_5pKuHo/preview) [(post on Medium)](https://medium.com/@javachampions/java-is-still-free-2-0-0-6b9aa8d6d244)
 
 [JDK downloads](https://jdk.dev/)
+
+## Spring
+Testing the web layer (configure MockMvc): https://spring.io/guides/gs/testing-web/
+
+Testing autoconfigurations: https://spring.io/blog/2018/03/07/testing-auto-configurations-with-spring-boot-2-0
 
 ## Best Practices / References
 [DO NOT USE java.sql.Date](http://web.archive.org/web/20161229042520/http://wiki.fasterxml.com/JacksonFAQDateHandling#line-47)
