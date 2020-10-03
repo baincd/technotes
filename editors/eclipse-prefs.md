@@ -43,7 +43,7 @@ Maven
 # Terminal
 - Invert Terminal Colors (enable)
 - Buffer Lines: 100,000
-- (Local Terminal): Initial Working Directory: `$(git_dir)/..`
+- (Local Terminal): Initial Working Directory: `${git_dir}/..`
 - Show in...
   - Name: Git Bash
   - Path: `<git>\bin\sh.exe`
