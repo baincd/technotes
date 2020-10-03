@@ -102,54 +102,57 @@
   shallow-clone = clone --depth 1
 
   # Display useful tips for log command search options
-  helpme-log-search = "!f () {                                                                               \
-    echo \"\\033[1mSearch commit message\\033[0m\";                                                          \
-    echo \"  --grep=<regex>\";                                                                               \
-    echo \"    \\033[2m* By default limits to commits that match any --grep=<regex> param\\033[0m\";         \
-    echo \"    \\033[2m* Use --all-match to limit to commits that match all --grep=<regex> params\\033[0m\"; \
-    echo \"    \\033[2m* Use --invert-grep to limit to commits that do not match <regex>\\033[0m\";          \
-    echo \"\";                                                                                               \
-    echo \"\\033[1mSearch patches\\033[0m\";                                                                 \
-    echo \"  -G<regex>\";                                                                                    \
-    echo \"\";                                                                                               \
-    echo \"\\033[1mSearch patches for change in number of occurrences\\033[0m\";                             \
-    echo \"  -S<regex> --pickaxe-regex\";                                                                    \
-    echo \"    \\033[2m* Do not use --pickaxe-regex to search string instead of regex\\033[0m\";             \
+  helpme-log-search = "!f () {                                                                             \
+    `which echo` -e                                                                                        \
+      \"\\033[1mSearch commit message\\033[0m\n\"                                                          \
+      \"  --grep=<regex>\n\"                                                                               \
+      \"    \\033[2m* By default limits to commits that match any --grep=<regex> param\\033[0m\n\"         \
+      \"    \\033[2m* Use --all-match to limit to commits that match all --grep=<regex> params\\033[0m\n\" \
+      \"    \\033[2m* Use --invert-grep to limit to commits that do not match <regex>\\033[0m\n\"          \
+      \"\n\"                                                                                               \
+      \"\\033[1mSearch patches\\033[0m\n\"                                                                 \
+      \"  -G<regex>\n\"                                                                                    \
+      \"\n\"                                                                                               \
+      \"\\033[1mSearch patches for change in number of occurrences\\033[0m\n\"                             \
+      \"  -S<regex> --pickaxe-regex\n\"                                                                    \
+      \"    \\033[2m* Do not use --pickaxe-regex to search string instead of regex\\033[0m\" ;             \
   }; f"
   # [`-S and -G`](https://git-scm.com/docs/git-log#git-log--Sltstringgt) \
   # [`--grep`](https://git-scm.com/docs/git-log#git-log---grepltpatterngt)
 
   # Display useful tips for log command output options
-  helpme-log-output = "!f () {                                                       \
-    echo \"--graph\";                                                                \
-    echo \"--decorate (show refs)\";                                                 \
-    echo \"--oneline\";                                                              \
-    echo \"--format=oneline|short|medium|full|fuller|<format> (default => medium)\"; \
-    echo \"--abbrev-commit\";                                                        \
-    echo \"--date=relative|local|short|format:<format> (short is YYYY-MM-DD)\";      \
-    echo \"--all (all refs on command line)\";                                       \
-    echo \"-p (print patches)\";                                                     \
+  helpme-log-output = "!f () {                                                     \
+    `which echo` -e                                                                \
+      \"--graph\n\"                                                                \
+      \"--decorate (show refs)\n\"                                                 \
+      \"--oneline\n\"                                                              \
+      \"--format=oneline|short|medium|full|fuller|<format> (default => medium)\n\" \
+      \"--abbrev-commit\n\"                                                        \
+      \"--date=relative|local|short|format:<format> (short is YYYY-MM-DD)\n\"      \
+      \"--all (all refs on command line)\n\"                                       \
+      \"-p (print patches)\" ;                                                     \
   }; f"
 
   # Display useful tips for viewing diffs of merge commits in log command
-  helpme-log-merge-diff = "!f () {                                                                          \
-    echo \"\\033[1mCombined diff from each parent\\033[0m\";                                                \
-    echo \"  -c\";                                                                                          \
-    echo \"    \\033[2mShow the differences from each of the parents to the merge result\\033[0m\";         \
-    echo \"    \\033[2msimultaneously, listing only files which were modified from all parents\\033[0m\";   \
-    echo \"\";                                                                                              \
-    echo \"\\033[1mCombined diff from each parent (interesting changes only)\\033[0m\";                     \
-    echo \"  --cc\";                                                                                        \
-    echo \"    \\033[2mSame as -c option but omitting uninteresting hunks\\033[0m\";                        \
-    echo \"\";                                                                                              \
-     echo \"\\033[1mSplit diff for each parent\\033[0m\";                                                   \
-    echo \"  -p -m\";                                                                                       \
-    echo \"    \\033[2mShow the full diff like regular commits for each merge parent. A separate\\033[0m\"; \
-    echo \"    \\033[2mlog entry and diff is generated for each parent\\033[0m\";                           \
-    echo \"\";                                                                                              \
-    echo \"\\033[1mDiff only with first parent (branch merged into)\\033[0m\";                              \
-    echo \"  -p -m --first-parent\";                                                                        \
-    echo \"    \\033[2mShow only the changes the merge brought into the then-current branch\\033[0m\";      \
+  helpme-log-merge-diff = "!f () {                                                                      \
+    `which echo` -e                                                                                     \
+    \"\\033[1mCombined diff from each parent\\033[0m\n\"                                                \
+    \"  -c\n\"                                                                                          \
+    \"    \\033[2mShow the differences from each of the parents to the merge result\\033[0m\n\"         \
+    \"    \\033[2msimultaneously, listing only files which were modified from all parents\\033[0m\n\"   \
+    \"\n\"                                                                                              \
+    \"\\033[1mCombined diff from each parent (interesting changes only)\\033[0m\n\"                     \
+    \"  --cc\n\"                                                                                        \
+    \"    \\033[2mSame as -c option but omitting uninteresting hunks\\033[0m\n\"                        \
+    \"\n\"                                                                                              \
+    \"\\033[1mSplit diff for each parent\\033[0m\n\"                                                    \
+    \"  -p -m\n\"                                                                                       \
+    \"    \\033[2mShow the full diff like regular commits for each merge parent. A separate\\033[0m\n\" \
+    \"    \\033[2mlog entry and diff is generated for each parent\\033[0m\n\"                           \
+    \"\n\"                                                                                              \
+    \"\\033[1mDiff only with first parent (branch merged into)\\033[0m\n\"                              \
+    \"  -p -m --first-parent\n\"                                                                        \
+    \"    \\033[2mShow only the changes the merge brought into the then-current branch\\033[0m\" ;      \
   }; f"
 
 # The feature-* aliases use feature-alias.main-branch to determine where to branch from and return to.
@@ -166,22 +169,22 @@
 
   # Fetch and create a new branch off of origin/main-branch (see feature-alias.main-branch)
   # Usage: `git feature-start my-new-feature`
-  feature-start = "!f () {                                                  \
-    cd -- ${GIT_PREFIX:-.};                                                 \
-    if test -n \"$(git status --short 2> /dev/null)\"; then                 \
-      echo \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\";        \
-    else                                                                    \
-      local MAINLINE_BRANCH=\"$(git config feature-alias.main-branch)\" &&  \
-      git fetch --all &&                                                    \
-      git br \"$1\" origin/$MAINLINE_BRANCH;                                \
-    fi;                                                                     \
+  feature-start = "!f () {                                                      \
+    cd -- ${GIT_PREFIX:-.};                                                     \
+    if test -n \"$(git status --short 2> /dev/null)\"; then                     \
+      `which echo` -e \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\"; \
+    else                                                                        \
+      local MAINLINE_BRANCH=\"$(git config feature-alias.main-branch)\" &&      \
+      git fetch --all &&                                                        \
+      git br \"$1\" origin/$MAINLINE_BRANCH;                                    \
+    fi;                                                                         \
   }; f"
 
   # Fetch, checkout main-branch (create if necessary), and delete current feature branch (see feature-alias.main-branch)
   feature-end = "!f () {                                                            \
     cd -- ${GIT_PREFIX:-.};                                                         \
     if test -n \"$(git status --short 2> /dev/null)\"; then                         \
-      echo \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\";                \
+      `which echo` -e \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\";     \
     else                                                                            \
       local OLD_BRANCH=\"$(git rev-parse --abbrev-ref HEAD 2> /dev/null)\" &&       \
       local MAINLINE_BRANCH=\"$(git config feature-alias.main-branch)\" &&          \
@@ -204,7 +207,7 @@
   qstash = "!f() {                                                                                             \
     cd -- ${GIT_PREFIX:-.};                                                                                    \
     if test -z \"$(git status --short 2> /dev/null)\"; then                                                    \
-      echo -e \"\\033[01;31mERROR!\\033[0m: No changes to stash!\";                                            \
+      `which echo` -e \"\\033[01;31mERROR!\\033[0m: No changes to stash!\";                                    \
     else                                                                                                       \
       git add -A &&                                                                                            \
       git commit -qm \"WIP! $1\" &&                                                                            \
@@ -220,7 +223,7 @@
     cd -- ${GIT_PREFIX:-.};                                                                                   \
     local HEAD_WIP=\"$(git log HEAD~1..HEAD --format='%H' --grep '^WIP')\";                                   \
     if test -z $HEAD_WIP; then                                                                                \
-      echo \"\\033[01;31mERROR!\\033[0m Head not a WIP\";                                                     \
+      `which echo` -e \"\\033[01;31mERROR!\\033[0m Head not a WIP\";                                          \
     else                                                                                                      \
       if test \"${1}\" = \"--all\"; then                                                                      \
         local NEW_HEAD=\"$(git log HEAD --format='%H' --grep '^WIP' --invert-grep | head -1)\";               \
@@ -238,7 +241,7 @@
   # Remove files that should not be tracked from the index, fix line endings and permissions
   hard-reset-index = "!f () {                                                        \
       if test -n \"$(git status --short 2> /dev/null)\"; then                        \
-        echo \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\";               \
+        `which echo` -e \"\\033[01;31mERROR!\\033[0m Working Copy isn't clean!\";    \
       else                                                                           \
         git rm -r -q --cached . &&                                                   \
         git add . ;                                                                  \
