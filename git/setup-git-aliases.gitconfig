@@ -20,6 +20,12 @@
 # ## Setup Option 2: Copy contents directly into ~/.gitconfig                  #
 ################################################################################
 
+[feature-alias]
+  # The feature-* aliases use feature-alias.main-branch to determine where to branch from and return to.
+  # This is the global value.
+	#   - To set a different value on a single repo, run command `git config-repo-main-branch <new-mainline-branch>`
+	#   - To reset the repo to use the default, run command `git unconfig-repo-main-branch` 
+	main-branch = master
 [alias]
   git = "!f() { cd -- ${GIT_PREFIX:-.} && git \"$@\" ; }; f" # Fix when you type `git git status` BWAHAHAHAHA
   aliases = "!f() { git config --get-regexp '^alias\\.' | sed -rne 's/^alias\\.([^ ]*).*$/\\1/p' | sort ; }; f" # List all aliases configured
@@ -155,18 +161,8 @@
     \"    \\033[2mShow only the changes the merge brought into the then-current branch\\033[0m\" ;      \
   }; f"
 
-# The feature-* aliases use feature-alias.main-branch to determine where to branch from and return to.
-# The default is master.
-# - To change this globally
-#   - edit ~/.gitconfig and add this config setting
-#   - OR run command `git config --global feature-alias.main-branch new-mainline-branch`
-# - To change this for a single repo
-#   - edit .git/config and add this config setting
-#   - OR run command `git config feature-alias.main-branch new-mainline-branch`
-[feature-alias]
-	main-branch = master
-[alias]
-
+  config-repo-main-branch = config feature-alias.main-branch
+  unconfig-repo-main-branch = config --unset feature-alias.main-branch
   # Fetch and create a new branch off of origin/main-branch (see feature-alias.main-branch)
   # Usage: `git feature-start my-new-feature`
   feature-start = "!f () {                                                      \
