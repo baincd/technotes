@@ -80,12 +80,18 @@
   rpullf = !git rec pullf # Recursively pull all repos in subdirectories
   rfetch = !git rec f # Recursively fetch all repos in subdirectories
 
-  # NOTE: branches, remote-branches, and tags output in the same format (except tags doesn't have upstream), but use different commands for the formatting (for-each-ref and log).  Also, tags can take arguments to limit the tags (and can include wildcards, like 1.0.*)
-  branches = for-each-ref --color --sort=-committerdate refs/heads/ --format='%(color:green)%(committerdate:format-local:%Y-%m-%dT%H)%(color:reset) %(color:yellow)%(objectname:short)%(color:reset)%(color:bold green)%(HEAD)%(color:reset)%(color:bold cyan)%(refname:short)%(color:reset)%(if)%(upstream)%(then) %(color:yellow)(%(color:reset)%(color:magenta)%(upstream:lstrip=2)%(color:reset)%(if)%(upstream:track)%(then) %(color:red)%(upstream:track)%(color:reset)%(end)%(color:yellow))%(color:reset)%(end): %(contents:subject) %(color:dim)(%(authorname))%(color:reset)' # List all branches
-  rbranches-all = "!f() {                                                     git branch -r         | grep -v ' -> ' | xargs -I{} git --no-pager -c color.ui=always log {} -1                        --date='format-local:%Y-%m-%dT%H' --format='format:%Cgreen%cd%Creset %C(yellow)%h%Creset %C(magenta  ){}%Creset: %s %C(dim)(%an)%Creset%n' | sort -r ; }; f"  # List all remote branches
-  rbranches     = "!f() { echo Remote branches updated within last 2 weeks && git branch -r         | grep -v ' -> ' | xargs -I{} git --no-pager -c color.ui=always log {} -1 --since='2 weeks ago'  --date='format-local:%Y-%m-%dT%H' --format='format:%Cgreen%cd%Creset %C(yellow)%h%Creset %C(magenta  ){}%Creset: %s %C(dim)(%an)%Creset%n' | sort -r ; }; f"  # List all remote branches
-  tags-all      = "!f() {                                                     git tag --list \"$@\"                  | xargs -I{} git --no-pager -c color.ui=always log {} -1                        --date='format-local:%Y-%m-%dT%H' --format='format:%Cgreen%cd%Creset %C(yellow)%h%Creset %C(bold cyan){}%Creset: %s %C(dim)(%an)%Creset%n' | sort -r ; }; f"  # List all tags
-  tags          = "!f() { echo Tags updated within last 6 months           && git tag --list \"$@\"                  | xargs -I{} git --no-pager -c color.ui=always log {} -1 --since='6 months ago' --date='format-local:%Y-%m-%dT%H' --format='format:%Cgreen%cd%Creset %C(yellow)%h%Creset %C(bold cyan){}%Creset: %s %C(dim)(%an)%Creset%n' | sort -r ; }; f"  # List all tags
+	# List branches, remote-branches (recent or all), or tags (recent or all) in chronological order (by committer date)
+	# in colorized format
+	# All these commands also support
+	#  --(no-)contains COMMITISH : branchs/tags whose history includes COMMITSH (COMMITISH is merged into)
+	#  --(no-)merged  COMMITISH : branches/tags within COMMITISH (merged into COMMITISH)
+	# https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---mergedltobjectgt
+  for-each-ref-list = for-each-ref --color --sort=-committerdate --format='%(color:green)%(committerdate:format-local:%Y-%m-%dT%H)%(*committerdate:format-local:%Y-%m-%dT%H)%(color:reset) %(color:yellow)%(if)%(objectname)%(then)%(objectname:short)%(else)%(objectname:short)%(end)%(color:reset)%(color:bold green)%(HEAD)%(color:reset)%(color:bold cyan)%(refname:short)%(color:reset)%(if)%(upstream)%(then) %(color:magenta)(%(upstream:lstrip=2)%(color:reset)%(if)%(upstream:track)%(then) %(color:red)%(upstream:track)%(color:reset)%(end)%(color:magenta))%(color:reset)%(end): %(if)%(*contents)%(then)%(*contents:subject)%(else)%(contents:subject)%(end) %(color:dim)(%(if)%(*authorname)%(then)%(*authorname)%(else)%(authorname)%(end))%(color:reset)'
+  branches      = "!f() { git for-each-ref-list refs/heads/ \"$@\" | sed -re 's/\\[(behind [0-9]+)\\]/[ahead 0, \\1]/' -re 's/\\[(ahead [0-9]+)\\]/[\\1, behind 0]/' -re 's/\\[(ahead ([0-9]+))?(, )?(behind ([0-9+]))?\\]/+\\2\\/-\\5/' ; }; f"
+  rbranches-all = !git for-each-ref-list refs/remotes/
+  rbranches     = "!f() { echo 10 Most Recent Remote Branches && git rbranches-all --count 10 \"$@\" ; }; f"
+  tags-all      = "!f() { git for-each-ref-list refs/tags/ \"$@\" | sort -r ; }; f"
+  tags          = "!f() { echo 10 Most Recent Tags && git tags-all \"$@\" | head -n 10 ; }; f"
   remotes = "!f() { TAB='	' ; git remote -v | sed -re \"s/^(.*)${TAB}/\\x1b[36;1m\\1\\x1b[0m${TAB}/\" | sed -re '$!N; s/(.*) \\(fetch\\)\\n\\1 \\(push\\)/\\1/' | sed -re \"$!N; s/(.*)${TAB}([^ ]*) \\(fetch\\)\\n\\1${TAB}([^ ]*) \\(push\\)/\\1\\n  fetch: \\2\\n  push:  \\3/\" ; }; f" # List all remotes
 
   # Remove all branches that are merged into the passed in branch/commit (excluding the current branch and the passed in branch)
