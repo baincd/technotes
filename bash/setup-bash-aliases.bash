@@ -25,7 +25,6 @@
 alias grepX=`which grep`
 alias lsX=`which ls`
 alias lessX=`which ls`
-alias mkdirX=`which mkdir`
 alias killallX=`which killall`
 alias nlX=`which nl`
 alias columnX=`which column`
@@ -35,7 +34,7 @@ alias typeX='builtin type'
 alias grep='grep --color=auto '
 alias ls='ls -l -F --color=auto --show-control-chars' # -F = append indicator (one of */=>@|) to entries
 alias less='less -S' 	# Disable long line wrap
-function mkdir() {  if [ -d "${@: -1}" ]; then echo "ERROR: ${@: -1} already exists!"; else mkdirX -p -v -- "$@"; fi } # make directory and subdirectories
+function mkdirs() {  if [ -d "${@: -1}" ]; then echo "ERROR: ${@: -1} already exists!"; else mkdir -p -v -- "$@"; fi } # make directory and subdirectories
 alias killall='killall -v'
 alias nl='nl -b a ' # Number all lines
 alias column='column -t -e -s ' # Break input into columns, delimiting on first param
@@ -58,11 +57,11 @@ alias findsrc='find -not -path "*/.svn/*" -not -name .svn -not -path "*/.git/*" 
 
 # Directory Tools
 
-## Make today temp directory (mkdir ~/tmp/YYYY-MM-DD and set $ttmp variable to that directory)
-function mkttmp() { export ttmp=~/tmp/`date +%Y-%m-%d`; mkdir $ttmp; }
+## Make today temp directory (mkdirs ~/tmp/YYYY-MM-DD and set $ttmp variable to that directory)
+function mkttmp() { export ttmp=~/tmp/`date +%Y-%m-%d`; mkdirs $ttmp; }
 
 ## Make and Change Directory
-function mkcd() { mkdir "$@" && cd "${@: -1}" ; }
+function mkcd() { mkdirs "$@" && cd "${@: -1}" ; }
 
 # Bash Settings
 
@@ -77,7 +76,7 @@ alias f='git f'
 alias cd-git-root='cd $(git rev-parse --show-toplevel)'
 
 ## Make Maven Dirs (Create the maven directories and an empty pom.xml file)
-function mkmvndirs() { mkdir "${1:-.}/src/main/java" && mkdir "${1:-.}/src/main/resources" && mkdir "${1:-.}/src/test/java" && mkdir "${1:-.}/src/test/resources" && touch "${1:-.}/pom.xml" ; }
+function mkmvndirs() { mkdirs "${1:-.}/src/main/java" && mkdirs "${1:-.}/src/main/resources" && mkdirs "${1:-.}/src/test/java" && mkdirs "${1:-.}/src/test/resources" && touch "${1:-.}/pom.xml" ; }
 
 ## Delete files and directories associated with Eclipse Java projects
 ### - This will delete these files and folders only from directories that contain a .project file
