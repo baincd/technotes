@@ -45,6 +45,7 @@ alias type='type -a'
 alias grepc='grep --color=always'
 alias lsc='ls --color=always'
 alias lessc='less -R'
+alias gitc='git -c color.ui=always -c color.advice=always -c color.branch=always -c color.diff=always -c color.grep=always -c color.interactive=always -c color.push=always -c color.remote=always -c color.showBranch=always -c color.status=always -c color.transport=always '
 
 # Strip common ANSI control sequences, including color output.
 # Courtesy Dennis Kaarsemaker https://unix.stackexchange.com/a/55547
