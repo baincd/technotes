@@ -21,15 +21,6 @@ org.hamcrest.Matchers.* // Since Matchers provides a few more options, use it in
 org.junit.Assert.*
 org.mockito.Mockito.*  // Note: Mockito includes everything typically needed, so no need to include org.mockito.Matchers
 ```
-### Editor
-Java > Editor > Typing
-- Automatically insert at correct position (enable semicolons)
-
-Java > Editor > Content Assist
-- Disable insertion triggers except for Enter
-- Auto activation delay: 40 ms
-- Auto activation triggers for Java: .@(ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_
-
 ### Templates
 Java > Editor > Templates
 - Name: debugout
