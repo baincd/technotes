@@ -74,7 +74,7 @@ PATH=$PATH:~/bin
 # Development tools
 
 alias f='git f'
-alias cd-git-root='cd $(git rev-parse --show-toplevel)'
+alias cd-git-root='cd $(git rev-parse --show-cdup)'
 
 ## Make Maven Dirs (Create the maven directories and an empty pom.xml file)
 function mkmvndirs() { mkdirs "${1:-.}/src/main/java" && mkdirs "${1:-.}/src/main/resources" && mkdirs "${1:-.}/src/test/java" && mkdirs "${1:-.}/src/test/resources" && touch "${1:-.}/pom.xml" ; }
