@@ -15,10 +15,9 @@ Under Java/Editor/Content Assist/Favorites
 ```
 java.text.MessageFormat.*
 org.assertj.core.api.Assertions.*
-org.hamcrest.Matchers.*
+org.hamcrest.Matchers.* // Since Matchers provides a few more options, use it instead of CoreMatchers
 org.junit.Assert.*
-org.mockito.Matchers.*
-org.mockito.Mockito.*
+org.mockito.Mockito.*  // Note: Mockito includes everything typically needed, so no need to include org.mockito.Matchers
 ```
 ### Editor
 Java > Editor > Typing
