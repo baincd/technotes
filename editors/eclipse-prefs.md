@@ -2,6 +2,8 @@
 
 ## Plugins
     MoreUnit
+    EclEmma
+    TM Terminal
 
 ## Fix Junit Tests
 https://bugs.eclipse.org/bugs/show_bug.cgi?id=481417#c8
