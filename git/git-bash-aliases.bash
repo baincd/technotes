@@ -7,6 +7,18 @@ args=(${@:2})
 
 echoe="$(which echo) -e"
 
+function conflict() {
+  cd -- ${GIT_PREFIX:-.} && git conflicts | \
+    sed -re 's/^[^ A-Z]*[DAU][DAU][^ A-Z]* //' | \
+    ( if [[ $1 =~ ^[0-9]{1,2}$ ]]; then sed -ne ${1}p; else grep "${1}" | head -n 1; fi; )
+}
+
+function file-mod() {
+  cd -- ${GIT_PREFIX:-.} && git status --short | \
+    sed -e 's/^...//' | \
+    ( if [[ $1 =~ ^[0-9]{1,2}$ ]]; then sed -ne ${1}p; else grep "${1}" | head -n 1; fi; )
+}
+
 
 function helpme-log-search() {
   $echoe "\033[1mSearch commit message\033[0m"

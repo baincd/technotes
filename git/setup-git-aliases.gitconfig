@@ -63,7 +63,10 @@
   staged = diff --cached # Show staged changes
   diffiw = diff --ignore-space-change --ignore-space-at-eol # Diff Ignore Whitespace
   conflicts = "!f() { cd -- ${GIT_PREFIX:-.} && git -c color.status=always status --short | sed -nr '/^[^ A-Z]*(U[DAU]|[DAU]U|AA|DD)/p' ; }; f" # List all conflict files
-  conflict = "!f() { cd -- ${GIT_PREFIX:-.} && git conflicts | sed -re 's/^[^ A-Z]*[DAU][DAU][^ A-Z]* //' -ne ${1}p ; }; f" # Return a specific conflict file
+	conflict = !~/.git-aliases.bash conflict # Return a specific conflict file (if 1-99, return that line number.  Else, return first that matches any of the text)
+
+	file-mod = !~/.git-aliases.bash file-mod # Return a specific modified file (if 1-99, return that line number.  Else, return first that matches any of the text)
+	fm = ! git file-mod
 
   ff = merge --ff-only # Fast Forward branch to another branch (Usage: `git ff origin/anotherbranch`)
   ffup = merge --ff-only @{u} # Fast Forward branch to upstream branch
