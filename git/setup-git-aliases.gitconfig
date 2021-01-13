@@ -45,6 +45,7 @@
 
   logw = "!f() { cd -- ${GIT_PREFIX:-.} && gitk \"$@\" & }; f" # Log GUI - also accepts many parameters of `git log`
   commitw = "!f() { cd -- ${GIT_PREFIX:-.} && git gui \"$@\" & }; f" # Commit GUI
+	showw = "!f() { git logw ${1:-HEAD} `git rev-parse --verify -q ^${1:-HEAD}^1` `git rev-parse --verify -q ^${1:-HEAD}^2` ; }; f" # Show in GUI only a single commit
 
   id = rev-parse --default HEAD # Print the Git ID (by default of head, but you can pass in a commitish ref)
   info = show --pretty=fuller --name-status # Show author and committer information and list files changed (but don't show diff)
