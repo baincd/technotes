@@ -19,6 +19,33 @@ function file-mod() {
     ( if [[ $1 =~ ^[0-9]{1,2}$ ]]; then sed -ne ${1}p; else grep "${1}" | head -n 1; fi; )
 }
 
+function _find-nth-or-first-grepped-id() {
+  if [[ $2 =~ ^[0-9]{1,2}$ ]]; then
+    git $1 | sed -ne ${2}p | sed -re 's/^.*\x1b\[1;36m//' -re 's/\x1b\[m.*$//' ;
+  else
+    # find-first-id will use all but the last argument as a git cmd and args, then return first text matching the last argument (expanding it to the first space or colon)
+    # Use Perl-compatible regular expressions in grep to regex match is non-greedy
+    searchkey="${@: -1}" # Last argument is search key
+    gitcmd=("${@:1:${#}-1}") # other arguments makeup git command
+    git "${gitcmd[@]}" | sed -nre "s/^.*\x1b\[1;36m([^\x1b]*${searchkey}[^\x1b]*)\x1b\[m.*$/\1/p" | head -n 1
+  fi;
+}
+
+function branches-co() {
+  local lb=$(_find-nth-or-first-grepped-id branches "$@")
+  git checkout "${lb}"
+}
+
+function rbranches-co() {
+  local rb=$(_find-nth-or-first-grepped-id rbranches-all "$@")
+  local lb=`echo "${rb}" | sed 's,^[^/]*/,,'`
+  git checkout -b "${lb}" "${rb}"
+}
+
+function tags-co() {
+  local tag=$(_find-nth-or-first-grepped-id tags-all "$@")
+  git checkout -b "${tag}-branch" "${tag}"
+}
 
 function helpme-log-search() {
   $echoe "\033[1mSearch commit message\033[0m"

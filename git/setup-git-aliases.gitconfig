@@ -108,6 +108,10 @@
   tags          = "!f() { echo 10 Most Recent Tags && git tags-all \"$@\" | head -n 10 ; }; f"
   remotes = "!f() { TAB='	' ; git remote -v | sed -re \"s/^(.*)${TAB}/\\x1b[36;1m\\1\\x1b[0m${TAB}/\" | sed -re '$!N; s/(.*) \\(fetch\\)\\n\\1 \\(push\\)/\\1/' | sed -re \"$!N; s/(.*)${TAB}([^ ]*) \\(fetch\\)\\n\\1${TAB}([^ ]*) \\(push\\)/\\1\\n  fetch: \\2\\n  push:  \\3/\" ; }; f" # List all remotes
 
+	branches-co  = !~/.git-aliases.bash branches-co # Checkout a specific branch (if 1-99, checkout that line number.  Else, checkout the first branch name that matches)
+	rbranches-co = !~/.git-aliases.bash rbranches-co # Checkout a specific remote branch (if 1-99, checkout that line number.  Else, checkout the first remote branch name that matches)
+	tags-co      = !~/.git-aliases.bash tags-co      # Checkout a specific tag (if 1-99, checkout that line number.  Else, checkout the first tag that matches)
+
   # Remove all branches that are merged into the passed in branch/commit (excluding the current branch and the passed in branch)
   rm-merged-branches = "!f() { git f && git branch --merged \"$1\" | grep -v '\\*' | grep -v \"^ *$1$\" | xargs -n 1 git branch -D ; }; f"
 
