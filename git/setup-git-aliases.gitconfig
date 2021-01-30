@@ -54,7 +54,7 @@
 		alias-help-init-with-commit = !~/.git-aliases.bash alias-help \
 		init-with-commit 'Initialize repo with an initial empty commit' \
 		'$ git init-with-commit'
-  init-with-commit = "!f() { git init && git commit --allow-empty -m 'Initial Commit' ; }; f"
+  init-with-commit = "!f() { git init && git commit --allow-empty -m 'Git Repo Initialized' ; }; f"
 
 		alias-help-logw = !~/.git-aliases.bash alias-help \
 		logw '_Log_ _W_indow - Use gits native log GUI (gitk)' \
