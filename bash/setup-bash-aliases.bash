@@ -76,8 +76,14 @@ PATH=$PATH:~/bin
 alias f='git f'
 alias cd-git-root='cd $(git rev-parse --show-cdup)'
 
+### Maven Aliases ###
+
 ## Make Maven Dirs (Create the maven directories and an empty pom.xml file)
 function mkmvndirs() { mkdirs "${1:-.}/src/main/java" && mkdirs "${1:-.}/src/main/resources" && mkdirs "${1:-.}/src/test/java" && mkdirs "${1:-.}/src/test/resources" && touch "${1:-.}/pom.xml" ; }
+# Alias to run mvn generate-sources from all poms that contain either plugin_one or plugin_two (using simple grep of pom.xml)
+alias mvn-gen-all-sources='findsrc -name pom.xml -exec grep -q "plugin_one\|plugin_two" {} \; \( -exec ./mvnw clean generate-sources -f {} \; -o -quit \) '
+
+###
 
 ## Delete files and directories associated with Eclipse Java projects
 ### - This will delete these files and folders only from directories that contain a .project file
