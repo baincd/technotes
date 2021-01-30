@@ -1,5 +1,7 @@
 # Tools
-Scan URLs and files for malware: https://virustotal.com
+Scan URLs and files for malware:
+- https://virustotal.com
+- https://transparencyreport.google.com/safe-browsing/search
 
 # HTTP Security
 ## HTTP Headers
