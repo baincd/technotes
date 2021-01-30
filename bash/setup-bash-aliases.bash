@@ -54,7 +54,7 @@ alias strip-ansi-control-seqs="sed -e 's/\x1B\[[0-9;]*[JKmsu]//g'"
 # Commands for source code - ignore .svn/, .git/, target/, and node_modules/
 alias grepsrc='grep --exclude-dir=".svn" --exclude-dir=".git" --exclude-dir="target" --exclude-dir="node_modules" '
 alias grepsrcc='grepsrc --color=always'
-alias findsrc='find -not -path "*/.svn/*" -not -name .svn -not -path "*/.git/*" -not -name .git -not -path "*/node_modules/*" -not -name node_modules '
+alias findsrc='find -not -path "*/.svn/*" -not -name .svn -not -path "*/.git/*" -not -name .git -not -path "*/target/*" -not -name target -not -path "*/node_modules/*" -not -name node_modules '
 
 # Directory Tools
 
