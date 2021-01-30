@@ -27,7 +27,27 @@
 * text=auto
 ```
 
-5. Add commons-lang3 dependency
+5. Create lombok.config
+```
+# https://projectlombok.org/features/configuration
+
+# Tell lombok this is your root directory, and stop lombok from looking at
+# parent directories for more configuration files
+config.stopBubbling = true
+
+# Do not count Lombok generated code against code coverage
+#   https://stackoverflow.com/a/44584898
+lombok.addLombokGeneratedAnnotation = true
+
+# Copy Spring annotations from the field to the constructor parameter,
+# the setter parameter, and the getter method
+#   https://projectlombok.org/features/constructor
+lombok.copyableAnnotations += org.springframework.beans.factory.annotation.Autowired
+lombok.copyableAnnotations += org.springframework.beans.factory.annotation.Qualifier
+lombok.copyableAnnotations += org.springframework.beans.factory.annotation.Value
+```
+
+6. Add commons-lang3 dependency
 
 ```xml
 		<dependency>
@@ -36,7 +56,7 @@
 		</dependency>
 ```
 
-6. Add Health status on application startup
+7. Add Health status on application startup
 ```java
 import org.springframework.beans.BeansException;
 import org.springframework.boot.SpringApplication;
