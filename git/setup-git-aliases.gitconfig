@@ -107,6 +107,8 @@
   rbranches     = "!f() { echo 10 Most Recent Remote Branches && git rbranches-all --count 10 \"$@\" ; }; f"
   tags-all      = "!f() { git for-each-ref-list refs/tags/ \"$@\" | sort -r ; }; f"
   tags          = "!f() { echo 10 Most Recent Tags && git tags-all \"$@\" | head -n 10 ; }; f"
+	reflogsv = -c \"color.decorate.HEAD=bold green\" -c \"color.decorate.branch=bold cyan\" -c \"color.decorate.tag=bold cyan\" -c \"color.decorate.stash=bold cyan\" -c \"color.decorate.remoteBranch=magenta\" reflog --date=\"format-local:%Y-%m-%dT%H:%M:%S\" --format='%Cgreen%gd %C(auto)%h: %gs%d'
+	reflogs = "!f() { git reflogsv --color=always \"$@\" | sed -r 's/HEAD@\\{([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}):[0-9]{2}:[0-9]{2}\\}/\\1/' | less -R -S ; }; f"
   remotes = "!f() { TAB='	' ; git remote -v | sed -re \"s/^(.*)${TAB}/\\x1b[36;1m\\1\\x1b[0m${TAB}/\" | sed -re '$!N; s/(.*) \\(fetch\\)\\n\\1 \\(push\\)/\\1/' | sed -re \"$!N; s/(.*)${TAB}([^ ]*) \\(fetch\\)\\n\\1${TAB}([^ ]*) \\(push\\)/\\1\\n  fetch: \\2\\n  push:  \\3/\" ; }; f" # List all remotes
 
 	branches-ref  = !~/.git-aliases.bash branches-ref
