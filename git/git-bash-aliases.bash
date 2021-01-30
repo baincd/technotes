@@ -3,7 +3,7 @@
 # See setup-git-aliases.gitconfig for how to setup this file
 
 cmd=$1
-args=(${@:2})
+args=("${@:2}")
 
 echoe="$(which echo) -e"
 
@@ -20,30 +20,55 @@ function file-mod() {
 }
 
 function _find-nth-or-first-grepped-id() {
-  if [[ $2 =~ ^[0-9]{1,2}$ ]]; then
-    git $1 | sed -ne ${2}p | sed -re 's/^.*\x1b\[1;36m//' -re 's/\x1b\[m.*$//' ;
+  # Uses colors from the output to search and parse:
+  #   GREEN is start of line (others are filtered out)
+  #   text between BOLD CYAN and RESET is refname
+  # If output is changed in branches, rbranches, or tags output, this method will need to be fixed!
+  local gitcmd=$1
+  local searchkey=$2
+  if [ -z "${searchkey}" ]; then
+    # Note: Performance could be improved by only calling `git ${gitcmd}` once
+    git ${gitcmd} > /dev/tty
+    read -p "Line Number or Ref substr > " searchkey
+  fi
+  if [ -z "${searchkey}" ]; then
+    echo "" # "Checkout aborted"
+  elif [[ ${searchkey} =~ ^[0-9]{1,2}$ ]]; then
+    git ${gitcmd} | sed -ne '/^\x1b\[32m/p' | sed -ne ${searchkey}p | sed -re 's/^.*\x1b\[1;36m//' -re 's/\x1b\[m.*$//' ;
   else
-    # find-first-id will use all but the last argument as a git cmd and args, then return first text matching the last argument (expanding it to the first space or colon)
-    # Use Perl-compatible regular expressions in grep to regex match is non-greedy
-    searchkey="${@: -1}" # Last argument is search key
-    gitcmd=("${@:1:${#}-1}") # other arguments makeup git command
-    git "${gitcmd[@]}" | sed -nre "s/^.*\x1b\[1;36m([^\x1b]*${searchkey}[^\x1b]*)\x1b\[m.*$/\1/p" | head -n 1
-  fi;
+    git ${gitcmd} | sed -ne '/^\x1b\[32m/p' | sed -nre "s/^.*\x1b\[1;36m([^\x1b]*${searchkey}[^\x1b]*)\x1b\[m.*$/\1/p" | head -n 1
+  fi
+}
+
+function branches-ref() {
+  _find-nth-or-first-grepped-id branches "$@"
 }
 
 function branches-co() {
-  local lb=$(_find-nth-or-first-grepped-id branches "$@")
+  local lb=$(branches-ref "$@")
   git checkout "${lb}"
 }
 
+function rbranches-ref() {
+  _find-nth-or-first-grepped-id rbranches "$@"
+}
+
 function rbranches-co() {
-  local rb=$(_find-nth-or-first-grepped-id rbranches-all "$@")
+  local rb=$(rbranches-ref "$@")
   local lb=`echo "${rb}" | sed 's,^[^/]*/,,'`
-  git checkout -b "${lb}" "${rb}"
+  if [ -z "$(git show-ref refs/heads/${lb})" ]; then
+    git checkout -b "${lb}" "${rb}"
+  else
+    git checkout "${lb}" && git ffup
+  fi
+}
+
+function tags-ref() {
+  _find-nth-or-first-grepped-id tags "$@"
 }
 
 function tags-co() {
-  local tag=$(_find-nth-or-first-grepped-id tags-all "$@")
+  local tag=$(tags-ref "$@")
   git checkout -b "${tag}-branch" "${tag}"
 }
 
