@@ -1,3 +1,7 @@
+# TODO:
+# - Write alias-help for all commands
+# - Move more complicated commands to git-bash-aliases
+
 ################################################################################
 # # Chris' Awesome Git Aliases                                                 #
 #                                                                              #
@@ -40,12 +44,37 @@
 [alias]
 	alias-help = "!f() { git alias-help-$1 2>/dev/null || ~/.git-aliases.bash alias-help alias-help 'Display help information for a git alias' '$ git alias-help-logw !! Show help information for the logw alias' '$ git alias-help logw !! Alternate form' ; }; f"
 
-  git = "!f() { cd -- ${GIT_PREFIX:-.} && git \"$@\" ; }; f" # Fix when you type `git git status` BWAHAHAHAHA
-  init-with-commit = "!f() { git init && git commit --allow-empty -m 'Initial Commit' ; }; f" # Init repo with an initial empty commit
+		alias-help-git = !~/.git-aliases.bash alias-help \
+		git 'Fix when you accidentally type `git git status` BWAHAHAHAHA' \
+		'$ git git git status'
+  git = "!f() { cd -- ${GIT_PREFIX:-.} && git \"$@\" ; }; f"
+		alias-help-aliases = !~/.git-aliases.bash alias-help \
+		aliases 'List all aliases with descriptions (when available)'
+  aliases = !~/.git-aliases.bash aliases
+		alias-help-init-with-commit = !~/.git-aliases.bash alias-help \
+		init-with-commit 'Initialize repo with an initial empty commit' \
+		'$ git init-with-commit'
+  init-with-commit = "!f() { git init && git commit --allow-empty -m 'Initial Commit' ; }; f"
 
-  logw = "!f() { cd -- ${GIT_PREFIX:-.} && gitk \"$@\" & }; f" # Log GUI - also accepts many parameters of `git log`
-  commitw = "!f() { cd -- ${GIT_PREFIX:-.} && git gui \"$@\" & }; f" # Commit GUI
-	showw = "!f() { git logw ${1:-HEAD} `git rev-parse --verify -q ^${1:-HEAD}^1` `git rev-parse --verify -q ^${1:-HEAD}^2` ; }; f" # Show in GUI only a single commit
+		alias-help-logw = !~/.git-aliases.bash alias-help \
+		logw '_Log_ _W_indow - Use gits native log GUI (gitk)' \
+		'Command accepts many of parameters of `git log`' \
+		'$ git logw    !! Display the log of the current head (equivilent to `git logw HEAD`)' \
+		'$ git logw branch1 branch2    !! Display the log of branch1 and branch2' \
+		'$ git logw feature ^main    !! Display the log of commits on feature but NOT on main' \
+		'$ git logw --all    !! Display the log of all branches, remote branches, and tags'
+  logw = "!f() { cd -- ${GIT_PREFIX:-.} && gitk \"$@\" & }; f"
+		alias-help-commitw = !~/.git-aliases.bash alias-help \
+		commitw '_Commit_ _W_indow - Use gits native git commit GUI (git gui)' \
+		'$ git commitw' \
+		'(Can also be used to amend HEAD commit)'
+  commitw = "!f() { cd -- ${GIT_PREFIX:-.} && git gui \"$@\" & }; f"
+		alias-help-showw = !~/.git-aliases.bash alias-help \
+		showw '_Show_ _W_indow - Use gits native log GUI (gitk) to display details about a single commit' \
+		'$ git showw    !! Basically same as `git logw HEAD ^HEAD~1`' \
+		'$ git showw branch1   !! Basically same as `git logw branch1 ^branch1~1`' \
+		'$ git showw a1b2c3   !! Basically same as `git logw a1b2c3 ^a1b2c3~1`'
+	showw = "!f() { git logw ${1:-HEAD} `git rev-parse --verify -q ^${1:-HEAD}^1` `git rev-parse --verify -q ^${1:-HEAD}^2` ; }; f"
 
   id = rev-parse --default HEAD # Print the Git ID (by default of head, but you can pass in a commitish ref)
   info = show --pretty=fuller --name-status # Show author and committer information and list files changed (but don't show diff)
