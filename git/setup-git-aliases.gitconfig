@@ -41,8 +41,6 @@
 	alias-help = "!f() { git alias-help-$1 2>/dev/null || ~/.git-aliases.bash alias-help alias-help 'Display help information for a git alias' '$ git alias-help-logw !! Show help information for the logw alias' '$ git alias-help logw !! Alternate form' ; }; f"
 
   git = "!f() { cd -- ${GIT_PREFIX:-.} && git \"$@\" ; }; f" # Fix when you type `git git status` BWAHAHAHAHA
-  aliases = "!f() { git config --get-regexp '^alias\\.' | sed -rne 's/^alias\\.([^ ]*).*$/\\1/p' | sort ; }; f" # List all aliases configured
-  alias = "!f() { git config --get-regexp \"^alias\\.${1}\\b\" | sed -rne \"s/^alias\\.${1}\\s//p\" ; }; f" # Show the git alias command.  Usage: `git alias diffiw`
   init-with-commit = "!f() { git init && git commit --allow-empty -m 'Initial Commit' ; }; f" # Init repo with an initial empty commit
 
   logw = "!f() { cd -- ${GIT_PREFIX:-.} && gitk \"$@\" & }; f" # Log GUI - also accepts many parameters of `git log`

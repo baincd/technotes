@@ -74,15 +74,25 @@ function tags-co() {
 
 function alias-help() {
   local alias=$1
-  local desc=$2
+  # Wrap any text in desc flanked by _ with ANSI code to underline
+  local desc=`echo $2 | sed -re 's/_([^_]*)_/\x1b[4m\1\x1b[24m/g' `
   local usages=("${@:3}")
-  $echoe "\033[1m${alias}\033[0m: ${desc}"
+  $echoe "\033[34;1m${alias}\033[0m: ${desc}"
   for usage in "${usages[@]}"
   do
     # Wrap any line that starts with $ with ANSI color codes to make dim
     # Replace !! with #, and make text dim green (for a comment)
-    line=`echo $usage | sed -re 's/^(\\$.*)$/\x1b[2m\1\x1b[0m/' -re 's/!!/\x1b[32;2m#/'`
+    # Wrap any text flanked by _ with ANSI code to underline
+    line=`echo $usage | sed -re 's/^(\\$.*)$/\x1b[2m\1\x1b[0m/' -re 's/!!/\x1b[32;2m#/' -re 's/_([^_]*)_/\x1b[4m\1\x1b[24m/g'`
     $echoe "  ${line}"
+  done
+}
+
+function aliases() {
+  local cmds=(`git config --get-regexp '^alias\.' | sed -rne 's/^alias\.([^ ]*).*$/\1/p' | grep -E -v '^alias-help-' | sort`)
+  for cmd in "${cmds[@]}"
+  do
+    (git "alias-help-$cmd" 2>/dev/null || $echoe "\033[34;1m$cmd\033[0m") | head -n 1
   done
 }
 
