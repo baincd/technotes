@@ -72,6 +72,20 @@ function tags-co() {
   git checkout -b "${tag}-branch" "${tag}"
 }
 
+function alias-help() {
+  local alias=$1
+  local desc=$2
+  local usages=("${@:3}")
+  $echoe "\033[1m${alias}\033[0m: ${desc}"
+  for usage in "${usages[@]}"
+  do
+    # Wrap any line that starts with $ with ANSI color codes to make dim
+    # Replace !! with #, and make text dim green (for a comment)
+    line=`echo $usage | sed -re 's/^(\\$.*)$/\x1b[2m\1\x1b[0m/' -re 's/!!/\x1b[32;2m#/'`
+    $echoe "  ${line}"
+  done
+}
+
 function helpme-log-search() {
   $echoe "\033[1mSearch commit message\033[0m"
   $echoe "  --grep=<regex>"
