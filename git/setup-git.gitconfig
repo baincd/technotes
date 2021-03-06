@@ -39,6 +39,7 @@
 # 	## Linux / Bash editors
 # 	editor = vi
 # 	editor = atom --wait
+#	editor = code --new-window /home/chris/.giteditor.code-workspace --wait
 # [credential]
 # 	# Windows http - Use windows to cache credentials
 # 	helper = wincred
