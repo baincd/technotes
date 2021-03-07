@@ -17,39 +17,6 @@
     "terminal.integrated.cwd": "${fileDirname}",
     "terminal.integrated.scrollback": 10000,
 
-    "editor.tokenColorCustomizations": {
-        "[Quiet Light]": {
-            "textMateRules": [
-                // Colorize diff files
-                {
-                    "scope": "meta.diff",
-                    "settings": {
-                        "fontStyle": "italic"
-                    }
-                },
-                {
-                    "scope": "meta.diff.header.git",
-                    "settings": {
-                        "foreground": "#ee8f00",
-                        "fontStyle": "bold"
-                    }
-                },
-                {
-                    "scope": "meta.diff.index.git",
-                    "settings": {
-                        "foreground": "#00000055"
-                    }
-                },
-                {
-                    "scope": "meta.diff.range.unified",
-                    "settings": {
-                        "foreground": "#ee8f00",
-                    }
-                }
-            ]
-        }
-    },
-
     // My personally preferred theme - YMMV
     "workbench.colorTheme": "Quiet Light"
 }
@@ -108,4 +75,5 @@
 ```
 
 # Extensions
+- baincd.diff-lang-improved *(also add color settings from documentation)*
 - streetsidesoftware.code-spell-checker
