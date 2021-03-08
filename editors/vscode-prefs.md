@@ -6,6 +6,7 @@
     "window.menuBarVisibility": "toggle",
     "workbench.activityBar.visible": false,
     "editor.minimap.enabled": false,
+    "workbench.startupEditor": "none",
 
     // Preferred Editors
     "files.insertFinalNewline": true,
