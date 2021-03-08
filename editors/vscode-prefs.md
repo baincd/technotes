@@ -72,6 +72,13 @@
                                      "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor" },
 { "key": "ctrl+alt+f",            "command": "editor.action.formatDocument.none",
                                      "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly" },
+
+// Remove ctrl+w closing window when last editor is open
+{ "key": "ctrl+w",                "command": "-workbench.action.closeWindow",
+                                     "when": "!editorIsOpen && !multipleEditorGroups" },
+// Override workbench.action.closeWindow
+{ "key": "ctrl+shift+w",          "command": "workbench.action.closeAllEditors" },
+
 ]
 ```
 
