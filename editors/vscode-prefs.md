@@ -89,3 +89,5 @@
 # Extensions
 - baincd.diff-lang-improved *(also add color settings from documentation)*
 - streetsidesoftware.code-spell-checker
+- sleistner.vscode-fileutils
+
