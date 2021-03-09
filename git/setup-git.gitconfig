@@ -36,10 +36,12 @@
 # 	## Windows editors
 # 	editor = 'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
 # 	editor = 'C:/Program Files (x86)/Atom/resources/cli/atom.cmd' --new-window --wait
+#	editor = 'C:/Program Files (x86)/Microsoft VS Code/Code.exe' --log off --new-window /home/chris/default.code-workspace --wait  # Open in specific workspace (if workspace already open then add new editor tab; else open workspace with only new editor tab; window does not close when new editor tab is closed)
+#	editor = 'C:/Program Files (x86)/Microsoft VS Code/Code.exe' --log off --wait  # If vscode already open then add new editor tab and do not close window when new editor tab is closed; else open in new window and close window when new editor tab is closed
 # 	## Linux / Bash editors
 # 	editor = vi
 # 	editor = atom --wait
-#	editor = code --new-window /home/chris/.giteditor.code-workspace --wait
+#	editor = code --log off --new-window --wait  # Open in a new window, close window when editor tab is closed
 # [credential]
 # 	# Windows http - Use windows to cache credentials
 # 	helper = wincred
