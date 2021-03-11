@@ -10,12 +10,18 @@
 
     // Preferred Editors
     "files.insertFinalNewline": true,
+    "editor.copyWithSyntaxHighlighting": false,
+
 
     // Set via integrated-terminal > Select Default Shell
     // Windows will be something like "C:\\Program Files\\Git\\bin\\bash.exe"
     "terminal.integrated.shell.linux": "/bin/bash",
     "terminal.integrated.cwd": "${fileDirname}",
     "terminal.integrated.scrollback": 10000,
+    "terminal.integrated.commandsToSkipShell": [
+        "workbench.action.reloadWindow",
+        "workbench.action.quickOpenTerm"
+    ],
 
     // My personally preferred theme - YMMV
     "workbench.colorTheme": "Quiet Light"
