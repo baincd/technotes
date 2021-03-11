@@ -44,10 +44,11 @@ Maven
 
 # Key Bindings
 * Shift+Ctrl+P - Bind to "Find Actions" (previously called Quick Access) in Windows
-  * Remap "Matching bracket/character/tag" commands to Shift+Ctrl+]
+  * Remap "Matching bracket/character/tag" commands to Ctrl+]
 * Shift+Ctrl+F - Bind to "File Search" in Windows
   * Remap "Format" commands to Ctrl+Alt+F
-* Shift+F4 - Bind to "Show in (Package Explorer)" in Windows
+* Ctrl+\\ - Bind to "Show View (Package Explorer)" In Windows
+* Ctrl+Alt+\\ - Bind to "Show in (Package Explorer)" in Windows
 * Ctrl+\` - Bind to "Open Terminal on Selection" In Windows
 
 # Refresh
