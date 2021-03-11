@@ -67,11 +67,9 @@
 { "key": "ctrl+]",                "command": "editor.action.jumpToBracket",
                                      "when": "editorTextFocus" },
 
-// Duplicate ctrl+shift+i
-{ "key": "ctrl+alt+f",            "command": "editor.action.formatDocument",
-                                     "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor" },
-{ "key": "ctrl+alt+f",            "command": "editor.action.formatDocument.none",
-                                     "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly" },
+// Duplicate ctrl+k ctrl+f
+{ "key": "ctrl+alt+f",            "command": "editor.action.formatSelection",
+                                     "when": "editorHasDocumentSelectionFormattingProvider && editorTextFocus && !editorReadonly" },
 
 { "key": "alt+`",                 "command": "workbench.action.quickOpenTerm" },
 
