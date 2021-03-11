@@ -10,7 +10,6 @@
 
     // Preferred Editors
     "files.insertFinalNewline": true,
-    "workbench.settings.openDefaultKeybindings": true,
 
     // Set via integrated-terminal > Select Default Shell
     // Windows will be something like "C:\\Program Files\\Git\\bin\\bash.exe"
