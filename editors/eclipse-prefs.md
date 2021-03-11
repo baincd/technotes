@@ -43,12 +43,12 @@ Maven
   - Icon: `<git>\mingw64\share\git\git-for-windows.ico`
 
 # Key Bindings
-* Shift+Ctrl+P - Bind to Find Actions (previously called Quick Access) in Windows
+* Shift+Ctrl+P - Bind to "Find Actions" (previously called Quick Access) in Windows
   * Remap "Matching bracket/character/tag" commands to Shift+Ctrl+]
-* Shift+Ctrl+F - Bind to File Search in Windows
+* Shift+Ctrl+F - Bind to "File Search" in Windows
   * Remap "Format" commands to Ctrl+Alt+F
-* Shift+F4 - Bind to Show in (Package Explorer) in Windows
-* Ctrl+\` - Bing to Open Terminal on Selection In Windows
+* Shift+F4 - Bind to "Show in (Package Explorer)" in Windows
+* Ctrl+\` - Bind to "Open Terminal on Selection" In Windows
 
 # Refresh
 General > Workspace > Refresh using native hooks or polling (Enable)
