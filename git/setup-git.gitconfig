@@ -55,6 +55,8 @@
 [core]
 	# Disable long line wrap
 	pager = less -S
+	# Global git ignore file
+	excludesfile = ~/.gitignore_global
 [commit]
 	# Add staged diff to the bottom of the commit message template (when using an editor)
 	verbose = true
