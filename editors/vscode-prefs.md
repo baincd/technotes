@@ -1,6 +1,6 @@
 # Settings
 
-```json
+```jsonc
 {
     // Preferred UI
     "window.menuBarVisibility": "toggle",
@@ -19,6 +19,9 @@
     "terminal.integrated.cwd": "${fileDirname}",
     "terminal.integrated.scrollback": 10000,
     "terminal.integrated.commandsToSkipShell": [
+        "workbench.action.toggleSidebarVisibility",
+        "workbench.view.explorer",
+        "workbench.files.action.showActiveFileInExplorer",
         "workbench.action.reloadWindow",
         "workbench.action.quickOpenTerm"
     ],
@@ -30,7 +33,7 @@
 ```
 
 # Key Bindings
-```json
+```jsonc
 [
 // Duplicate ctrl+shift+k
 // Override editor.action.addSelectionToNextFindMatch
