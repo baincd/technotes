@@ -93,7 +93,9 @@
 ```
 
 # Extensions
-- baincd.diff-lang-improved *(also add color settings from documentation)*
+- baincd.diff-lang-improved
+- baincd.diff-lang-colorizer
+- baincd.markdown-color-plus
 - streetsidesoftware.code-spell-checker
 - sleistner.vscode-fileutils
-
+- baincd.copy-path-unixstyle
