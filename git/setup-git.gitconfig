@@ -68,6 +68,10 @@
 	conflictstyle = diff3
 [rerere]
 	enabled = true
+[submodule]
+	# Have commands recurse into submodules by default - this applies to commands like checkout, fetch, grep, pull, push, ...
+	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-submodulerecurse
+	recurse = true
 [push]
 	# https://git-scm.com/docs/git-config#git-config-pushdefault
 
