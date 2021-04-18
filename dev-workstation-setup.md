@@ -14,6 +14,8 @@
 
 [Setup Chris' Awesome Git Aliases](./git/setup-git-aliases.gitconfig)
 
+[Setup Chris' Awesome global-gitignore file](./git/setup-gitignore_global)
+
 ## Windows Setup
 
 [Additional Windows Setup Options](./git/setup-windows-git-options.md)

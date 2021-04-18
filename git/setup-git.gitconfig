@@ -56,6 +56,8 @@
 	# Disable long line wrap
 	pager = less -S
 	# Global git ignore file
+	# https://docs.github.com/en/github/getting-started-with-github/ignoring-files#configuring-ignored-files-for-all-repositories-on-your-computer
+	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreexcludesFile
 	excludesfile = ~/.gitignore_global
 [commit]
 	# Add staged diff to the bottom of the commit message template (when using an editor)

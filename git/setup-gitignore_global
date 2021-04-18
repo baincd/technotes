@@ -1,0 +1,5 @@
+# Save this file to ~/.gitignore_global (along with core.excludefiles config) to apply these gitignore rules globally
+
+# Ignore all files with .gitignored. in the middle of their name, or ending with .gitignored
+*?.gitignored.?*
+*?.gitignored
