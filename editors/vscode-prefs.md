@@ -109,8 +109,260 @@
       },
     },
     
-    
-}
+    "insert-unicode.favorites": {
+      "directories": {
+        "1-Symbols": {
+          "directories": {},
+          "items": [
+            [
+              8253
+            ],
+            [
+              8226
+            ],
+            [
+              183
+            ],
+            [
+              176
+            ],
+            [
+              162
+            ],
+            [
+              9251
+            ]
+          ]
+        },
+        "2-Whitespace": {
+          "directories": {},
+          "items": [
+            [
+              9
+            ],
+            [
+              160
+            ],
+            [
+              8203
+            ]
+          ]
+        },
+        "3-Arrows": {
+          "directories": {},
+          "items": [
+            [
+              8592
+            ],
+            [
+              8594
+            ],
+            [
+              8656
+            ],
+            [
+              8658
+            ],
+            [
+              171
+            ],
+            [
+              187
+            ]
+          ]
+        },
+        "4-Checkmarks": {
+          "directories": {},
+          "items": [
+            [
+              10003
+            ],
+            [
+              10004
+            ],
+            [
+              10007
+            ],
+            [
+              10008
+            ],
+            [
+              10060
+            ],
+            [
+              9744
+            ],
+            [
+              9745
+            ],
+            [
+              9746
+            ]
+          ]
+        },
+        "5-Math Symbols": {
+          "directories": {},
+          "items": [
+            [
+              188
+            ],
+            [
+              189
+            ],
+            [
+              190
+            ],
+            [
+              8531
+            ],
+            [
+              8532
+            ],
+            [
+              177
+            ],
+            [
+              215
+            ],
+            [
+              247
+            ],
+            [
+              8804
+            ],
+            [
+              8805
+            ],
+            [
+              8776
+            ],
+            [
+              8800
+            ]
+          ]
+        },
+        "6-Emoji Smiles 🙂": {
+          "directories": {},
+          "items": [
+            [
+              9786,
+              65039
+            ],
+            [
+              128578
+            ],
+            [
+              128521
+            ],
+            [
+              128513
+            ],
+            [
+              128522
+            ],
+            [
+              128512
+            ],
+            [
+              128515
+            ],
+            [
+              128516
+            ],
+            [
+              128518
+            ],
+            [
+              128514
+            ],
+            [
+              129315
+            ],
+            [
+              128537
+            ],
+            [
+              128536
+            ],
+            [
+              128139
+            ],
+          ]
+        },
+        "7-Emoji Symbols 👍": {
+          "directories": {},
+          "items": [
+            [
+              128077
+            ],
+            [
+              128079
+            ],
+            [
+              128075
+            ],
+            [
+              129303
+            ],
+            [
+              10084,
+              65039
+            ]
+          ]
+        },
+        "8-Emoji Silly 😎": {
+          "directories": {},
+          "items": [
+            [
+              128526
+            ],
+            [
+              129299
+            ],
+            [
+              128579
+            ],
+            [
+              128540
+            ],
+            [
+              129322
+            ]
+          ]
+        },
+        "9-Emoji Unhappy 🙁": {
+          "directories": {},
+          "items": [
+            [
+              9785,
+              65039
+            ],
+            [
+              128577
+            ],
+            [
+              128533
+            ],
+            [
+              128528
+            ],
+            [
+              128580
+            ],
+            [
+              129300
+            ],
+            [
+              128559
+            ],
+            [
+              128563
+            ]
+          ]
+        }
+      },
+      "items": []
+    },
 
 ```
 
@@ -181,6 +433,7 @@
 - File Utils: `sleistner.vscode-fileutils`
 - Printing: `pdconsec.vscode-print`
 - Quick Settings: `edb.settings-on-fire`
+- Insert Unicode: `brunnerh.insert-unicode`
 
 - DupChecker (uniq command): `jianbingfang.dupchecker`
 - Filter Lines (grep command): `earshinov.filter-lines`
