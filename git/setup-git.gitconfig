@@ -59,6 +59,9 @@
 	# https://docs.github.com/en/github/getting-started-with-github/ignoring-files#configuring-ignored-files-for-all-repositories-on-your-computer
 	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreexcludesFile
 	excludesfile = ~/.gitignore_global
+[init]
+	# v2.28.x+ - set the name of the default branch for new repos to "main"
+	defaultBranch = main
 [commit]
 	# Add staged diff to the bottom of the commit message template (when using an editor)
 	verbose = true
