@@ -11,6 +11,7 @@
     // Preferred Editors
     "files.insertFinalNewline": true,
     "editor.copyWithSyntaxHighlighting": false,
+    "editor.emptySelectionClipboard": false,
     "files.associations": {
         "*.md.txt": "markdown"
     },
