@@ -433,6 +433,17 @@
 
 { "key": "ctrl+shift+,",          "command": "settingsOnFire.toggleSettings" },
 
+// Override Alt+Left with Go Back
+{ "key": "alt+left",              "command": "-workbench.action.terminal.focusPreviousPane",
+                                     "when": "terminalFocus && terminalProcessSupported" },
+{ "key": "alt+left",              "command": "workbench.action.navigateBack" },
+
+// Override Alt+Right with Go Forward
+{ "key": "alt+right",             "command": "-workbench.action.terminal.focusNextPane",
+                                     "when": "terminalFocus && terminalProcessSupported" },
+{ "key": "alt+right",              "command": "workbench.action.navigateForward" }
+
+
 ]
 ```
 
