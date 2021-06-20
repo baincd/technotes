@@ -54,6 +54,13 @@ Maven
 # Refresh
 General > Workspace > Refresh using native hooks or polling (Enable)
 
+# Launch
+Run/Debug > Launching > Launch Operation
+- Always launch the previously launched application
+- Terminate and Relaunch while launching
+
+[ref](https://stackoverflow.com/questions/1151995/is-there-a-shortcut-in-eclipse-to-re-run-the-most-recently-launched-program/1152039#1152039)
+
 # Workstation layout
 ```
 +-----------------------------------------+--------------------------------+----------------------+
