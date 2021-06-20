@@ -12,6 +12,7 @@
     "files.insertFinalNewline": true,
     "editor.copyWithSyntaxHighlighting": false,
     "editor.emptySelectionClipboard": false,
+    "explorer.autoReveal": false,
     "files.associations": {
         "*.md.txt": "markdown"
     },
@@ -64,6 +65,16 @@
         "off": {
           "_label": "on → off",
           "files.insertFinalNewline": true
+        }
+      },
+      "Explorer Linked to Active Editor": {
+        "on": {
+          "_label": "off → on",
+          "explorer.autoReveal": true,
+        },
+        "off": {
+          "_label": "on → off",
+          "explorer.autoReveal": false,
         }
       },
       "Debug Console: Collapse Identical Lines": {
