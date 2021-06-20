@@ -56,16 +56,6 @@
           "workbench.colorTheme": "Quiet Light"
         }
       },
-      "Copy With Syntax Highlighting": {
-        "on": {
-          "_label": "off → on",
-          "editor.copyWithSyntaxHighlighting": true,
-        },
-        "off": {
-          "_label": "on → off",
-          "editor.copyWithSyntaxHighlighting": false,
-        }
-      },
       "EOF New Line Disabled": {
         "on": {
           "_label": "off → on",
