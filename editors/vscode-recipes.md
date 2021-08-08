@@ -20,16 +20,10 @@ Extensions:
 
 keybindings.json:
 ```jsonc
-    {
-        "key": "ctrl+; m",
-        "command": "changeLanguageMode.change",
-        "args": "markdown"
-    },
-    {
-        "key": "ctrl+; j",
-        "command": "changeLanguageMode.change",
-        "args": "json"
-    },
+{ "key": "ctrl+; m",              "command": "changeLanguageMode.change",
+                                     "args": "markdown" },
+{ "key": "ctrl+; j",              "command": "changeLanguageMode.change",
+                                     "args": "json" },
 ```
 
 # Change Language to JSON and Format
@@ -51,10 +45,7 @@ settings.json:
 
 keybindings.json:
 ```jsonc
-    {
-        "key": "ctrl+; ctrl+shift+j",
-        "command": "macros.format-json-doc",
-    },
+{ "key": "ctrl+; ctrl+shift+j",   "command": "macros.format-json-doc", },
 ```
 
 # Auto Commit on Save

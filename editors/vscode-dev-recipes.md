@@ -54,9 +54,6 @@ Extension required: Java Tests `wesleyegberto.vscode-java-tests`
 
 keybindings.json:
 ```jsonc
-    {
-        "key": "ctrl+; t",
-        "command": "java.tests.createTestClass",
-        "when": "resourceFilename =~ /(?<!Test)\\.java/"
-    },
+{ "key": "ctrl+; t",              "command": "java.tests.createTestClass",
+                                     "when": "resourceFilename =~ /(?<!Test)\\.java/" },
 ```
