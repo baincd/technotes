@@ -11,6 +11,9 @@
 
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+
+# Ignore VS Code files
+.vscode
 ```
 
 4. Create .gitattributes
