@@ -10,6 +10,7 @@ settings.json:
     //   ],
     //   "java.home": "c:\\path\\to\\jdk", # JDK used by Java Language Server
     //   "spring-boot.ls.java.home": "c:\\path\\to\\jdk" # JDK used by Spring Boot Language Server
+    "java.configuration.updateBuildConfiguration": "automatic",
     "java.import.gradle.enabled": false,
     "java.maven.downloadSources": true,
     "java.test.report.showAfterExecution": "always",
