@@ -240,7 +240,10 @@
 { "key": "ctrl+alt+f",            "command": "editor.action.formatSelection",
                                      "when": "editorHasDocumentSelectionFormattingProvider && editorTextFocus && !editorReadonly" },
 
-{ "key": "alt+`",                 "command": "workbench.action.quickOpenTerm" },
+// ctrl+shift+` = "switch active terminal" (replaces "new terminal")
+{ "key": "ctrl+shift+`",          "command": "workbench.action.quickOpenTerm" },
+{ "key": "ctrl+shift+`",          "command": "-workbench.action.terminal.new",
+                                     "when": "terminalProcessSupported" },
 
 // Remove ctrl+w closing window when last editor is closed
 { "key": "ctrl+w",                "command": "-workbench.action.closeWindow",
