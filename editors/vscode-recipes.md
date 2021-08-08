@@ -12,6 +12,72 @@ Enable by adding the workspace path to shortcuts/aliases to open vscode
 }
 ```
 
+# Git commit tasks and shortcuts
+
+Create tasks and hotkeys to run git commit commands that use the git commit editor, which can take advantage of spellchecker in vscode
+
+.gitconfig:
+```
+[core]
+	editor = code --log off --wait
+```
+
+tasks.json:
+```jsonc
+		{
+			"label": "git commit",
+			"detail": "commit staged changes",
+			"type": "shell",
+			"command": "git commit",
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"presentation": {
+				"reveal": "silent",
+				"panel": "shared",
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "git commitall",
+			"detail": "commit all working directory changes",
+			"type": "shell",
+			"command": "git add -A && git commit",
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"presentation": {
+				"reveal": "silent",
+				"panel": "shared",
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "git commit --amend",
+			"detail": "amend staged changes to HEAD",
+			"type": "shell",
+			"command": "git commit --amend",
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"presentation": {
+				"reveal": "silent",
+				"panel": "shared",
+			},
+			"problemMatcher": []
+		},
+```
+
+keybindings.json:
+```jsonc
+{ "key": "ctrl+; g",              "command": "workbench.action.tasks.runTask",
+                                     "args": "git commit" },
+{ "key": "ctrl+; ctrl+shift+g",   "command": "workbench.action.tasks.runTask",
+                                     "args": "git commitall" },
+{ "key": "ctrl+; ctrl+alt+g",     "command": "workbench.action.tasks.runTask",
+                                     "args": "git commit --amend" },
+
+```
 # Change Language Mode Key Bindings
 
 Extensions:
