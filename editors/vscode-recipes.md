@@ -38,7 +38,7 @@ settings.json:
         "format-json-doc": [
             { "command": "changeLanguageMode.change", "args": "json" },
             { "command": "$delay", "args": { "delay": 50 } },
-            {"editor.action.formatDocument"}
+            "editor.action.formatDocument"
         ]
     },
 ```
