@@ -276,6 +276,8 @@
 ```
 
 # Extensions
+- vscode-icons: `vscode-icons-team.vscode-icons`
+
 - Spell Check: `streetsidesoftware.code-spell-checker`
 - File Utils: `sleistner.vscode-fileutils`
 - Printing: `pdconsec.vscode-print`
