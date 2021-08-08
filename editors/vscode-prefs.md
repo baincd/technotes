@@ -33,6 +33,7 @@
     "git.enableStatusBarSync": false,
 
     // Preferred Editor Settings
+    "editor.linkedEditing": true, // Depending on the language, related symbols, e.g. HTML tags, are updated while editing.
     "editor.copyWithSyntaxHighlighting": false,
     "editor.emptySelectionClipboard": false,
     "files.insertFinalNewline": true, // Enable by default, may be changed by Settings-on-fire
