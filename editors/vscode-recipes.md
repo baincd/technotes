@@ -30,7 +30,7 @@ keybindings.json:
 Extensions:
 
 - Change Language Mode `usernamehw.change-language-mode`
-- Macros `ctf0.macros`
+- Macros `ctf0.macros` (fork of geddski.macros)
 
 settings.json:
 ```jsonc
