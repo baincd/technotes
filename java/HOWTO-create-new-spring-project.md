@@ -5,13 +5,13 @@
   1. https://www.gitignore.io/?templates=java,maven,eclipse,intellij
   2. Add <!-- See https://github.com/toptal/gitignore/pull/275 -->
 
-    ```
-    # Eclipse Core
-    .project
+```
+# Eclipse Core
+.project
 
-    # JDT-specific (Eclipse Java Development Tools)
-    .classpath
-    ```
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+```
 
 4. Create .gitattributes
 
