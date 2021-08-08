@@ -188,26 +188,42 @@
 
 # Key Bindings
 ```jsonc
-// Duplicate ctrl+shift+k
-// Override editor.action.addSelectionToNextFindMatch
+// Redefine ctrl+d = "delete line" (replaces addSelectionToNextFindMatch, duplicates ctrl+shift+k)
 { "key": "ctrl+d",                "command": "editor.action.deleteLines",
                                      "when": "textInputFocus && !editorReadonly" },
-// Moved from ctrl+shift+a (see below)
+{ "key": "ctrl+d",                "command": "-editor.action.addSelectionToNextFindMatch",
+                                     "when": "editorFocus" },
+
+// ctrl+shift+/ = "block comment" (moved from ctrl+shift+a)
+// ctrl+shift+a = "toggle activity bar"
 { "key": "ctrl+shift+/",          "command": "editor.action.blockComment",
                                      "when": "editorTextFocus && !editorReadonly" },
-// Override editor.action.blockComment (move to ctrl+shift+/ above)
+{ "key": "ctrl+shift+a",          "command": "-editor.action.blockComment",
+                                     "when": "editorTextFocus && !editorReadonly" },
 { "key": "ctrl+shift+a",          "command": "workbench.action.toggleActivityBarVisibility" },
-// Duplicate ctrl+shift+e
-// Override workbench.action.splitEditor
+
+// ctrl+\ = "toggle explorer sidebar" (replaces "split editor", duplicate ctrl+shift+e)
 { "key": "ctrl+\\",               "command": "workbench.view.explorer",
                                      "when": "!explorerViewletVisible" },
 { "key": "ctrl+\\",               "command": "workbench.action.toggleSidebarVisibility",
                                      "when": "explorerViewletVisible" },
-// Duplicate ctrl+b
-// Override editor.action.jumpToBracket (move to ctrl+] below)
+{ "key": "ctrl+\\",               "command": "-workbench.action.splitEditor" },
+
+// ctrl+] = "jump to bracket" (replaces indentLines, moved from ctrl+shift+\)
+// ctrl+shift+\ = "toggle sidebar" (replaces focusTabs and jumpToBracket, duplicates ctrl+b)
+{ "key": "ctrl+]",                "command": "editor.action.jumpToBracket",
+                                     "when": "editorTextFocus" },
+{ "key": "ctrl+]",                "command": "-editor.action.indentLines",
+                                     "when": "editorTextFocus && !editorReadonly" },
 { "key": "ctrl+shift+\\",         "command": "workbench.action.toggleSidebarVisibility" },
+{ "key": "ctrl+shift+\\",         "command": "-workbench.action.terminal.focusTabs",
+                                     "when": "terminalFocus && terminalProcessSupported || terminalProcessSupported && terminalTabsFocus" },
+{ "key": "ctrl+shift+\\",         "command": "-editor.action.jumpToBracket",
+                                     "when": "editorTextFocus" },
+
 { "key": "ctrl+alt+\\",           "command": "workbench.files.action.showActiveFileInExplorer" },
-// Extend shortcuts to hide sidebar if viewlet is currently visible
+
+// Extend sidebar shortcuts to hide sidebar if viewlet is currently visible
 { "key": "ctrl+shift+e",          "command": "workbench.action.toggleSidebarVisibility",
                                      "when": "sideBarVisible && activeViewlet == 'workbench.view.explorer'" },
 { "key": "ctrl+shift+f",          "command": "workbench.action.toggleSidebarVisibility",
@@ -218,29 +234,40 @@
                                      "when": "sideBarVisible && activeViewlet == 'workbench.view.debug'" },
 { "key": "ctrl+shift+x",          "command": "workbench.action.toggleSidebarVisibility",
                                      "when": "sideBarVisible && activeViewlet == 'workbench.view.extensions'" },
-// Move from ctrl+shift+\\ (see above)
-// Override editor.action.indentLines
-{ "key": "ctrl+]",                "command": "editor.action.jumpToBracket",
-                                     "when": "editorTextFocus" },
+
 // Duplicate ctrl+k ctrl+f
 { "key": "ctrl+alt+f",            "command": "editor.action.formatSelection",
                                      "when": "editorHasDocumentSelectionFormattingProvider && editorTextFocus && !editorReadonly" },
+
 { "key": "alt+`",                 "command": "workbench.action.quickOpenTerm" },
+
 // Remove ctrl+w closing window when last editor is closed
 { "key": "ctrl+w",                "command": "-workbench.action.closeWindow",
                                      "when": "!editorIsOpen && !multipleEditorGroups" },
-// Override workbench.action.closeWindow
+
+// ctrl+shift+w = "close all editors" (replaces "close window")
 { "key": "ctrl+shift+w",          "command": "workbench.action.closeAllEditors" },
+{ "key": "ctrl+shift+w",          "command": "-workbench.action.closeWindow" },
+
+// ctrl+shift+f5 = "reload window (replaces "debug restart")
 { "key": "ctrl+shift+f5",         "command": "workbench.action.reloadWindow" },
+{ "key": "ctrl+shift+f5",         "command": "-workbench.action.debug.restart",
+                                     "when": "inDebugMode" },
+
+// ctrl+shift+, = "settings on fire" (replaces inPlaceReplaceUp)
 { "key": "ctrl+shift+,",          "command": "settingsOnFire.toggleSettings" },
-// Override Alt+Left with Go Back
+{ "key": "ctrl+shift+,",          "command": "-editor.action.inPlaceReplace.up",
+                                    "when": "editorTextFocus && !editorReadonly" },
+
+// alt+left/right = back/forward (replaces "focus prev/next pane")
+{ "key": "alt+left",              "command": "workbench.action.navigateBack" },
 { "key": "alt+left",              "command": "-workbench.action.terminal.focusPreviousPane",
                                      "when": "terminalFocus && terminalProcessSupported" },
-{ "key": "alt+left",              "command": "workbench.action.navigateBack" },
 // Override Alt+Right with Go Forward
+{ "key": "alt+right",             "command": "workbench.action.navigateForward" },
 { "key": "alt+right",             "command": "-workbench.action.terminal.focusNextPane",
                                      "when": "terminalFocus && terminalProcessSupported" },
-{ "key": "alt+right",             "command": "workbench.action.navigateForward" },
+// ctrl+; enter = maximize editor
 { "key": "ctrl+; enter",          "command": "workbench.action.minimizeOtherEditors" },
 ```
 
