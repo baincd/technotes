@@ -188,10 +188,12 @@ Extension: `gruntfuggly.todo-tree`
         "XXX",
         "[ ]", // Todo-Tree Markdown Fix https://github.com/Gruntfuggly/todo-tree#markdown-support
         "[x]", // Todo-Tree Markdown Fix https://github.com/Gruntfuggly/todo-tree#markdown-support
+        "[]", // Added
         "[>]", // Added
         "[>>]" // Added
     ],
     "todo-tree.general.tagGroups": {
+        "[ ]": [ "[ ]", "[]" ],
         "CDB": ["CDB", "FIXME CDB", "TODO CDB"],
         "CDB-REVIEW": ["CDBR", "CDB-RVW" ],
         "Qs": ["??", "Q: "],
