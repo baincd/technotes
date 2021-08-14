@@ -12,6 +12,32 @@ Enable by adding the workspace path to shortcuts/aliases to open vscode
 }
 ```
 
+# Track changes to vscode settings, keybindings, snippets
+
+1. ${vscode}/User: `git init`
+
+2. `.gitignore`
+```
+globalStorage/
+worksplaceStorage/
+**
+!*.json
+!snippets/
+!.gitignore
+```
+
+3. `.vscode/settings.json`
+```jsonc
+{
+    "files.exclude": {
+        "globalStorage": true,
+        "workspaceStorage": true,
+    }
+}
+```
+
+4. Commit changes
+
 # Git commit tasks and shortcuts
 
 Create tasks and hotkeys to run git commit commands that use the git commit editor, which can take advantage of spellchecker in vscode
