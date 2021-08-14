@@ -8,6 +8,8 @@
             "debugConsole.infoForeground": "#4e4e4e", // Override default light-theme value of #75beff
             "debugConsole.sourceForeground": "#5eb2fc", // Override default light-theme value of #616161
             "activityBar.activeBackground": "#9900ff20", // Override default light-theme value of null
+            "editorGroup.border": "#d3d3d3", // Override default light-theme value of "#e7e7e7"
+            "editorOverviewRuler.border": "#dddddd", // Override default light-theme value of "#7f7f7f4d"
 
             // titlebar and statusbar                          light-theme  Light+    QuietLight  QuietLightForVsc
             "titleBar.activeBackground": "#dddddd",      //  [#dddddd]               #c4b7d7      #c4b7d7
