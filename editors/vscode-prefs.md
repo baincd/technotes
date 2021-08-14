@@ -185,6 +185,7 @@
     "markdown.preview.scrollEditorWithPreview": false, // Disable by default, may be changed by Settings-on-fire
     "markdown.preview.scrollPreviewWithEditor": false, // Disable by default, may be changed by Settings-on-fire
     "markdown.extension.syntax.decorations": false,
+    "markdown.extension.list.indentationSize": "inherit",
 
     "update.mode": "default",
 ```
