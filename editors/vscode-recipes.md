@@ -219,6 +219,7 @@ Extension: `gruntfuggly.todo-tree`
     },
     "todo-tree.general.statusBar": "tags",
     "todo-tree.tree.labelFormat": "${filename}:${line} ${tag}${after}",
+    "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
 ```
 
 # Tag Highlighter
