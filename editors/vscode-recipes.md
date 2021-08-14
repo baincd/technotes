@@ -213,9 +213,9 @@ Extension: `gruntfuggly.todo-tree`
         "DEBUGGING": { "icon": "trash" },
         "NEED": { "icon": "issue-opened" },
         // "[ ]": { "background": "#ff000080" }, // Todo-Tree Markdown Fix https://github.com/Gruntfuggly/todo-tree#markdown-support
-        "[x]": { "background": "#00cc0080" }, // Todo-Tree Markdown Fix https://github.com/Gruntfuggly/todo-tree#markdown-support
-        "[>]": { "background": "#ebb800" },
-        "[>>]": { "background": "#00db00"}
+        "[x]": { "background": "#00cc0080", "icon": "check-circle-fill", "iconColour": "#00CC00" }, // Todo-Tree Markdown Fix https://github.com/Gruntfuggly/todo-tree#markdown-support
+        "[>]": { "background": "#ebb800", "icon": "chevron-right", "iconColour": "#ebb800" },
+        "[>>]": { "background": "DarkRed", "icon": "arrow-right", "iconColour": "DarkRed" }
     },
     "todo-tree.general.statusBar": "tags",
     "todo-tree.tree.labelFormat": "${filename}:${line} ${tag}${after}",
