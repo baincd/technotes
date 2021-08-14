@@ -14,8 +14,8 @@
             "statusBar.background": "#4b83cd",           //   #007acc                #705697     [#4b83cd]
             "statusBar.noFolderBackground": "#705697",   //   #68217a               [#705697]     #aa3731
             "statusBar.debuggingBackground": "#cc6633",  //  [#cc6633]               #705697      #aa3731
-            "statusBarItem.errorBackground": "#c72e0f",  //               [#c72e0f]  #c72516      #3d0000
-            "statusBarItem.remoteBackground": "#16825d", //               [#16825d]  #4e3c69      #448c27
+            "statusBarItem.errorBackground": "#c72e0f",  //   #611708     [#c72e0f]  #c72516      #3d0000
+            "statusBarItem.remoteBackground": "#16825d", //   #007acc     [#16825d]  #4e3c69      #448c27
         }
     },
     "workbench.iconTheme": "vscode-icons",
