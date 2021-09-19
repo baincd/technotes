@@ -73,6 +73,7 @@
         "blocks" // Add start of functions, methods, etc
     ],
     "gitlens.hovers.enabled": false,  // Disable by default, may be changed by Settings-on-fire
+    "gitlens.keymap": "none",
     "gitlens.menus": {
         "editorGroup": {
             "compare": false // Remove the "Open Changes with Previous Revision", "Show Revision Commit", "Open Changes with Next Revision" buttons in editor group
