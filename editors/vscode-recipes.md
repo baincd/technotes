@@ -68,7 +68,7 @@ tasks.json:
 			}
 		},
 		{
-			"label": "git commitall",
+			"label": "git commit: all",
 			"detail": "commit all working directory changes",
 			"type": "shell",
 			"command": "git add -A && git commit",
@@ -85,7 +85,7 @@ tasks.json:
 			}
 		},
 		{
-			"label": "git commit --amend",
+			"label": "git commit: amend",
 			"detail": "amend staged changes to HEAD",
 			"type": "shell",
 			"command": "git commit --amend",
@@ -108,9 +108,9 @@ keybindings.json:
 { "key": "ctrl+; g",              "command": "workbench.action.tasks.runTask",
                                      "args": "git commit" },
 { "key": "ctrl+; ctrl+shift+g",   "command": "workbench.action.tasks.runTask",
-                                     "args": "git commitall" },
+                                     "args": "git commit: all" },
 { "key": "ctrl+; ctrl+alt+g",     "command": "workbench.action.tasks.runTask",
-                                     "args": "git commit --amend" },
+                                     "args": "git commit: amend" },
 
 ```
 # Change Language Mode Key Bindings
