@@ -62,7 +62,10 @@ tasks.json:
 				"reveal": "silent",
 				"panel": "shared",
 			},
-			"problemMatcher": []
+			"problemMatcher": [],
+			"windows": {
+				"options": {"shell": {"executable": "C:\\WINDOWS\\System32\\cmd.exe", "args": [ "/d", "/c" ]} } // https://github.com/microsoft/vscode/issues/36154#issuecomment-336403892
+			}
 		},
 		{
 			"label": "git commitall",
@@ -76,7 +79,10 @@ tasks.json:
 				"reveal": "silent",
 				"panel": "shared",
 			},
-			"problemMatcher": []
+			"problemMatcher": [],
+			"windows": {
+				"options": {"shell": {"executable": "C:\\WINDOWS\\System32\\cmd.exe", "args": [ "/d", "/c" ]} } // https://github.com/microsoft/vscode/issues/36154#issuecomment-336403892
+			}
 		},
 		{
 			"label": "git commit --amend",
@@ -90,7 +96,10 @@ tasks.json:
 				"reveal": "silent",
 				"panel": "shared",
 			},
-			"problemMatcher": []
+			"problemMatcher": [],
+			"windows": {
+				"options": {"shell": {"executable": "C:\\WINDOWS\\System32\\cmd.exe", "args": [ "/d", "/c" ]} } // https://github.com/microsoft/vscode/issues/36154#issuecomment-336403892
+			}
 		},
 ```
 
