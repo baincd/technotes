@@ -76,7 +76,7 @@
             "compare": false // Remove the "Open Changes with Previous Revision", "Show Revision Commit", "Open Changes with Next Revision" buttons in editor group
         },
     },
-    "print.browserPath": "/home/chris/bin/chrome-incognito.sh", // /usr/bin/google-chrome-stable --incognito "$@"
+    "print.browserPath": "/usr/bin/google-chrome-stable --incognito",
     "print.lineNumbers": "off", // Workaround to https://github.com/earshinov/vscode-filter-lines/issues/9
     "pdf-preview.default.cursor": "hand",
 
