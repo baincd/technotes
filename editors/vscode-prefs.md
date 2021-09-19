@@ -11,6 +11,8 @@
             "editorGroup.border": "#d3d3d3", // Override default light-theme value of "#e7e7e7"
             "editorOverviewRuler.border": "#dddddd", // Override default light-theme value of "#7f7f7f4d"
 
+            "diffEditor.removedTextBackground": "#ff000022", // Default: "#ff000033"
+
             // titlebar and statusbar                          light-theme  Light+    QuietLight  QuietLightForVsc
             "titleBar.activeBackground": "#dddddd",      //  [#dddddd]               #c4b7d7      #c4b7d7
             "statusBar.background": "#4b83cd",           //   #007acc                #705697     [#4b83cd]
