@@ -38,6 +38,26 @@ settings.json:
     "java.autobuild.enabled": true, // no change from default, may be changed by Settings-on-fire
 ```
 
+tasks.json:
+```jsonc
+		{
+			"label": "Java: delombok file",
+			"type": "shell",
+			"presentation": {
+				"reveal": "silent",
+				"panel": "shared",
+			},
+			"problemMatcher": [],
+			"linux": {
+				"command": "java -jar ~/.vscode/extensions/gabrielbb.vscode-lombok-1.0.1/server/lombok.jar delombok ${file} -p > ${file}_delomboked && mv ${file} ${file}_lombok && mv ${file}_delomboked ${file}",
+			},
+			"windows": {
+				"command": "java -jar c:\\Users\\chris\\.vscode\\extensions\\gabrielbb.vscode-lombok-1.0.1\\server\\lombok.jar delombok ${file} -p > ${file}_delomboked && move ${file} ${file}_lombok && move ${file}_delomboked ${file}",
+				"options": {"shell": {"executable": "C:\\WINDOWS\\System32\\cmd.exe", "args": [ "/d", "/c" ]} } // https://github.com/microsoft/vscode/issues/36154#issuecomment-336403892
+			}
+		}
+```
+
 # Maven dependency tree commands
 
 settings.json:
