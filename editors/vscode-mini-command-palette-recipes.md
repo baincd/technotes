@@ -91,85 +91,130 @@
         "placeHolder": "Java",
         "commands": [
             {
-                "label": "Organize Imports",
+                "label": "⇅  Organize Imports",
                 "description": "     (Shift+Alt+O)",
                 "command": "editor.action.organizeImports"
             },
             {
-                "label": "Find All References",
-                "description": "     (Alt+Shift+F12)",
-                "command": "references-view.findReferences"
+                "label": "$(references) View References",
+                "command": "baincd.mini-command-palettes.cmds.java-dev.view-references"
             },
             {
-                "label": "Peek References",
-                "command": "editor.action.referenceSearch.trigger"
+                "label": "$(book) View Definition",
+                "command": "baincd.mini-command-palettes.cmds.java-dev.view-definition"
             },
             {
-                "label": "Go to References",
-                "descriptions": "     (Shift+F12)",
-                "command": "editor.action.goToReferences"
+                "label": "$(file-code) View Implementation",
+                "command": "baincd.mini-command-palettes.cmds.java-dev.view-implementation"
             },
             {
-                "label": "Find Definition",
-                "description": "     (Ctrl+K F12)",
-                "command": "editor.action.revealDefinitionAside"
+                "label": "$(mortar-board) View Type Definition",
+                "command": "baincd.mini-command-palettes.cmds.java-dev.view-type-definition"
             },
             {
-                "label": "Peek Definition",
-                "description": "     (Ctrl+Shift+F10)",
-                "command": "editor.action.peekDefinition"
+                "label": "$(call-incoming) View Call Hierarchy",
+                "command": "baincd.mini-command-palettes.cmds.java-dev.view-call-hierarchy"
             },
             {
-                "label": "Go to Definition",
-                "description": "     (F12)",
-                "command": "editor.action.revealDefinition"
-            },
-            {
-                "label": "Find All Implementations",
-                "command": "references-view.findImplementations"
-            },
-            {
-                "label": "Peek Implementations",
-                "description": "     (Ctrl+Shift+F12)",
-                "command": "editor.action.peekImplementation"
-            },
-            {
-                "label": "Go to Implementations",
-                "description": "     (Ctrl+F12)",
-                "command": "editor.action.goToImplementation"
-            },
-            {
-                "label": "Go To Super Implementation",
-                "command": "java.action.navigateToSuperImplementation"
-            },
-            {
-                "label": "Peek Type Definition",
-                "command": "editor.action.peekTypeDefinition"
-            },
-            {
-                "label": "Go To Type Definition",
-                "command": "editor.action.goToTypeDefinition"
-            },
-            {
-                "label": "Show Call Hierarchy",
-                "description": "     (Alt+Shift+H)",
-                "command": "references-view.showCallHierarchy"
-            },
-            {
-                "label": "Peek Call Hierarchy",
-                "command": "editor.showCallHierarchy"
-            },
-            {
-                "label": "Show Type Hierarchy",
+                "label": "$(type-hierarchy) Show Type Hierarchy",
                 "command": "java.action.showTypeHierarchy"
             },
             {
-                "label": "Delombok",
+                "label": "$(circuit-board) Delombok",
                 "command": "workbench.action.tasks.runTask",
                 "commandArgs": [
                     "Java: delombok file"
                 ]
             }
+        ]
+    },
+    "java-dev.view-references":{
+        "placeHolder": "View References",
+        "commands": [
+            {
+                "label": "$(search) Find All References",
+                "description": "     (Alt+Shift+F12)",
+                "command": "references-view.findReferences"
+            },
+            {
+                "label": "$(eye) Peek References",
+                "command": "editor.action.referenceSearch.trigger"
+            },
+            {
+                "label": "$(arrow-right) Go to References",
+                "descriptions": "     (Shift+F12)",
+                "command": "editor.action.goToReferences"
+            },
+        ]
+    },
+    "java-dev.view-definition":{
+        "placeHolder": "View Definition",
+        "commands": [
+            {
+                "label": "$(search) Find Definition",
+                "description": "     (Ctrl+K F12)",
+                "command": "editor.action.revealDefinitionAside"
+            },
+            {
+                "label": "$(eye) Peek Definition",
+                "description": "     (Ctrl+Shift+F10)",
+                "command": "editor.action.peekDefinition"
+            },
+            {
+                "label": "$(arrow-right) Go to Definition",
+                "description": "     (F12)",
+                "command": "editor.action.revealDefinition"
+            },
+        ]
+    },
+    "java-dev.view-implementation":{
+        "placeHolder": "View Implementation",
+        "commands": [
+            {
+                "label": "$(search) Find All Implementations",
+                "command": "references-view.findImplementations"
+            },
+            {
+                "label": "$(eye) Peek Implementations",
+                "description": "     (Ctrl+Shift+F12)",
+                "command": "editor.action.peekImplementation"
+            },
+            {
+                "label": "$(arrow-right) Go to Implementations",
+                "description": "     (Ctrl+F12)",
+                "command": "editor.action.goToImplementation"
+            },
+            {
+                "label": "↱ Go To Super Implementation",
+                "command": "java.action.navigateToSuperImplementation"
+            },
+        ]
+    },
+    "java-dev.view-type-definition":{
+        "placeHolder": "View Type Definition",
+        "commands": [
+            {
+                "label": "$(eye) Peek Type Definition",
+                "command": "editor.action.peekTypeDefinition"
+            },
+            {
+                "label": "$(arrow-right) Go To Type Definition",
+                "command": "editor.action.goToTypeDefinition"
+            },
+        ]
+    },
+    "java-dev.view-call-hierarchy":{
+        "placeHolder": "View Call Hierarchy",
+        "commands": [
+            {
+                "label": "$(search) Show Call Hierarchy",
+                "description": "     (Alt+Shift+H)",
+                "command": "references-view.showCallHierarchy"
+            },
+            {
+                "label": "$(eye) Peek Call Hierarchy",
+                "command": "editor.showCallHierarchy"
+            },
         ]
     },
     "git-palette": {
