@@ -217,23 +217,45 @@
             },
         ]
     },
-    "git-palette": {
-        "placeHolder": "Git",
+    "diff-palette": {
+        "placeHolder": "Diff",
         "commands": [
             {
-                "label": "Stage Selected Changes",
+                "label": "+  Stage Selected Changes",
                 "description": "     (Ctrl+K Ctrl+Alt+S)",
                 "command": "git.stageSelectedRanges"
             },
             {
-                "label": "Stage File",
+                "label": "⧺  Stage File",
                 "command": "git.stage"
             },
             {
-                "label": "Unstage Selected Changes",
+                "label": "−  Unstage Selected Changes",
                 "description": "     (Ctrl+K Ctrl+N)",
                 "command": "git.unstageSelectedRanges"
             },
+            {
+                "label": "±  Open Diff (Working Copy)",
+                "command": "git.openChange"
+            },
+            {
+                "label": "$(go-to-file) Open File",
+                "command": "git.openFile"
+            },
+            {
+                "label": "$(diff) Toggle Inline / Side-By-Side",
+                "command": "toggle.diff.renderSideBySide"
+            },
+            {
+                "label": "␢  Toggle Show / Hide Whitespace Differences",
+                "command": "toggle.diff.ignoreTrimWhitespace"
+            },
+            // Not Available - Open Diff (Staged)
+        ]
+    },
+    "git-palette": {
+        "placeHolder": "Git",
+        "commands": [
             {
                 "label": "Commit",
                 "command": "workbench.action.tasks.runTask",
@@ -277,7 +299,7 @@
                 ]
             },
             {
-                "label": "Open repo on remote",
+                "label": "$(globe) Open repo on remote",
                 "command": "gitlens.openRepoOnRemote"
             },
         ]
@@ -293,6 +315,7 @@
     "baincd.mini-command-palettes.cmds.activity-bar-palette",
     "baincd.mini-command-palettes.cmds.panel-palette",
     "baincd.mini-command-palettes.cmds.java-dev",
+    "baincd.mini-command-palettes.cmds.diff-palette",
     "baincd.mini-command-palettes.cmds.git-palette"
 ],
 
@@ -304,5 +327,6 @@
 { "key": "ctrl+alt+b",           "command": "baincd.mini-command-palettes.cmds.activity-bar-palette" },
 { "key": "ctrl+alt+j",           "command": "baincd.mini-command-palettes.cmds.panel-palette" },
 { "key": "ctrl+alt+;",           "command": "baincd.mini-command-palettes.cmds.java-dev" },
-{ "key": "ctrl+alt+/",           "command": "baincd.mini-command-palettes.cmds.git-palette" },
+{ "key": "ctrl+alt+/",           "command": "baincd.mini-command-palettes.cmds.diff-palette" },
+{ "key": "ctrl+alt+g",           "command": "baincd.mini-command-palettes.cmds.git-palette" },
 ```
