@@ -264,6 +264,9 @@
 { "key": "ctrl+shift+f5",         "command": "-workbench.action.debug.restart",
                                      "when": "inDebugMode" },
 
+// ctrl+alt+d = select launch configuration and start debugging
+{ "key": "ctrl+alt+d",            "command": "workbench.action.debug.selectandstart" },
+
 // ctrl+shift+, = "settings on fire" (replaces inPlaceReplaceUp)
 { "key": "ctrl+shift+,",          "command": "settingsOnFire.toggleSettings" },
 { "key": "ctrl+shift+,",          "command": "-editor.action.inPlaceReplace.up",
