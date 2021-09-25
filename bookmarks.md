@@ -86,6 +86,8 @@ RESTful API design
 ## JDK
 [Java is still free](https://docs.google.com/document/d/1nFGazvrCvHMZJgFstlbzoHjpAVwv5DEdnaBr_5pKuHo/preview) [(post on Medium)](https://medium.com/@javachampions/java-is-still-free-2-0-0-6b9aa8d6d244)
 
+[How to pick a JDK; OpenJDK vs Adoptium](https://stackoverflow.com/a/59003120/4764903)
+
 [JDK downloads](https://jdk.dev/)
 
 ## Spring
