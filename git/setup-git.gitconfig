@@ -41,7 +41,7 @@
 # 	## Linux / Bash editors
 # 	editor = vi
 # 	editor = atom --wait
-#	editor = code --log off --new-window --wait  # Open in a new window, close window when editor tab is closed
+#	editor = code --log off --wait  # If vscode already open then add new editor tab and do not close window when new editor tab is closed; else open in new window and close window when new editor tab is closed
 # [credential]
 # 	# Windows http - Use windows to cache credentials
 # 	helper = wincred
