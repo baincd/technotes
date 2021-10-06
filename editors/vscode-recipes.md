@@ -248,7 +248,7 @@ Highlight TODO and similar comments, and display in sidebar
 Extension: `gruntfuggly.todo-tree`
 
 ```
-    "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.)|^\\*\\*)\\s*($TAGS)", // Add **, Todo-Tree Markdown Fix https://github.com/Gruntfuggly/todo-tree#markdown-support
+    "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^[ \\t]*(-|\\d+.)|\\*\\*)[ \\t]*($TAGS)",   // add ** to proposed fix from https://github.com/Gruntfuggly/todo-tree/issues/536#issuecomment-935272935
     "todo-tree.general.tags": [
         "CDBR", "CDB-RVW", // Added
         "??", "Q: ", // Added
