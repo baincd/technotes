@@ -270,7 +270,7 @@
 // ctrl+shift+, = "settings on fire" (replaces inPlaceReplaceUp)
 { "key": "ctrl+shift+,",          "command": "settingsOnFire.toggleSettings" },
 { "key": "ctrl+shift+,",          "command": "-editor.action.inPlaceReplace.up",
-                                    "when": "editorTextFocus && !editorReadonly" },
+                                     "when": "editorTextFocus && !editorReadonly" },
 
 // alt+left/right = back/forward (replaces "focus prev/next pane")
 { "key": "alt+left",              "command": "workbench.action.navigateBack" },

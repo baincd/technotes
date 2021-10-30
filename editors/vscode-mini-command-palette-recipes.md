@@ -324,9 +324,9 @@
 ## Keyboard Shortcuts
 
 ```jsonc
-{ "key": "ctrl+alt+b",           "command": "baincd.mini-command-palettes.cmds.activity-bar-palette" },
-{ "key": "ctrl+alt+j",           "command": "baincd.mini-command-palettes.cmds.panel-palette" },
-{ "key": "ctrl+alt+;",           "command": "baincd.mini-command-palettes.cmds.java-dev" },
-{ "key": "ctrl+alt+/",           "command": "baincd.mini-command-palettes.cmds.diff-palette" },
-{ "key": "ctrl+alt+g",           "command": "baincd.mini-command-palettes.cmds.git-palette" },
+{ "key": "ctrl+alt+b",            "command": "baincd.mini-command-palettes.cmds.activity-bar-palette" },
+{ "key": "ctrl+alt+j",            "command": "baincd.mini-command-palettes.cmds.panel-palette" },
+{ "key": "ctrl+alt+;",            "command": "baincd.mini-command-palettes.cmds.java-dev" },
+{ "key": "ctrl+alt+/",            "command": "baincd.mini-command-palettes.cmds.diff-palette" },
+{ "key": "ctrl+alt+g",            "command": "baincd.mini-command-palettes.cmds.git-palette" },
 ```
