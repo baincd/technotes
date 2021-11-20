@@ -74,7 +74,7 @@ PATH=$PATH:~/bin
 # Development tools
 
 alias f='git f'
-alias cd-git-root='cd $(git rev-parse --show-cdup)'
+alias cd-git-root='cd ./$(git rev-parse --show-cdup)'
 
 ### Maven Aliases ###
 
