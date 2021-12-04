@@ -53,7 +53,7 @@
     // Set via integrated-terminal > Select Default Shell
     // Windows will be something like "C:\\Program Files\\Git\\bin\\bash.exe"
     "terminal.integrated.shell.linux": "/bin/bash",
-    "terminal.integrated.cwd": "${fileDirname}",
+    // "terminal.integrated.cwd": "${fileDirname}", // Open to firector of current file - broken in multi-root workspaces (#136099).  Use Tyriar.vscode-terminal-here as workaround
     "terminal.integrated.scrollback": 10000,
     "terminal.integrated.commandsToSkipShell": [
         "workbench.action.toggleSidebarVisibility",
@@ -292,6 +292,7 @@
 - Printing: `pdconsec.vscode-print`
 - Quick Settings: `edb.settings-on-fire`
 - Insert Unicode: `brunnerh.insert-unicode`
+- Terminal Here: `Tyriar.vscode-terminal-here as workaround`
 
 - DupChecker (uniq command): `jianbingfang.dupchecker`
 - Filter Lines (grep command): `earshinov.filter-lines`
