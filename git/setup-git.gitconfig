@@ -69,8 +69,8 @@
 	# Add common ancestor in merge conflict blocks
 	# Why is diff3 awesome?  https://blog.nilbus.com/take-the-pain-out-of-git-conflict-resolution-use-diff3/
 	conflictstyle = diff3
-[rerere]
-	enabled = true
+# [rerere]
+# 	enabled = true
 [submodule]
 	# Have commands recurse into submodules by default - this applies to commands like checkout, fetch, grep, pull, push, ...
 	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-submodulerecurse
