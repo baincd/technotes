@@ -92,6 +92,13 @@ alias mvn-gen-all-sources='findsrc -name pom.xml -exec grep -q "plugin_one\|plug
 ### - (I know the target/ folder is from Maven and not Eclipse directly, but I still think it is helpful to delete it :-)  )
 alias eclipse-clean='find -name .project -type f -execdir rm -rfv .project .classpath .wtpmodules bin/ .settings/ target/ \; 2>&1 | grep -v "No such file or directory"'
 
+# Fix weird characters when pasting into vscode integrated Bash terminal
+# References:
+#    https://github.com/microsoft/vscode/issues/141879#issuecomment-1025950186
+#    https://github.com/microsoft/vscode/issues/142677#issuecomment-1035049370
+#    https://code.visualstudio.com/docs/editor/integrated-terminal#_i-see-1-or-201-when-i-paste-something
+bind 'set enable-bracketed-paste off'
+
 # Tool Helpers
 
 alias gnucash-monthly-expense-report-to-spreadsheet="tac | tac | sed -re 's/^(Monthly Expense Report:)/##### \1 #####/' -re '/^Act\tAct\tAct/d' -re '/^(Big )?Expenses/d' -re 's/^[\t ]+//' -re 's/([^\t]*)\t\t/\1\t/' -re '4s/^/\t/' -re 's/\$//g'"
