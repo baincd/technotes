@@ -8,46 +8,38 @@ wait, and all publishers (as of the last modification of this script) will be
 selected except Packt Publishing (as new publishers are added to Safari
 Books Online they will also need to be added to this script).
 
-Tested in Firefox and Chrome.
+Tested in Firefox and Edge.
 
 A Huge Thank You to https://mrcoles.com/bookmarklet/ ,
 which this bookmarklet relies heavily on and would not be possible without.
 ******************************************************************************/
 
-javascript:
-(function() {
+javascript: (function() {
   function callback() {
     (function($) {
-      var jQuery=$;
       /********* START MY CODE **********/
-      var publisherBtn = $(':contains("publishers")')
-                            .filter(function() {return $(this).text() === "publishers"})
-                            .parent()
-                            .parent();
-
-      var publisherSearchDiv = publisherBtn.parent();
-
-      publisherSearchDiv.find('input[type="checkbox"]')
-                        .filter(':not(:checked)')
-                        .filter(function() {return $(this).val() !== "all" && $(this).val() !== "Packt Publishing"})
-                        .click();
-
+      let publisherBtn = $('button:contains("Publishers")')
+                          .filter(function() {return $(this).text() === "Publishers"});
       publisherBtn.click();
-
-      publisherSearchDiv.find(':contains("View")')
-                .filter(function() {return $(this).text().includes("results")})
-                .parent()
-                .click();
+      let publisherSearchDiv = publisherBtn.parent();
+      setTimeout(() => {
+        publisherSearchDiv.find("input[type='checkbox']")
+                          .filter(':not(:checked)')
+                          .filter((i,e) => e.name !== "Packt Publishing")
+                          .each((i,e) => { console.log("Checking " + e.name);  } )
+                          .next() /* Only clicking on the label works for some reason?? */
+                          .click();
+        publisherSearchDiv.find('button:contains("Apply")').click();
+      }, 100);
       /********* END MY CODE **********/
-    })
-    (jQuery.noConflict(true))
+    })(jQuery.noConflict(true));
   }
-  var s = document.createElement("script");
-  s.src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js";
+  let s = document.createElement("script");
+  s.src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js";
   if (s.addEventListener) {
-    s.addEventListener("load",callback,false)
+    s.addEventListener("load",callback,false);
   } else if (s.readyState) {
-    s.onreadystatechange=callback
+    s.onreadystatechange=callback;
   }
-  document.body.appendChild(s);
+  document.body.appendChild(s); 
 })()
