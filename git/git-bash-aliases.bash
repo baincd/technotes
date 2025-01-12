@@ -145,5 +145,13 @@ function helpme-log-merge-diff() {
   $echoe "    \033[2mShow only the changes the merge brought into the then-current branch\033[0m"
 }
 
+function helpme-cherry() {
+  $echoe "\033[1mWhat commits have been cherry-picked from the source branch to the target branch\033[0m"
+  $echoe ""
+  $echoe "git cherry -v <target_branch> <source_branch>"
+  $echoe ""
+  $echoe "+ = Commit has not been / needs to be picked into target branch"
+  $echoe "- = Commit has been / does not need to be picked into target branch"
+}
 
 $cmd "${args[@]}"

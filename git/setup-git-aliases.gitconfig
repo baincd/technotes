@@ -176,6 +176,9 @@
   # Display useful tips for viewing diffs of merge commits in log command
   helpme-log-merge-diff = !~/.git-aliases.bash helpme-log-merge-diff
 
+  # Display useful tips for the cherry command
+  helpme-cherry = !~/.git-aliases.bash helpme-cherry
+
   config-repo-main-branch = config feature-alias.main-branch
   unconfig-repo-main-branch = config --unset feature-alias.main-branch
   # Fetch and create a new branch off of origin/main-branch (see feature-alias.main-branch)
