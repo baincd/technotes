@@ -15,31 +15,17 @@ which this bookmarklet relies heavily on and would not be possible without.
 ******************************************************************************/
 
 javascript: (function() {
-  function callback() {
-    (function($) {
-      /********* START MY CODE **********/
-      let publisherBtn = $('button:contains("Publishers")')
-                          .filter(function() {return $(this).text() === "Publishers"});
-      publisherBtn.click();
-      let publisherSearchDiv = publisherBtn.parent();
-      setTimeout(() => {
-        publisherSearchDiv.find("input[type='checkbox']")
-                          .filter(':not(:checked)')
-                          .filter((i,e) => e.name !== "Packt Publishing")
-                          .each((i,e) => { console.log("Checking " + e.name);  } )
-                          .next() /* Only clicking on the label works for some reason?? */
-                          .click();
-        publisherSearchDiv.find('button:contains("Apply")').click();
-      }, 100);
-      /********* END MY CODE **********/
-    })(jQuery.noConflict(true));
+  let publishersBlock = document.querySelector('div[data-testid="publishers"]');
+  let publishersSearchInput = publishersBlock.querySelector('input[type="search"]');
+  let publishersToggle = publishersBlock.querySelector('button[data-testid="publishers-toggle"]');
+  if (!publishersSearchInput) {
+    publishersToggle.click();
   }
-  let s = document.createElement("script");
-  s.src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js";
-  if (s.addEventListener) {
-    s.addEventListener("load",callback,false);
-  } else if (s.readyState) {
-    s.onreadystatechange=callback;
-  }
-  document.body.appendChild(s); 
+  setTimeout(() => {
+    Array.from(publishersBlock.querySelectorAll('input[type="checkbox"]'))
+      .filter(e => !e.checked)
+      .filter(e => !e.id.startsWith("publishers-packt-publishing-"))
+      .forEach(e => e.click());
+    publishersToggle.click();
+  }, 100);
 })()
