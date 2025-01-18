@@ -83,6 +83,30 @@ function mkmvndirs() { mkdirs "${1:-.}/src/main/java" && mkdirs "${1:-.}/src/mai
 # Alias to run mvn generate-sources from all poms that contain either plugin_one or plugin_two (using simple grep of pom.xml)
 alias mvn-gen-all-sources='findsrc -name pom.xml -exec grep -q "plugin_one\|plugin_two" {} \; \( -exec ./mvnw clean generate-sources -f {} \; -o -quit \) '
 
+function mvn-dep-tree() { 
+  mvn dependency:tree --batch-mode "$@" | \
+  stdbuf -o0 sed \
+    -re '/^\[INFO\] --- maven-dependency-plugin:[0-9a-zA-Z_\.-]+:tree /,/^\[INFO\] -{72}?$/s/^\[INFO\] //' \
+    -re '/^\[INFO\] /d' \
+    -re '/^--- maven-dependency-plugin:[0-9a-zA-Z_\.-]+:tree/d' \
+    -re '/^-{72}$/d' \
+    -re 's/\+- |\|  |\\- /   /g' 
+}
+
+function mvn-dep-verbose() { 
+  mvn -X -Dmaven.resources.skip=true -Dmaven.main.skip=true -Dmaven.test.skip=true -Dmaven.source.skip=true -Dmaven.install.skip=true -Dmaven.deploy.skip=true --batch-mode "$@" | \
+  stdbuf -o0 \
+    sed -nre '/^\[DEBUG\] +[a-zA-Z0-9\._-]+(:[a-zA-Z0-9\._-]+){3,4}( \()?/s/^\[DEBUG\] //p' | \
+    sed -re '2,$s/^(\S.*)$/\n\1/'
+}
+
+function npm-dep-tree() { 
+  npm ls --all | \
+  sed \
+    -re 's/[├─┬└│]/ /g' \
+    -re 's/^  //' ; 
+}
+
 ###
 
 ## Delete files and directories associated with Eclipse Java projects
