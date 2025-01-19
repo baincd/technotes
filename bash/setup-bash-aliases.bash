@@ -95,9 +95,11 @@ function mvn-dep-tree() {
 
 function mvn-dep-verbose() { 
   mvn -X -Dmaven.resources.skip=true -Dmaven.main.skip=true -Dmaven.test.skip=true -Dmaven.source.skip=true -Dmaven.install.skip=true -Dmaven.deploy.skip=true --batch-mode "$@" | \
-  stdbuf -o0 \
-    sed -nre '/^\[DEBUG\] +[a-zA-Z0-9\._-]+(:[a-zA-Z0-9\._-]+){3,4}( \()?/s/^\[DEBUG\] //p' | \
-    sed -re '2,$s/^(\S.*)$/\n\1/'
+  stdbuf -o0 sed \
+    -re '/^\[DEBUG\] [a-zA-Z0-9\._-]+(:[a-zA-Z0-9\._-]+){3}/,/^\[(DEBUG|INFO)\] (\S|$)/s/^\[(DEBUG|INFO)\] /»»»/' \
+    -re 's/^(»»»)\S.*\s\S.*/\1/' \
+    -re '/^(\[INFO\] BUILD FAILURE$|\[FATAL\])/,$s/^/»»/' \
+    -nre '/^»»+/s/^»»+//p'
 }
 
 function npm-dep-tree() { 
