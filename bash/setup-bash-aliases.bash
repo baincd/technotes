@@ -86,11 +86,11 @@ alias mvn-gen-all-sources='findsrc -name pom.xml -exec grep -q "plugin_one\|plug
 function mvn-dep-tree() { 
   mvn dependency:tree --batch-mode "$@" | \
   stdbuf -o0 sed \
-    -re '/^\[INFO\] --- maven-dependency-plugin:[0-9a-zA-Z_\.-]+:tree /,/^\[INFO\] -{72}?$/s/^\[INFO\] //' \
-    -re '/^\[INFO\] /d' \
-    -re '/^--- maven-dependency-plugin:[0-9a-zA-Z_\.-]+:tree/d' \
-    -re '/^-{72}$/d' \
-    -re 's/\+- |\|  |\\- /   /g' 
+    -re '/^\[INFO\] [a-zA-Z0-9\._-]+(:[a-zA-Z0-9\._-]+){3}/,/^\[INFO\] -{72}?$/s/^\[INFO\] /»»»/' \
+    -re '/^»»»/s/-{72}$//' \
+    -re '/^»»»/s/\+- |\|  |\\- /   /g' \
+    -re '/^(\[INFO\] BUILD FAILURE$|\[FATAL\])/,$s/^/»»/' \
+    -nre '/^»»+/s/^»»+//p'
 }
 
 function mvn-dep-verbose() { 
