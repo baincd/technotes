@@ -103,7 +103,7 @@ function mvn-dep-verbose() {
 }
 
 function npm-dep-tree() { 
-  npm ls --all | \
+  npm ls --all "$@" | \
   sed \
     -re 's/[├─┬└│]/ /g' \
     -re 's/^  //' ; 
